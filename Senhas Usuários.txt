@@ -1,0 +1,4 @@
+Servidor teste do Apollo
+10.100.1.205:1525
+Nome: gruposervopa
+Senha: ninguemsabe
