@@ -4,9 +4,9 @@ require_once('../../../config/databases.php');
 $queryDemitidos = "SELECT DISTINCT id, nome, cpf, ativo, sistema FROM cad_usuario_api";
 
 
-// PE - Politicamente Exposto
-$droptablePE = "DROP TABLE politicamente_exposto";
+$droptablePE = "DROP TABLE sisrev_politicamente_exposto";
 
+// PE - Politicamente Exposto
 $createtablePE = "CREATE TABLE `sisrev_politicamente_exposto` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `CPF_PEP` VARCHAR(11) NULL,
@@ -30,3 +30,8 @@ ORDER BY SAPE.id DESC
 LIMIT 1;";
 $resultLogPE = $conn->query($queryLogPE);
 $logPE = $resultLogPE->fetch_assoc();
+
+
+//excluir tabela empresas_bpmgp
+$drop_Empresas = 'DROP TABLE empresas_bpmgp';
+

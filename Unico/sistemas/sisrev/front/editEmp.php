@@ -23,90 +23,79 @@ require_once('menu.php'); //menu lateral da pagina
   ?>
 
   <!--################# COLE section AQUI #################-->
-  <?php
-  require_once('../inc/apiRecebeSmart.php');
-
-  ?>
-
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
-
         <div class="card">
           <div class="card-body">
+            <form class="row g-3" action="" method="post" enctype="multipart/form-data">
+              <!--DADOS PARA O LANÇAMENTO -->
+              <div class="form-floating mt-4 col-md-12">
+                <select class="form-select" id="floatingSelect" name="usuarioBPM" disabled>
+                  <option value="1">Felipe Lara</option>
+                  <option value="2">Lucimara</option>
+                  <option value="3">Suellem</option>
+                </select>
+                <label for="floatingSelect" class="capitalize">EMPRESA:<span style="color: red;">*</span></label>
+              </div>
 
-            <!-- General Form Elements -->
-            <form>
-              <div class="row mb-3 mt-4">
-                <label for="inputText" class="col-sm-2 col-form-label">EMPRESA:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                <div class="col-lg-5">
-                <input type="text" class="form-control" maxlength="2" disabled>
-                </div>
+              <div class="form-floating mt-4 col-md-6">
+                <select class="form-select" id="floatingSelect" name="fornecedor" required>
+                  <option value="">-----------------</option>
+                  <option value="2">APOLLO</option>
+                  <option value="3">APOLLO NBS</option>
+                  <option value="4">BANCO HARLEY</option>
+                  <option value="5">EMPRESA QUE NÃO USA SISTEMA ERP</option>
+                </select>
+                <label for="floatingSelect">SISTEMA:<span style="color: red;">*</span></label>
               </div>
-              <div class="row mb-3">
-                <label for="inputEmail" class="col-sm-2 col-form-label">SISTEMA:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                <div class="col-lg-5">
-                <select type="text" class="form-control" require>
-                    <option>------------</option>
-                    <option>APOLLO BNS</option>
-                    <option>BANCO HARLEY</option>
-                    <option>EMPRESA QUE NAO USA SISTEMA ERP</option>
-                  </select>
-                </div>
+
+              <div class="form-floating mt-4 col-md-6">
+                <input class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+                <label for="floatingSelect">EMPRESA APOLLO:<span style="color: red;">*</span></label>
               </div>
-              <div class="row mb-3">
-                <label for="inputPassword" class="col-sm-2 col-form-label">EMPRESA APOLLO:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                <div class="col-lg-5">
-                  <input type="text" class="form-control" maxlength="2" require>
-                </div>
+
+              <div class="form-floating mt-4 col-md-6">
+              <input class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+                <label for="floatingSelect">REVENDA APOLLO:<span style="color: red;">*</span></label>
               </div>
-              <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">REVENDA APOLLO:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                <div class="col-lg-5">
-                  <input type="text" class="form-control" maxlength="2" require>
-                </div>
-                <div class="row mt-4">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">ORGANOGRAMA SENIOR:<small style="color: red;" title="Verificar informação com a Celina"><i class="bi bi-question-circle-fill"></i></small></label>
-                  <div class="col-lg-5" style="margin-top: 12px;">
-                    <input type="text" class="form-control" maxlength="2" require>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">EMPRESA SENIOR:<small style="color: red;" title="Verificar informação com a Celina"><i class="bi bi-question-circle-fill"></i></small></label>
-                  <div class="col-lg-5">
-                    <input type="text" class="form-control" maxlength="2" require>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">FILIAL SENIOR:<small style="color: red;" title="Verificar informação com a Celina"><i class="bi bi-question-circle-fill"></i></small></label>
-                  <div class="col-lg-5">
-                    <input type="text" class="form-control" maxlength="2" require>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">CONSÓRCIO:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                  <div class="col-lg-5">
-                  <select class="form-control" require>
-                      <option>------------</option>
-                      <option>SIM</option>
-                      <option>NÃO</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <label for="inputNumber" class="col-sm-2 col-form-label">SITUAÇÃO:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                  <div class="col-lg-5">
-                  <select class="form-control" require>
-                      <option>------------</option>
-                      <option>ATIVO</option>
-                      <option>DESATIVADO</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="row mt-3">
-                  <label for="marca" class="col-sm-2 col-form-label">UF:<span style="color: red;" title="Campo obrigatório">*</span></label>
-                  <select class="form-control" style="width: 40%; margin-left: 10px;" placeholder="UF" name="estado" type="text" id="estado" required>
-                    <option value="">------------</option>
+
+              <div class="form-floating mt-4 col-md-6">
+              <input class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+                <label for="floatingSelect">ORGANOGRAMA SENIOR:<span style="color: red;">*</span></label>
+              </div>
+
+              <div class="form-floating mt-4 col-md-6">
+                <input class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+                <label for="floatingSelect">EMPRESA SENIOR:<span style="color: red;">*</span></label>
+              </div>
+
+              <div class="form-floating mt-4 col-md-6">
+              <input class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+                <label for="floatingSelect">FILIAL SENIOR:<span style="color: red;">*</span></label>
+              </div>
+
+              <div class="form-floating mt-4 col-md-6">
+                <select class="form-select" id="floatingSelect" name="fornecedor" required>
+                  <option value="">-----------------</option>
+                  <option value="2">SIM</option>
+                  <option value="3">NÃO</option>
+                </select>
+                <label for="floatingSelect">CONSÓRCIO:<span style="color: red;">*</span></label>
+              </div>
+
+              <div class="form-floating mt-4 col-md-6">
+                <select class="form-select" id="floatingSelect" name="filial" required>
+                  <option value="">-----------------</option>
+                  <option value="2">ATIVO</option>
+                  <option value="3">DESATIVADO</option>
+                </select>
+                <label for="floatingSelect">SITUAÇÃO:<span style="color: red;">*</span></label>
+              </div>
+
+              <div class="form-floating mt-4 col-md-6">
+                <select class="form-select" id="floatingSelect" name="fornecedor" required>
+                <option value="">------------</option>
                     <option value="AC">AC</option>
                     <option value="AL">AL</option>
                     <option value="AP">AP</option>
@@ -135,47 +124,28 @@ require_once('menu.php'); //menu lateral da pagina
                     <option value="SE">SE</option>
                     <option value="TO">TO</option>
                     <option value="EX">EX</option>
-                  </select>
-                </div>
-                <div class="row mt-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">NÚMERO CAIXA:</label>
-                  <div class="col-lg-5">
-                    <input type="text" class="form-control" maxlength="2">
-                </div>
-                <div class="row mt-3">
-                  <label for="inputEmail" class="col-sm-2 col-form-label">APROVADOR CAIXA:</label>
-                  <div class="col-lg-5">
-                  <select type="text" class="form-control">
-                    <option>------------</option>
-                    <?php 
-                      require_once('../inc/apiRecebeSelbetti.php');
-                      echo $aprovador;
-                    ?>
-                  </select>
-                </div>
+                </select>
+                <label for="floatingSelect">UF:<span style="color: red;">*</span></label>
+              </div>
 
-
-                  <div class="row mt-3">
-                    <div class="col-lg-5">
-                      <button type="submit" class="btn btn-primary">Salvar</button>
-                      <button class="btn btn-danger">Voltar</button>
-                    </div>
-                  </div>
-
-            </form><!-- End General Form Elements -->
-
-          </div>
-        </div>
-
-      </div>
-
-      <div>
-
-
-
-      </div>
-    </div>
-  </section>
+              <div class="form-floating mt-4 col-md-6">
+                <select class="form-select" id="floatingSelect" name="filial" required>
+                  <?php 
+                  require_once('../inc/apiRecebeSelbetti.php');
+                  echo $aprovador;
+                  ?>
+                </select>
+                <label for="floatingSelect">NÚMERO CAIXA:</label>
+              </div>
+              <div class="text-center py-2">
+                <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
+              </div>
+            </form><!-- FIM Form -->
+          </div><!-- FIM card-body -->
+        </div><!-- FIM card -->
+      </div><!-- FIM col-lg-12 -->
+  </section><!-- FIM section -->
   <!--################# section TERMINA AQUI #################-->
 
 </main><!-- End #main -->

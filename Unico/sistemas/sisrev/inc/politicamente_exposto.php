@@ -24,10 +24,13 @@ if ($_FILES['arquivo']["type"] === "text/csv") {
     } else {
 
       // 1 - Deletando a tabela com os dados antigos
-
+      $resultDropPE = $conn->query($droptablePE);
       // 2 - Criando a tabela para receber os dados novos
-
+      $resultCreatPE = $conn->query($createtablePE);
       // 3 - Inserindos os dados novos
+      //$queryInsertPE = "LOAD DATA INFILE '".$uploadfile."' INTO TABLE sisrev_politicamente_exposto FIELDS TERMINATED BY ';' LINES TERMINATED BY '\n' IGNORE 1 ROWS";
+      //$resutInsertPE = $conn->query($queryInsertPE);
+
     }
   } else {
     header('location: ../front/politicamente_exposto.php?pg=' . $_GET['pg'] . '&tela=' . $_GET['tela'] . '&msn=10&erro=2');
