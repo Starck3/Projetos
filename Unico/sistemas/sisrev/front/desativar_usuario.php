@@ -51,10 +51,7 @@ require_once('../config/query.php'); //Dados do banco MYSQL
       <div class="col-lg-12" style="display: <?= empty($_GET['saida']) ? 'none' : 'block'; ?>">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Listagem de sistemas do usuário
-              <a href="#" class="btn btn-sm btn-success button-rigth-card-active" title="Ativar em todos os sistemas"><i class="bi bi-check-square"></i></a>
-              <a href="#" class="btn btn-sm btn-danger button-rigth-card-demiss" title="Desativar em todos os sistemas"><i class="bi bi-trash"></i></a>
-            </h5>
+            <h5 class="card-title">Listagem de sistemas do usuário</h5>
             <!-- Small tables -->
             <table class="table table-sm">
               <thead>
