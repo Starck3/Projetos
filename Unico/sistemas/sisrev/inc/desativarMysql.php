@@ -28,7 +28,8 @@ switch ($_GET['acao']) {
                                     ativo = 'S'
                                 WHERE
                                     cpf = '" .$_GET['cpf']. "'
-                                AND sistema = '" .$_GET['sistema']. "'";
+                                AND sistema = '" .$_GET['sistema']. "'
+                                AND nome = '".$_GET['nome']."'";
 
                 $execUpdateNbs = $conn->query($updateNbs);
 
@@ -67,7 +68,8 @@ switch ($_GET['acao']) {
                                     ativo = 'N'
                                 WHERE
                                     cpf = '" .$_GET['cpf']. "'
-                                AND sistema = '" .$_GET['sistema']. "'";
+                                AND sistema = '" .$_GET['sistema']. "'
+                                AND nome = '".$_GET['nome']."'";
 
                 $execUpdateNbs = $conn->query($updateNbs);
 

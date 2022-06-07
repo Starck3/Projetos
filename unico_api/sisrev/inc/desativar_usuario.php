@@ -23,11 +23,11 @@ switch ($_GET['acao']) {
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário na tabela FAT_VENDEDOR do Apollo!']), E_USER_ERROR);
                 }
 
-                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
+                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
                 break;
             case 'Nbs':
-                $updateAtivarNbs = "UPDATE EMPRESAS_USUARIOS SET demitido = 'N' WHERE cpf = '".$_GET['cpf']."'";
+                $updateAtivarNbs = "UPDATE EMPRESAS_USUARIOS SET demitido = 'N' WHERE cpf = '".$_GET['cpf']."' AND NOME = '".$_GET['nome']."'";
                 $execAtivarNbs = oci_parse($connNbs, $updateAtivarNbs);
                 oci_execute($execAtivarNbs);
 
@@ -36,7 +36,7 @@ switch ($_GET['acao']) {
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário no NBS!']), E_USER_ERROR);
                 }
 
-                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
+                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
                 break;
         }
@@ -66,7 +66,7 @@ switch ($_GET['acao']) {
 
                 break;
             case 'Nbs':
-                $updateDesativarNbs = "UPDATE EMPRESAS_USUARIOS SET demitido = 'S' WHERE cpf = '".$_GET['cpf']."'";
+                $updateDesativarNbs = "UPDATE EMPRESAS_USUARIOS SET demitido = 'S' WHERE cpf = '".$_GET['cpf']."' AND NOME = '".$_GET['nome']."'";
                 $execDesativarNbs = oci_parse($connNbs, $updateDesativarNbs);
                 oci_execute($execDesativarNbs);
 
@@ -75,9 +75,11 @@ switch ($_GET['acao']) {
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário no NBS!']), E_USER_ERROR);
                 }
 
-                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
+                header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
                 break;
         }
         break;
 }
+
+?>
