@@ -1,5 +1,4 @@
 ﻿<?php
-
     $servername = "localhost";
     $username = "servopa";
     $password = "qtbvar03";

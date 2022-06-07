@@ -27,6 +27,7 @@ $tabelaRelatorio = "CREATE TABLE relatorio_users (
     nome VARCHAR(100) NULL,
     usuario VARCHAR(100) NULL,
     email VARCHAR(100) NULL,
+    dessit VARCHAR(100) NULL,  
     PRIMARY KEY (id))";
 
 $tabelaRelatorioDemitidos = "CREATE TABLE relatorio_demitidos (

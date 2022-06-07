@@ -27,7 +27,7 @@ try {
     $mail->AddEmbeddedImage('../images/image-2.gif', 'logoSelbetti');
 //sisdia@servopa.com.br
     //Recipients
-    $mail->addAddress('matheus.voltz@servopa.com.br', 'Sisdia TI');     //Add a recipient
+    $mail->addAddress('sisdia@servopa.com.br', 'Sisdia TI');     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Usuarios Selbetti - Importação';
@@ -332,8 +332,9 @@ try {
                 <td>' . $relatorioUsers['nome'] . '</td>
                 <td>' . $relatorioUsers['usuario'] . '</td>
                 <td>' . $relatorioUsers['email'] . '</td>
-                <td>' . $relatorioUsers['dessit'] . '</td>
-            </tr>
+                <td>' . $relatorioUsers['dessit'] . '</td>';
+                
+                '</tr>
             ';
             }else {
 

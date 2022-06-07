@@ -20,11 +20,11 @@ $urlAlterarUsuarios = 'https://appsmart.gruposervopa.com.br/smartshare/SmartShar
 //Variavel para utilizar no While dentro da tabela para a criação das linhas
 $contador = 1;
 
-//Busca usuário COMUNS na Selbetti e confere na Vetor - 
+//Busca usuário ATIVOS na Selbetti e confere na Vetor - 
 $querySelbettiDemitidos .= " WHERE idTipoUsuario = '3' AND stAtivo = '1' "; //tipo usuario = 1 e 2 são ADM's
 $resultadoSelbetti = $connLocal->query($querySelbettiDemitidos);
 
-//Busca todos os usuários desligados
+//Busca todos os usuários DEMITIDOS
 $queryDemitidos = "SELECT * FROM selbetti_users WHERE stAtivo = '0' order by usuario ASC";
 $execQueryDemitidos = $connLocal->query($queryDemitidos);
 
@@ -138,6 +138,13 @@ while ($rowSelbetti = $resultadoSelbetti->fetch_assoc()) {
 
             if (!$resultRelatorioDemitidos = $connLocal->query($insertRelatorioDemitidos)) {
                 printf("Erro demitidos[1]: %s\n", $connLocal->error);
+                exit;
+            }
+
+            $insertVetorDesativ = "INSERT INTO relatorio_users(nome, usuario, email, dessit) VALUES ('" . $rowSelbetti['nome'] . "', '" . $rowSelbetti['usuario'] . "', '" . $rowSelbetti['email'] . "','DEMITIDO')";
+
+            if (!$resultVetorUsuario = $connLocal->query($insertVetorDesativ)) {
+                printf("Erro[7]: %s\n", $connLocal->error);
                 exit;
             }
 

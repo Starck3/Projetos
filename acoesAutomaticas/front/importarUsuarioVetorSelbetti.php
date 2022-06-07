@@ -221,13 +221,13 @@
 
                     //verificando se ja existe usuario lá
 
-                    $queryRelatorioUsers = "SELECT * FROM relatorio_users WHERE usuario = '" . $vetorRH['usuario'] . "'";                   
+                    $queryRelatorioUsers = "SELECT * FROM relatorio_users WHERE usuario = '" . $vetorRH['usuario'] . "'";
                     $vai = $connLocal->query($queryRelatorioUsers);
                     $usuarioRepetido = $vai->fetch_assoc();
 
                     if ($usuarioRepetido['usuario'] == NULL) {
 
-                        //API CRIAR USUARIO SELBETTI
+                       //API CRIAR USUARIO SELBETTI
                         $curl = curl_init();
 
                         curl_setopt_array(
@@ -281,22 +281,21 @@
                         curl_close($curl);
 
                         //salvando no relatorio para enviar e-mail
-                        $insertVetor = "INSERT INTO relatorio_users(nome, usuario, email) VALUES ('" . $vetorRH['nome'] . "', '" . $vetorRH['usuario'] . "', '" . $vetorRH['email'] . "')";
+                        $insertVetor = "INSERT INTO relatorio_users(nome, usuario, email, dessit) VALUES ('" . $vetorRH['nome'] . "', '" . $vetorRH['usuario'] . "', '" . $vetorRH['email'] . "','CADASTRADO')";
 
                         if (!$resultVetorUsuario = $connLocal->query($insertVetor)) {
                             printf("Erro[7]: %s\n", $connLocal->error);
                             exit;
                         }
                     }
-
-                }  else {
+                } else {
                     echo '<tr>
                             <th scope="row">' . $teste . '</th>
                             <td>' . $SelbettiUsers['usuario'] . '</td>
                         </tr>';
                 }
-                $teste++;               
-            }        
+                $teste++;
+            }
             echo '</tbody>
                 </table>
             </div>';
@@ -330,7 +329,7 @@
                                 </tbody>
                             </table>
                         </div>';
-                } else {
+            } else {
                 echo '<br>
                         <div class="alert alert-danger d-flex align-items-center" role="alert">
                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"><i class="fa-solid fa-triangle-exclamation fa-1x"></i> </use></svg>
@@ -338,27 +337,26 @@
                                 &nbsp Não foram encontrados novos colaboradores para o cadastro! <a href="javascript:close_tab();" class="alert-link">Fechar</a>
                             </div>
                         </div>';
-                        require_once('demitidos.php');
-                        echo'
+                require_once('demitidos.php');
+                echo '
                     </div>';
-            }            
+            }
 
             //----------------------EXCLUINDO TABELAS----------------------------
 
-                if (!$resultTabelaFor = $connLocal->query($dropSelbetti)) {
-                    printf("Erro[8]: %s\n", $connLocal->error);
-                    exit;
-                }
+             if (!$resultTabelaFor = $connLocal->query($dropSelbetti)) {
+                printf("Erro[8]: %s\n", $connLocal->error);
+                exit;
+            } 
 
-                if (!$resultTabelaFive = $connLocal->query($dropVetor)) {
-                    printf("Erro[9]: %s\n", $connLocal->error);
-                    exit;
-                } 
-                
-                if (!$resultTabelaSix = $connLocal->query($dropRelatorioDemitidos)) {
-                    printf("Erro[10]: %s\n", $connLocal->error);
-                }
+            if (!$resultTabelaFive = $connLocal->query($dropVetor)) {
+                printf("Erro[9]: %s\n", $connLocal->error);
+                exit;
+            }
 
+            if (!$resultTabelaSix = $connLocal->query($dropRelatorioDemitidos)) {
+                printf("Erro[10]: %s\n", $connLocal->error);
+            }
         } else {
             echo "<div id='erro'><h3>NÃO FOI POSSIVEL VALIDAR O TOKEN</h3></div>";
             exit;
@@ -382,7 +380,9 @@
                     document.getElementById("tabelaImportados").style.display = "none";
                 }
 
-            }function mostrarListaDemitidos() {
+            }
+
+            function mostrarListaDemitidos() {
 
                 var modoDisplay = document.getElementById("tabelaImportadosDemitidos").style.display;
 
@@ -392,7 +392,6 @@
                     document.getElementById("tabelaImportadosDemitidos").style.display = "none";
                 }
             }
-
         </script>
 
 
