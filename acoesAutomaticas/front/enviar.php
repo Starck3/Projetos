@@ -27,7 +27,7 @@ try {
     $mail->AddEmbeddedImage('../images/image-2.gif', 'logoSelbetti');
 //sisdia@servopa.com.br
     //Recipients
-    $mail->addAddress('sisdia@servopa.com.br', 'Sisdia TI');     //Add a recipient
+    $mail->addAddress('bruno.caetano@servopa.com.br', 'Sisdia TI');     //Add a recipient
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Usuarios Selbetti - Importação';
@@ -510,7 +510,7 @@ try {
 
 /*----------------------EXCLUINDO TABELAS----------------------------*/
     
-if (!$resultTabelaSix = $connLocal->query($dropRelatorioUsers)) {
+/* if (!$resultTabelaSix = $connLocal->query($dropRelatorioUsers)) {
     printf("Erro[1]: %s\n", $connLocal->error);
     exit;
-} 
+}  */
