@@ -3,6 +3,8 @@ session_start();
 
 require_once('../config/query.php');
 
+require_once('../config/config.php');
+
 //SQL injection
 $usuario = mysqli_real_escape_string($conn, $_POST['username']);
 $senha = mysqli_real_escape_string($conn, $_POST['password']);
@@ -38,9 +40,6 @@ if ($usuario['deletar'] == 1) {
             $_SESSION['administrador'] = $usuario['admin'];
             $_SESSION['alterar_senha_login'] = $usuario['alterar_senha_login'];            
             $_SESSION['deletar'] = $usuario['deletar'];
-
-            //OUTROS TIPOS DE SESSÃO
-            $_SESSION['nome_bpm'] = "fluig";
 
             header('Location: ../front/index.php?pg='.$_GET['pg'].'');
         }

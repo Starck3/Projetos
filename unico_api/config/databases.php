@@ -7,55 +7,53 @@
 	$pass = "ninguemsabe";
 	$dbstr = "(DESCRIPTION =
 
-		(ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.1.205)(PORT = 1525))
+				(ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.1.205)(PORT = 1525))
 
-		(CONNECT_DATA =
+				(CONNECT_DATA =
 
-		(SERVER = DEDICATED)
+				(SERVER = DEDICATED)
 
-		(SERVICE_NAME = APOLLO_TESTE)
+				(SERVICE_NAME = APOLLO_TESTE)
 
-		)
-		)";
+			)
+	)";
 
 	$connApollo = oci_connect($user, $pass, $dbstr);
 
 	// Check connection
 	if (!$connApollo) {
-
 		$e = oci_error();
 		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-
 	} else {
 		/* echo 'Conexão Apollo realizada com Sucesso!<br>'; */
 	}	
 			
-		// CRIANDO CONEXÃO DO NBS
-		$user = "nbs";
-		$pass = "new";
-		$dbstr = "(DESCRIPTION =
+	// CRIANDO CONEXÃO DO NBS
+	//10.100.1.209:1522 é de produção
+	//10.100.1.205:1524 é de testes
+	$user = "nbs";
+	$pass = "new";
+	$dbstr = "(DESCRIPTION =
 
-		(ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.1.209)(PORT = 1522))
+				(ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.1.205)(PORT = 1524))
 
-		(CONNECT_DATA =
+				(CONNECT_DATA =
 
-		(SERVER = DEDICATED)
+				(SERVER = DEDICATED)
 
-		(SERVICE_NAME = NBS)
+				(SERVICE_NAME = NBS_TESTE)
 
-		)
-		)";
+			)
+	)";
 
-		$connNbs = oci_connect($user, $pass, $dbstr);
+	$connNbs = oci_connect($user, $pass, $dbstr);
 
-		// Check connection
-		if(!$connNbs){ 
-
-			$e = oci_error();
-			trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-
-		} else {
-			/* echo 'Conexão Nbs realizada com Sucesso!'; */
-		}
+	// Check connection
+	if(!$connNbs){
+		$e = oci_error();
+		trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+	} else {
+		/* echo 'Conexão Nbs realizada com Sucesso!'; */
+	}
 
 ?>

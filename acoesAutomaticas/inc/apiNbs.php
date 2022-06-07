@@ -11,10 +11,16 @@
 
     foreach ($resultado->usuariosNbs as $usuarioNbs) {
 
+        if ($usuarioNbs->demitido == NULL OR $usuarioNbs->demitido == 'N') {
+            $situacao = 'S';
+        } else {
+            $situacao = 'N';
+        }
+
         $insert = "INSERT INTO cad_usuario_api (nome, cpf, ativo, sistema)
                     VALUES ('".$usuarioNbs->nome."', 
                             '".$usuarioNbs->cpf."', 
-                            '".$usuarioNbs->demitido."', 
+                            '".$situacao."', 
                             '".$usuarioNbs->sistema."');
         "; 
         !$execInsert = $conn->query($insert) ?: ''; //preenchimento da tabela no unico

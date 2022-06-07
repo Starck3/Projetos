@@ -1,6 +1,13 @@
 <?php
 
-$ajuste = str_replace("-","", $_POST['cpf']);
+//ajuste de Methodo de envio de formulário para a pesquisa e montagem da tabela.
+if ($_POST['cpf'] == NULL) {
+    $ajuste = str_replace("-","", $_GET['cpf']);
+} else {
+    $ajuste = str_replace("-","", $_POST['cpf']);
+}
+
+//Query de busca de usuários para montagem da tabela.
 $queryDemitidos .= " WHERE cpf = ".str_replace(".", "", $ajuste)."";
 $resultado = $conn->query($queryDemitidos);
 
@@ -23,7 +30,7 @@ while ($rowResultado = $resultado->fetch_assoc()) {
             <td style="color: '.$color.';">' .$ativo. '</td>
             <td>' .$rowResultado['sistema']. '</td>                      
             <td>';
-                if ($rowResultado['ativo'] == 'N') {
+                if ($ativo == 'NÃO') {
                 $dados .='
                 <a href="desativar_usuario.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&saida=1&cpf='.$rowResultado['cpf'].'&sistema='.$rowResultado['sistema'].'&acao=1&api=true" title="Ativar" class="btn btn-success btn-sm">
                     <i class="bi bi-check-square"></i>
