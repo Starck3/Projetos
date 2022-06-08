@@ -3,20 +3,24 @@ require_once('../../../config/databases.php');
 
 // Empresas tablea mysql
 
-$createTableEmp = "CREATE TABLE `empresas_bpmgp` (
+$droptable = "DROP TABLE IF EXISTS `sisrev_empresas_bpmgp`;";
+
+$sucess = $conn->query($droptable);
+
+$createTableEmp = "CREATE TABLE `sisrev_empresas_bpmgp` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `NOME_EMPRESA` VARCHAR(80) NULL,
     `SISTEMA` VARCHAR(1) NULL,
-    `EMPRESA_APOLLO` INT(10) NULL,
-    `REVENDA_APOLLO` INT(10) NULL,
-    `EMPRESA_NBS` INT(10) NULL,
-    `ORGANOGRAMA_SENIOR` INT(3) NULL,
-    `EMPRESA_SENIOR` INT(10) NULL,
-    `FILIAL_SENIOR` INT(10) NULL,
-    `ID_EMPRESA` INT(10) NULL,
+    `EMPRESA_APOLLO` VARCHAR(10) NULL,
+    `REVENDA_APOLLO` VARCHAR(10) NULL,
+    `EMPRESA_NBS` VARCHAR(10) NULL,
+    `ORGANOGRAMA_SENIOR` VARCHAR(3) NULL,
+    `EMPRESA_SENIOR` VARCHAR(10) NULL,
+    `FILIAL_SENIOR` VARCHAR(10) NULL,
+    `ID_EMPRESA` VARCHAR(10) NULL,
     `SITUACAO` VARCHAR(1) NULL,
     `CONSORCIO` VARCHAR(1) NULL,
-    `NUMERO_CAIXA` INT(5) NULL,
+    `NUMERO_CAIXA` VARCHAR(5) NULL,
     `APROVADOR_CAIXA` VARCHAR(100) NULL,
     `UF_GESTAO` VARCHAR(2) NULL,
     PRIMARY KEY (`id`));";
@@ -30,17 +34,39 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 $resultado = json_decode(curl_exec($ch));
 
+// var_dump($resultado);
+
 foreach ($resultado->empresaSmart as $empSmart) {
 
 
-$querySmart = 'INSERT INTO empresas_bpmgp ("NOME_EMPRESA", "SISTEMA", "UF_GESTAO", CONSORCIO,APROVADOR_CAIXA,NUMERO_CAIXA,FILIAL_SENIOR,ID_EMPRESA,EMPRESA_SENIOR,ORGANOGRAMA_SENIOR,EMPRESA_NBS,REVENDA_APOLLO,EMPRESA_APOLLO)
-VALUES ('.$empSmart->EMPRESA.','.$empSmart->SISTEMA.','.$empSmart->UF.','.$empSmart->CONSORCIO.','.$empSmart->APROVADOR.','.$empSmart->NUMEROCX.','.$empSmart->FILIAL.',
-'.$empSmart->ID.','.$empSmart->EMPSENIOR.','.$empSmart->ORGANOGRAMA.','.$empSmart->EMPNBS.','.$empSmart->REVAPOLLO.','.$empSmart->EMPAPOLLO.')';
-
-$execQuery = $conn->query($querySmart);
+    $querySmart = "INSERT INTO empresas_bpmgp 
+                            (NOME_EMPRESA,SISTEMA,UF_GESTAO,CONSORCIO,APROVADOR_CAIXA,NUMERO_CAIXA,FILIAL_SENIOR,ID_EMPRESA,EMPRESA_SENIOR,
+                            ORGANOGRAMA_SENIOR,EMPRESA_APOLLO,REVENDA_APOLLO,SITUACAO,EMPRESA_NBS)
+   
+    VALUES ('" . $empSmart->ID ."',
+            '" . $empSmart->EMPRESA ."',
+            '" . $empSmart->SISTEMA . "',
+            '" . $empSmart->UF . "' ,
+            '" . $empSmart->CONSORCIO ."',
+            '" . $empSmart->APROVADOR_CAIXA ."',
+            '" . $empSmart->NUMERO_CAIXA ."',
+            '" . $empSmart->FILIAL_SENIOR ."',
+            '" . $empSmart->EMPRESA_SENIOR ."',
+            '" . $empSmart->ORGANOGRAMA_SENIOR ."',
+            '" . $empSmart->EMPRESA_APOLLO ."',
+            '" . $empSmart->REVENDA_APOLLO ."',
+            '" . $empSmart->SITUACAO . "',
+            '" . $empSmart->EMPRESA_NBS ."'
+            )";
+    
+    if (!$execQuery = $conn->query($querySmart)) {
+        echo "Error: " . $querySmart . "<br>" . $conn->error;
+    }
+    
+    
 
 // switch para a tabela em baixo
-    switch ($empSmart->SISTEMA) {
+    switch ($row["SISTEMA"]) {
         case "A":
             $sistema = "APOLLO";
             break;

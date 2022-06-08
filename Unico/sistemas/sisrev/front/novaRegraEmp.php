@@ -31,11 +31,7 @@ require_once('menu.php'); //menu lateral da pagina
             <form class="row g-3" action="" method="post" enctype="multipart/form-data">
               <!--DADOS PARA O LANÇAMENTO -->
               <div class="form-floating mt-4 col-md-12">
-                <select class="form-select" id="floatingSelect" name="usuarioBPM" disabled>
-                  <option value="1">Felipe Lara</option>
-                  <option value="2">Lucimara</option>
-                  <option value="3">Suellem</option>
-                </select>
+              <input class="form-control" id="floatingSelect" name="filial" required>
                 <label for="floatingSelect" class="capitalize">EMPRESA:<span style="color: red;">*</span></label>
               </div>
 
@@ -129,13 +125,18 @@ require_once('menu.php'); //menu lateral da pagina
               </div>
 
               <div class="form-floating mt-4 col-md-6">
-                <select class="form-select" id="floatingSelect" name="filial" required>
-                  <?php 
-                  require_once('../inc/apiRecebeSelbetti.php');
-                  echo $aprovador;
-                  ?>
-                </select>
-                <label for="floatingSelect">NÚMERO CAIXA:</label>
+              <input  class="form-control" id="floatingSelect" name="filial" maxlength="2" required>
+              <label for="floatingSelect">NUMERO CAIXA:<span style="color: red;">*</span></label>
+              </div>
+              
+              <div class="form-floating mt-4 col-md-12">
+              <select  class="form-select" id="floatingSelect" name="fornecedor" required>
+              <?php 
+                require_once('../inc/apiRecebeSelbetti.php');
+                echo $aprovador;
+              ?>
+              </select>
+              <label for="floatingSelect">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
               <div class="text-center py-2">
                 <button type="reset" class="btn btn-secondary">Limpar Formulario</button>

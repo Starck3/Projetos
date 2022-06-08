@@ -27,6 +27,18 @@ select.dataTable-selector {
   margin-top: -8%;
 }
 
+.progress .progress-bar{
+  animation: progress-animation 170s infinite;
+}
+
+
+@keyframes progress-animation{
+   0% { width: 0%; }
+   
+   100% { width: 100%}
+   
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   background: #f6f9ff;

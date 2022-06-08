@@ -31,7 +31,6 @@ LIMIT 1;";
 $resultLogPE = $conn->query($queryLogPE);
 $logPE = $resultLogPE->fetch_assoc();
 
-
 //excluir tabela empresas_bpmgp
 $drop_Empresas = 'DROP TABLE empresas_bpmgp';
 

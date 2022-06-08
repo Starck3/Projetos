@@ -1,5 +1,4 @@
 <?php
-
 	// CRIANDO CONEXÃO DO APOLLO
 	//10.100.1.209:1523 é de produção
 	//10.100.1.205:1525 é de testes
@@ -55,5 +54,16 @@
 	} else {
 		/* echo 'Conexão Nbs realizada com Sucesso!'; */
 	}
+	
+	//SERVIDOR UNICO
+	$ipservidorUnico = "10.100.1.66";	
+	$portaUnico = "3306";
+	$userUnico = "unico";
+	$passUnico = "#CAvpnGSVP20";
+	$dbnameUnico = "unico";
 
-?>
+	// ########### UNICO ###########
+	$connUNICO = new mysqli($ipservidorUnico, $userUnico, $passUnico, $dbnameUnico, $portaUnico);
+	if ($connUNICO->connect_error) {
+		die("ERRO CONEXÂO SERVIDOR UNICO: " . $connUNICO->connect_error);
+	}

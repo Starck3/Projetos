@@ -30,7 +30,7 @@ require_once('menu.php'); //menu lateral da pagina
           <div class="card-header">
             <a href="novaRegraEmp.php" type="button" class="btn btn-success" style="float: right; margin-left: 8px;" title="Nova regra empresa"><i class="bx bxs-plus-square"></i></a>
 
-            <button type="button" class="btn btn-success" style="float: right;" title="Exportar excel"><i class="ri-file-excel-2-fill"></i></button>
+            <a href type="button" class="btn btn-success" style="float: right;" title="Exportar excel"><i class="ri-file-excel-2-fill"></i></A>
           </div>
           <div class="card-body">
             <!-- Table with stripped rows -->
@@ -47,9 +47,8 @@ require_once('menu.php'); //menu lateral da pagina
                 </tr>
               </thead>
               <tbody>
-                <?php
-                require_once('../inc/apiRecebeSmart.php');
-                echo $tabela;
+                <?php 
+                require_once('../inc/inserindoTabela.php');
                 ?>
               </tbody>
             </table>
