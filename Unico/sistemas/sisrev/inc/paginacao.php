@@ -20,4 +20,8 @@ if($tela == "politicamente_exposto.php"){if($_GET['tela'] != '3' OR $_GET['pg'] 
 if($tela == "configuracao.php"){if($_GET['pg'] != '4'){echo '<script>window.location.href = "configuracao.php?pg=4";</script>';}}
 //ajuda.php
 if($tela == "ajuda.php"){if($_GET['pg'] != '5'){echo '<script>window.location.href = "ajuda.php?pg=5";</script>';}}
+//localizar_modulos.php
+if($tela == "localizar_modulos.php"){if($_GET['pg'] != '6'){echo'<script>window.location.href = "localizar_modulos.php?pg=6&tela=4";</script>';}}
+
+?>
 

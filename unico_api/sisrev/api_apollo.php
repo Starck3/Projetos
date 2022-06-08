@@ -15,8 +15,11 @@ while (($rowApollo = oci_fetch_assoc($execApollo)) != false) {
         "cpf" => $rowApollo['CPF'],
         "ativo" => $rowApollo['ATIVO'],
         "sistema" => 'Apollo',
-    );       
+    );     
 }
+
+oci_free_statement($connApollo);
+oci_close($connApollo);
 
 $execApolloVendedor = oci_parse($connApollo, $queryApolloVendedor);//$queryApolloVendedor FAT_VENDEDOR
 oci_execute($execApolloVendedor);
@@ -27,9 +30,11 @@ while (($rowApolloVendedor = oci_fetch_assoc($execApolloVendedor)) != false) {
         "cpf" => $rowApolloVendedor['CPF'],
         "ativo" => $rowApolloVendedor['ATIVO'],
         "sistema" => 'Apollo',
-    ); 
-    
+    );    
 }
+
+oci_free_statement($connApollo);
+oci_close($connApollo);
 
 $apiApollo = json_encode($arrayDadosApollo);
 

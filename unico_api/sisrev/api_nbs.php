@@ -18,6 +18,9 @@ while (($rowNbs = oci_fetch_assoc($execNbs)) != false) {
     );       
 }
 
+oci_free_statement($connNbs);
+oci_close($connNbs);
+
 $apiNbs = json_encode($arrayDadosNbs);
 
 echo $apiNbs;

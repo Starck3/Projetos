@@ -14,6 +14,9 @@ switch ($_GET['acao']) {
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário na tabela GER_USUARIO do Apollo!']), E_USER_ERROR);
                 }
 
+                oci_free_statement($connApollo);
+                oci_close($connApollo);
+
                 $updateApolloFat = "UPDATE FAT_VENDEDOR SET ativo = 'S' WHERE cpf = ".$_GET['cpf']."";
                 $execUpdateApolloFat = oci_parse($connApollo, $updateApolloFat);
                 oci_execute($execUpdateApolloFat);
@@ -22,6 +25,9 @@ switch ($_GET['acao']) {
                     $e = oci_error($connApollo);
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário na tabela FAT_VENDEDOR do Apollo!']), E_USER_ERROR);
                 }
+
+                oci_free_statement($connApollo);
+                oci_close($connApollo);
 
                 header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
@@ -35,6 +41,9 @@ switch ($_GET['acao']) {
                     $e = oci_error($connNbs);
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário no NBS!']), E_USER_ERROR);
                 }
+
+                oci_free_statement($connNbs);
+                oci_close($connNbs);
 
                 header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
@@ -53,6 +62,9 @@ switch ($_GET['acao']) {
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário na tabela GER_USUARIO do Apollo!']), E_USER_ERROR);
                 }
 
+                oci_free_statement($connApollo);
+                oci_close($connApollo);
+
                 $updateApolloFat = "UPDATE FAT_VENDEDOR SET ativo = 'N' WHERE cpf = ".$_GET['cpf']."";
                 $execUpdateApolloFat = oci_parse($connApollo, $updateApolloFat);
                 oci_execute($execUpdateApolloFat);
@@ -61,6 +73,9 @@ switch ($_GET['acao']) {
                     $e = oci_error($connApollo);
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário na tabela FAT_VENDEDOR do Apollo!']), E_USER_ERROR);
                 }
+
+                oci_free_statement($connApollo);
+                oci_close($connApollo);
                 
                 header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 
@@ -74,6 +89,9 @@ switch ($_GET['acao']) {
                     $e = oci_error($connNbs);
                     trigger_error(htmlentities($e['Erro ao fazer o update do usuário no NBS!']), E_USER_ERROR);
                 }
+
+                oci_free_statement($connNbs);
+                oci_close($connNbs);
 
                 header('Location: http://10.100.1.214/unico/sistemas/sisrev/inc/desativarMysql.php?sistema='.$_GET['sistema'].'&cpf='.$_GET['cpf'].'&nome='.$_GET['nome'].'&acao='.$_GET['acao'].'&pg='.$_GET['pg'].'&tela='.$_GET['tela'].'');
 

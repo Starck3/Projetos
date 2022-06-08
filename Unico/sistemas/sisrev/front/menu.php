@@ -45,8 +45,13 @@ require_once('../inc/administrador.php'); //regra de perfis
                     </a>
                 </li>
                 <li>
-                    <a href="espelhar_usuarios.php?pg=<?= $_GET['pg'] ?>&tela=2" <?= $_GET['tela'] == 2 ? "class='active'" : "" ?>>
+                    <a href="#" <?= $_GET['tela'] == 2 ? "class='active'" : "" ?>>
                         <i class="bi bi-circle"></i><span>Usuários</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=4" <?= $_GET['tela'] == 4 ? "class='active'" : "" ?>>
+                        <i class="bi bi-circle"></i><span>Acesso Rápido Módulos</span>
                     </a>
                 </li>
             </ul>

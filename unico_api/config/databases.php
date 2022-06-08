@@ -1,4 +1,5 @@
 <?php
+
 	// CRIANDO CONEXÃO DO APOLLO
 	//10.100.1.209:1523 é de produção
 	//10.100.1.205:1525 é de testes
@@ -67,3 +68,5 @@
 	if ($connUNICO->connect_error) {
 		die("ERRO CONEXÂO SERVIDOR UNICO: " . $connUNICO->connect_error);
 	}
+
+?>

@@ -31,4 +31,7 @@ foreach ($resultado->usuariosApollo as $usuarioApollo) {
 
 }
 
+curl_close($ch);
+$conn->close();
+
 ?>
