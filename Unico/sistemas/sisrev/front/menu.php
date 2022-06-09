@@ -40,16 +40,6 @@ require_once('../inc/administrador.php'); //regra de perfis
             </a>
             <ul id="config-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="#" <?= $_GET['tela'] == 1 ? "class='active'" : "" ?>>
-                        <i class="bi bi-circle"></i><span>Menus suspensos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" <?= $_GET['tela'] == 2 ? "class='active'" : "" ?>>
-                        <i class="bi bi-circle"></i><span>Usuários</span>
-                    </a>
-                </li>
-                <li>
                     <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=4" <?= $_GET['tela'] == 4 ? "class='active'" : "" ?>>
                         <i class="bi bi-circle"></i><span>Acesso Rápido Módulos</span>
                     </a>

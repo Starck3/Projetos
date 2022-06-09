@@ -17,15 +17,22 @@ require_once('menu.php'); //menu lateral da pagina
       </ol>
     </nav>
   </div><!-- End Navegação -->
+  <?php
+  require_once('../../../inc/mensagens.php');
+  ?>
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <?php
+            require_once('../inc/editemp.php');
+            echo $formulario;
+            ?>
+          
+<?php
 
-    <?php
-    require_once('../../../inc/mensagens.php'); 
-    
-    ?>
-    <?php 
-    require_once('../inc/editemp.php');
-    ?>
-  
-  <!-- FIM section -->
-  <!--################# section TERMINA AQUI #################-->
-
+require_once('footer.php'); //Javascript e configurações afins
+?>
+<!-- FIM section -->
+<!--################# section TERMINA AQUI #################-->

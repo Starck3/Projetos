@@ -1,5 +1,5 @@
 <?php
-                require_once('../config/queryBpmgp.php');
+                require_once('../config/query.php');
                 require_once('../../../config/databases.php');
 
                 

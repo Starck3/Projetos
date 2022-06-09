@@ -41,12 +41,14 @@ require_once('menu.php'); //menu lateral da pagina
                 switch ($_GET['acao']) {
                   case '1':
                     $valueNome = '';
-                    $valueEndereço = '';                    
+                    $valueEndereço = '';
+                    
                     break;
 
                   case '2':
                     $valueNome = $row['nome'];
-                    $valueEndereço = $row['endereco'];                  
+                    $valueEndereço = $row['endereco'];
+                  
                     break;
                 }     
               }  

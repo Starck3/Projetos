@@ -2,17 +2,8 @@
 require_once('head.php'); //CSS e configurações HTML e session start
 require_once('header.php'); //logo e login e banco de dados
 require_once('menu.php'); //menu lateral da pagina
-
-if ($_SESSION['count'] != null) {
-  $displayOne = 'none';
-  $displayTwo = 'block';
-} else {
-  $displayOne = 'block';
-  $displayTwo = 'none';
-}
-
+require_once('../inc/regras_pe.php');
 ?>
-
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -31,6 +22,7 @@ if ($_SESSION['count'] != null) {
   ?>
   <section class="section">
     <div class="row">
+
       <div class="col-lg-6" style="display: <?= $displayOne ?>">
         <div class="card">
           <div class="card-body">
@@ -49,6 +41,7 @@ if ($_SESSION['count'] != null) {
           </div>
         </div>
       </div>
+
       <div class="col-lg-6" style="display: <?= $displayOne ?>">
         <div class="card">
           <div class="card-body">
@@ -69,7 +62,9 @@ if ($_SESSION['count'] != null) {
             <h5 class="card-title">Leitura efetuada com sucesso</h5>
             <p>Foram encontrados <span class="badge bg-warning"><?= $_SESSION['count'] ?> </span> registros</p>
             <p>Para continuar, selecione abaixo os sistemas que deseja efetuar a carga!</p>
-            <form action="http://<?=$_SESSION['servidorOracle']?>/unico_api/sisrev/inc/politicamente_exposto.php" method="get">
+            <form action="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php" method="get">
+              <input class="form-check-input me-1" type="text" name="pg" value="<?= $_GET['pg'] ?>" style="display: none">
+              <input class="form-check-input me-1" type="text" name="tela" value="<?= $_GET['tela'] ?>" style="display: none">
               <ul class="list-group">
                 <li class="list-group-item">
                   <input class="form-check-input me-1" type="checkbox" name="apollo" value="1" aria-label="..." checked>
@@ -78,6 +73,10 @@ if ($_SESSION['count'] != null) {
                 <li class="list-group-item disabled">
                   <input class="form-check-input me-1" type="checkbox" name="nbs" value="1" aria-label="..." disabled>
                   NBS
+                </li>
+                <li class="list-group-item disabled">
+                  <input class="form-check-input me-1" type="checkbox" name="nbsR" value="1" aria-label="..." disabled>
+                  NBS Ribeirão
                 </li>
               </ul>
 
@@ -90,6 +89,29 @@ if ($_SESSION['count'] != null) {
         </div>
       </div>
 
+      <div class="col-lg-12" style="display: <?= $displayThree ?>">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resultado da ultima importação</h5>
+            <!-- Table with hoverable rows -->
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" class="capitalize">id</th>
+                  <th scope="col" class="capitalize">sistema</th>
+                  <th scope="col" class="capitalize">importados</th>
+                  <th scope="col" class="capitalize">encontrado</th>
+                  <th scope="col" class="capitalize">não encontrado</th>
+                  <th scope="col" class="capitalize">não alterados</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?= $tabelaRel ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
 
       <div class="col-lg-12" style="display: none" id="carregamento">
 
