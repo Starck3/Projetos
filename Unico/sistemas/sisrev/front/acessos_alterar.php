@@ -11,12 +11,11 @@ require_once('menu.php'); //menu lateral da pagina
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a>
-        </li>
+          <a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a></li>
+        <li class="breadcrumb-item">Configurações</li>
         <li class="breadcrumb-item">
-          <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>">Acessos rapidos</a>
-        </li>
-        <li class="breadcrumb-item">Informações</li>
+          <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>">Acessos rapidos</a></li>
+        <li class="breadcrumb-item">Adicionar acesso rápido</li>
       </ol>
     </nav>
   </div><!-- End Navegação -->
@@ -34,27 +33,20 @@ require_once('menu.php'); //menu lateral da pagina
           <div class="card-body">
 
             <?php
-              $queryAcessos .= ' WHERE id = '.$_GET['id'].'';
-              $execAcessos = $conn->query($queryAcessos);
-
-              while ($row = $execAcessos->fetch_assoc()) {
-                switch ($_GET['acao']) {
-                  case '1':
-                    $valueNome = '';
-                    $valueEndereço = '';
-                    
-                    break;
-
-                  case '2':
-                    $valueNome = $row['nome'];
-                    $valueEndereço = $row['endereco'];
-                  
-                    break;
-                }     
-              }  
+              if ($_GET['id'] != NULL) {
+                $queryAcessos .= ' WHERE id = '.$_GET['id'].'';
+                $execAcessos = $conn->query($queryAcessos);
+                while ($row = $execAcessos->fetch_assoc()) {                     
+                  $valueNome = $row['nome'];
+                  $valueEndereço = $row['endereco'];
+                }
+              } else {
+                $valueNome = '';
+                $valueEndereço = '';
+              }
             ?>
 
-            <form action="#" method="post">
+            <form action="../inc/acessos_alterar.php?pg=<?=$_GET['pg']?>&tela=<?=$_GET['tela']?>&acao=<?=$_GET['acao']?>&id=<?=$_GET['id']?>" method="post">
               <h5 class="card-title">Informações</h5>
               <div class="row mb-3">
                 <label for="nome" class="col-md-4 col-lg-3 col-form-label">Nome:</label>

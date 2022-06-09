@@ -35,7 +35,7 @@ require_once('../inc/administrador.php'); //regra de perfis
         <hr>
         <li class="nav-heading">Paginas</li>
         <li class="nav-item" style="display: <?= $_SESSION['administrador'] == 1 ? 'block' : 'none' ?>">
-            <a class="nav-link <?= $_GET['pg'] == 4 ?: "collapsed" ?>" data-bs-target="#config-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link <?= $_GET['pg'] == 6 ?: "collapsed" ?>" data-bs-target="#config-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear"></i><span>Configurações</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="config-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
