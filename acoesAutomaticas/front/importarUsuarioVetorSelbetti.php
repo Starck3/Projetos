@@ -344,7 +344,7 @@
 
             //----------------------EXCLUINDO TABELAS----------------------------
 
-            /* if (!$resultTabelaFor = $connLocal->query($dropSelbetti)) {
+             if (!$resultTabelaFor = $connLocal->query($dropSelbetti)) {
                 printf("Erro[8]: %s\n", $connLocal->error);
                 exit;
             } 
@@ -356,8 +356,7 @@
 
             if (!$resultTabelaSix = $connLocal->query($dropRelatorioDemitidos)) {
                 printf("Erro[10]: %s\n", $connLocal->error);
-            } */
-
+            }
         } else {
             echo "<div id='erro'><h3>NÃO FOI POSSIVEL VALIDAR O TOKEN</h3></div>";
             exit;

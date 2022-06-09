@@ -141,16 +141,12 @@ while ($rowSelbetti = $resultadoSelbetti->fetch_assoc()) {
                 exit;
             }
 
-            $connLocal->close();
-
             $insertVetorDesativ = "INSERT INTO relatorio_users(nome, usuario, email, dessit) VALUES ('" . $rowSelbetti['nome'] . "', '" . $rowSelbetti['usuario'] . "', '" . $rowSelbetti['email'] . "','DEMITIDO')";
 
             if (!$resultVetorUsuario = $connLocal->query($insertVetorDesativ)) {
                 printf("Erro[7]: %s\n", $connLocal->error);
                 exit;
             }
-
-            $connLocal->close();
 
         } // if de array
 
