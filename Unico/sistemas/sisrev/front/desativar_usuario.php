@@ -14,7 +14,7 @@ require_once('../config/query.php'); //Dados do banco MYSQL
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Desativar Usuários</h1>
+    <h1>Desativar / Ativar Usuários</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>

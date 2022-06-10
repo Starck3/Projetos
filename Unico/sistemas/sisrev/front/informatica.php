@@ -26,7 +26,7 @@
         <a href="desativar_usuario.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Desativar Usuários</h5>
+              <h5 class="card-title">Desativar / Ativar Usuários</h5>
             </div>
           </div>
         </a>

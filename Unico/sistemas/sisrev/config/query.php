@@ -1,8 +1,8 @@
 <?php
 require_once('../../../config/databases.php');
 
+//query para usar na tela de Desativar / Ativar Usuários
 $queryDemitidos = "SELECT DISTINCT id, nome, cpf, ativo, sistema FROM cad_usuario_api";
-
 
 $droptablePE = "DROP TABLE sisrev_politicamente_exposto";
 
@@ -32,6 +32,10 @@ $queryTabela = "SELECT * FROM `sisrev_empresas_bpmgp` where ID_EMPRESA NOT IN(30
 
 $editarTabela = "SELECT * FROM `sisrev_empresas_bpmgp` ";
 
+$relatorioExcel = "SELECT * FROM `sisrev_empresas_bpmgp` where ID_EMPRESA NOT IN(302,208,261) ";
+
+$deletar = "SELECT NOME_EMPRESA,SISTEMA,EMPRESA_NBS,CONSORCIO,EMPRESA_APOLLO,REVENDA_APOLLO,ORGANOGRAMA_SENIOR,EMPRESA_SENIOR,FILIAL_SENIOR FROM sisrev_empresas_bpmgp ";   
+
 $queryModulos = "SELECT * FROM sisrev_modulos";
 
 $queryIsNullPE = "SELECT id FROM sisrev_politicamente_exposto WHERE ";
@@ -49,5 +53,18 @@ $consorcio = ($edit["CONSORCIO"] == 'S') ? 'SIM' : 'NÃO';
 
     $valueEmpNbs = ($edit["EMPRESA_NBS"] == 0) ? '' : $edit["EMPRESA_NBS"];
 
+//query para chamar todos os usuário para cadastrar funções na tela de configurações
+$queryUsers = "SELECT * FROM usuarios";
+
+//query para chamar as funções que vão ser usadas para cadastrar nos usuários
+$queryFuncoes = "SELECT * FROM sisrev_funcao";
+
+//query para chamar os usuários por função
+$queryUserFuncao = "SELECT 
+                        SF.id, SF.id_usuario, SF.id_funcao
+                    FROM
+                        sisrev_usuario_funcao SF
+                    LEFT JOIN
+                        usuarios U ON SF.id_usuario = U.id_usuario";
 
 ?>

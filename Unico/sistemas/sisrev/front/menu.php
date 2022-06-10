@@ -48,6 +48,9 @@ if(!$coressistema = $resultado->fetch_assoc()){ $color = "#fff";}else{ $color = 
                     <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=4" <?= $_GET['tela'] == 4 ? "class='active'" : "" ?>>
                         <i class="bi bi-circle"></i><span>Acesso Rápido Módulos</span>
                     </a>
+                    <a href="cadastro_funcao.php?pg=<?= $_GET['pg'] ?>&tela=4" <?= $_GET['tela'] == 5 ? "class='active'" : "" ?>>
+                        <i class="bi bi-circle"></i><span>Cadastro de Funções</span>
+                    </a>
                 </li>
             </ul>
         </li>
