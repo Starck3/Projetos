@@ -5,15 +5,6 @@ $droptable = "DROP TABLE IF EXISTS `sisrev_empresas_bpmgp`;";
 
 $sucess = $conn->query($droptable);
 
-$deuboa = 'Tabela Excluida com sucesso';
-$deuruim = 'Tabela nao excluida';
-
-if($sucess){
-    echo $deuboa;
-}else{
-    echo $deuruim;
-}
-
 // Empresas tablea mysql
 
 $createTableEmp = "CREATE TABLE `sisrev_empresas_bpmgp` (
@@ -36,11 +27,6 @@ $createTableEmp = "CREATE TABLE `sisrev_empresas_bpmgp` (
 
 $execCreate = $conn->query($createTableEmp);
 
-if($execCreate){
-    echo "Importação feita com sucesso";
-}else{
-    echo "Erro na importação";
-}
 
 $url = "http://10.100.1.215/smartshare/inc/smartApi.php";
 $ch = curl_init($url);
@@ -77,56 +63,8 @@ foreach ($resultado->empresaSmart as $empSmart) {
     if (!$execQuery = $conn->query($querySmart)) {
         echo "Error: " . $querySmart . "<br>" . $conn->error;
     }
-    
-    
-
-// switch para a tabela em baixo
-    switch ($empSmart->SISTEMA) {
-        case "A":
-            $sistema = "APOLLO";
-            break;
-        case "N":
-            $sistema = "BANCO NBS";
-            break;
-        case "H":
-            $sistema = "BANCO HARLEY";
-            break;
-        case " ":
-            $sistema = "EMPRESA QUE NÃO USA SISTEMA ERP";
-            break;
-        case "0":
-            $sistema = "EMPRESA QUE NÃO USA SISTEMA ERP";
-            break;
-    }
-
-$consorcio = ($empSmart->CONSORCIO == 'S') ? 'SIM' : 'NÃO';
-
-$situacao = ($empSmart->SITUACAO == 'A') ? 'ATIVO' : 'DESATIVADO';
-
-$valueApollo = ($empSmart->EMPAPOLLO == 0) ? '' : $empSmart->EMPAPOLLO;
-
-$valueRevApollo = ($empSmart->REVAPOLLO == 0) ? '' : $empSmart->REVAPOLLO;
-
-$valueEmpNbs = ($empSmart->EMPNBS == 0) ? '' : $empSmart->EMPNBS;
-
-
-    $tabela .= '
-                    <tr>
-                        <td>'.$empSmart->ID.'</td>
-                        <td>'.$empSmart->EMPRESA.'</td>
-                        <td>'.$empSmart->UF.'</td>
-                        <td>'.$sistema.'</td>
-                        <td>'.$consorcio.'</td>
-                        <td>'.$situacao.'</td>
-                        <td><a href="editEmp.php?pg=2&tela=3&ID='.$empSmart->ID.'" title="Editar" class="btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
-                            
-                            <a href="#" title="Desativar" class="btn-danger btn-sm"><i class="bi bi-trash"></i></a>
-
-                            <a href="#" title="Exibir mais informações" class="btn-info btn-sm"><i class="bi bi-eye-fill"></i></a>
-                        </td>
-                    </tr>';
-
-
 }                    
-                        
 
+curl_close($ch);
+
+?>

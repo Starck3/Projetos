@@ -1,6 +1,19 @@
-<?php require_once('../inc/paginacao.php');?>
+<?php
+require_once('../inc/paginacao.php');
 
-<aside id="sidebar" class="sidebar">
+if(empty($_GET['id_sistema'])){
+    $where =  ' WHERE id_usuario = '.$_SESSION['id_usuario'].' AND id_sistema IS NULL';
+}else{
+    $where =  ' WHERE id_usuario = '.$_SESSION['id_usuario'].' AND id_sistema = '.$_GET['id_sistema'];
+}
+
+$querySistemaCores .=  $where;
+$resultado = $conn->query($querySistemaCores);
+$coressistema = $resultado->fetch_assoc();
+
+?>
+
+<aside id="sidebar" class="sidebar" style="background-image: linear-gradient(to bottom, #fff 73%, <?= $coressistema['color']?> 100%);">
 
     <ul class="sidebar-nav" id="sidebar-nav">
 

@@ -35,9 +35,7 @@ $resultado = $conn->query($queryUserSistema);
           while ($sistemas = $resultado->fetch_assoc()) {
             echo '
                 <div class="col-lg-3 py-2">
-                  <a href="'.$sistemas['endereco_sistema'].'?';
-                  
-                  $sistemas['endereco_sistema'] . '?';
+                  <a href="'.$sistemas['endereco_sistema'].'id_sistema='.$sistemas['id_sistema'].'&';
 
                     $queryVariaveisSistema = "SELECT variavel FROM cad_variaveis_sistemas WHERE id_sistema = " . $sistemas['id_sistema'];
                     $resultadoV = $conn->query($queryVariaveisSistema);

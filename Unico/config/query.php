@@ -48,3 +48,7 @@ $queryVariaveisSistema = "SELECT * FROM cad_variaveis_sistemas";
 
 //-------------------------//
 $querySistema = "SELECT * FROM cad_sistemas ";
+
+
+//cores sistema
+$querySistemaCores = "SELECT id_usuario, id_sistema, color FROM usuarios_sistema_color ";

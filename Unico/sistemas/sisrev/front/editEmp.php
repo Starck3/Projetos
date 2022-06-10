@@ -16,23 +16,18 @@ require_once('menu.php'); //menu lateral da pagina
         <li class="breadcrumb-item">Editar Regra Empresa</li>
       </ol>
     </nav>
-  </div><!-- End Navegação -->
+  </div>
+  
   <?php
   require_once('../../../inc/mensagens.php');
   ?>
-  <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
             <?php
-            require_once('../inc/editemp.php');
-            echo $formulario;
+              require '../inc/editemp.php';
             ?>
-          
-<?php
+            
 
-require_once('footer.php'); //Javascript e configurações afins
-?>
+            <?php
+            require_once('footer.php'); //Javascript e configurações afins
+            ?>
 <!-- FIM section -->
 <!--################# section TERMINA AQUI #################-->

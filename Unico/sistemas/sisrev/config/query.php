@@ -14,7 +14,7 @@ $createtablePE = "CREATE TABLE `sisrev_politicamente_exposto` (
     `apollo` VARCHAR(10) NULL,
     `nbs` VARCHAR(255) NULL,
     `nbs_ribeirao` VARCHAR(10) NULL,
-    `atualizado` INT(10) NULL DEFAULT 0 COMMENT '0 = NÂO; 1 = SIM, ENCONTREI; 2 = SIM, NÂO ENCONTREI',
+    `atualizado` INT(10) NULL DEFAULT 0 COMMENT '0 = Nï¿½O; 1 = SIM, ENCONTREI; 2 = SIM, Nï¿½O ENCONTREI',
     PRIMARY KEY (`id`))";
 
 $queryLogPE = "SELECT 
@@ -30,16 +30,6 @@ $logPE = $resultLogPE->fetch_assoc();
 
 $queryTabela = "SELECT * FROM `sisrev_empresas_bpmgp` where ID_EMPRESA NOT IN(302,208,261) ORDER BY id ASC;";
 
-$consorcio = ($row["CONSORCIO"] == 'S') ? 'SIM' : 'NÃƒO';
-
-$situacao = ($row["SITUACAO"] == 'A') ? 'ATIVO' : 'DESATIVADO';
-
-$valueApollo = ($row["EMPRESA_APOLLO"] == 0) ? '' : $row["EMPRESA_APOLLO"];
-
-$valueRevApollo = ($row["REVENDA_APOLO"] == 0) ? '' : $row["REVENDA_APOLO"];
-
-$valueEmpNbs = ($row["EMPRESA_NBS"] == 0) ? '' : $row["EMPRESA_NBS"];
-
 $editarTabela = "SELECT * FROM `sisrev_empresas_bpmgp` ";
 
 $queryModulos = "SELECT * FROM sisrev_modulos";
@@ -48,5 +38,16 @@ $queryIsNullPE = "SELECT id FROM sisrev_politicamente_exposto WHERE ";
 
 //query chamar acessos rÃ¡pidos Sisrev
 $queryAcessos = "SELECT * FROM sisrev_modulos";
+
+$consorcio = ($edit["CONSORCIO"] == 'S') ? 'SIM' : 'NÃƒO';
+
+    $situacao = ($edit["SITUACAO"] == 'A') ? 'ATIVO' : 'DESATIVADO';
+
+    $valueApollo = ($edit["EMPRESA_APOLLO"] == 0) ? '' : $edit["EMPRESA_APOLLO"];
+
+    $valueRevApollo = ($edit["REVENDA_APOLLO"] == 0) ? '' : $edit["REVENDA_APOLLO"];
+
+    $valueEmpNbs = ($edit["EMPRESA_NBS"] == 0) ? '' : $edit["EMPRESA_NBS"];
+
 
 ?>

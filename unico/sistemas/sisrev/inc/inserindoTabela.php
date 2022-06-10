@@ -6,24 +6,34 @@
                 $conSucesso = $conn->query($queryTabela);
                 $row = $conSucesso->fetch_assoc();
                 
-                switch ($row["SISTEMA"]) {
-                  case "A":
-                      $sistemaMysql = "APOLLO";
-                      break;
-                  case "N":
-                      $sistemaMysql = "BANCO NBS";
-                      break;
-                  case "H":
-                      $sistemaMysql = "BANCO HARLEY";
-                      break;
-                  case " ":
-                      $sistemaMysql = "EMPRESA QUE NÃO USA SISTEMA ERP";
-                      break;
-                  case "0":
-                      $sistemaMysql = "EMPRESA QUE NÃO USA SISTEMA ERP";
-                      break;
-              }
+                
+
                 while($row = $conSucesso->fetch_assoc()){
+
+                 
+                  $consorcio = ($row["CONSORCIO"] == 'S') ? 'SIM' : 'NÃO';
+
+                  $situacao = ($row["SITUACAO"] == 'A') ? 'ATIVO' : 'DESATIVADO';
+
+                  
+                  switch ($row["SISTEMA"]) {
+                    case "A":
+                        $sistemaMysql = "APOLLO";
+                        break;
+                    case "N":
+                        $sistemaMysql = "BANCO NBS";
+                        break;
+                    case "H":
+                        $sistemaMysql = "BANCO HARLEY";
+                        break;
+                    case " ":
+                        $sistemaMysql = "EMPRESA QUE NÃO USA SISTEMA ERP";
+                        break;
+                    case "0":
+                        $sistemaMysql = "EMPRESA QUE NÃO USA SISTEMA ERP";
+                        break;
+                }
+
                   echo '<tr>
                   <td>'.$row["ID_EMPRESA"].'</td>
                   <td>'.$row["NOME_EMPRESA"].'</td>
@@ -31,7 +41,7 @@
                   <td>'.$sistemaMysql.'</td>
                   <td>'.$consorcio.'</td>
                   <td>'.$situacao.'</td>
-                  <td><a href="editEmp.php?pg=2&tela=3&ID='.$row["ID_EMPRESA"].'" title="Editar" class="btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
+                  <td><a href="editEmp.php?pg='.$_GET["pg"].'&tela=3&ID='.$row["ID_EMPRESA"].'" title="Editar" class="btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
                             
                             <a href="#" title="Desativar" class="btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 

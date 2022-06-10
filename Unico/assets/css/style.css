@@ -45,6 +45,9 @@ body {
   color: #444444;
 }
 
+.menuColors{
+  padding: 5px 50px 5px 50px;
+}
 .uppercase{
   text-transform: uppercase;
 }

@@ -11,7 +11,7 @@ $resultado = json_decode(curl_exec($ch));
 
 foreach ($resultado->Users as $userSelbetti) {
 
-$aprovador .= '<option value="'.$userSelbetti->USERS.'">'.$userSelbetti->USERS.' / '.$userSelbetti->LOGIN.' </option>';
+$aprovador .= '<option value="'.$userSelbetti->LOGIN.'">'.$userSelbetti->USERS.' / '.$userSelbetti->LOGIN.' </option>';
 
 
 }

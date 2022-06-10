@@ -1,8 +1,12 @@
 <?php
-require_once('../inc/paginacao.php'); //pg 
+require_once('../inc/paginacao.php'); //pg
+
+$querySistemaCores .=  ' WHERE id_usuario = '.$_SESSION['id_usuario'].' AND id_sistema = '.$_SESSION['id_sistema'];
+$resultado = $conn->query($querySistemaCores);
+if(!$coressistema = $resultado->fetch_assoc()){ $color = "#fff";}else{ $color = $coressistema['color'];}
 ?>
 
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" class="sidebar" style="background-image: linear-gradient(to bottom, #fff 73%, <?= $color ?> 100%);">
 
     <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">

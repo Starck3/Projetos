@@ -1,11 +1,12 @@
 <?php
-    require_once('../../../config/query.php');//SISTEMA UNICO
-    require_once('../config/query.php');//SISTEMA NOTAS
-    
-    if($_SESSION['id_usuario'] == NULL){
-        header('Location: ../front/login.php?pg='.$_GET['pg'].'&msn=9');//sessão nao iniciada!
-    }
+require_once('../../../config/query.php'); //SISTEMA UNICO
+require_once('../config/query.php'); //SISTEMA NOTAS
+
+if ($_SESSION['id_usuario'] == NULL) {
+    header('Location: ../front/login.php?pg=' . $_GET['pg'] . '&msn=9'); //sessão nao iniciada!
+}
 ?>
+
 <body>
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -20,11 +21,48 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
 
-                <li class="nav-item d-block d-lg-none">
-                    <a class="nav-link nav-icon search-bar-toggle " href="#">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li><!-- End Search Icon-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-paint-bucket"></i>
+                    </a><!-- End Notification Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                        <li class="dropdown-header">
+                            Selecione uma cor!
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="notification-item">
+                            <form action="../inc/cor.php" method="get" style="margin-left: 33px;" id="formColor">
+                                <input type="text" name="sistema" id="menuColor" value="<?= $_SESSION['id_sistema'] ?>" style="display: none">
+                                <input type="color" id="cores" name="ArcoIris" list="arcoIris" value="#FF0000">
+                                <datalist id="arcoIris">
+                                    <option value="#FF0000">Vermelho</option>
+                                    <option value="#FFA500">Laranja</option>
+                                    <option value="#FFFF00">Amarelo</option>
+                                    <option value="#008000">Verde</option>
+                                    <option value="#0000FF">Azul</option>
+                                    <option value="#4B0082">Indigo</option>
+                                    <option value="#EE82EE">Violeta</option>
+                                </datalist>
+                            </form>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="notification-item">
+                            <i class="bi bi-check2-all text-success"></i>
+                            <a href="javascript:" onclick="newColor()" rel="noopener noreferrer">Salvar</a>
+                        </li>
+                    </ul><!-- End Notification Dropdown Items -->
+
+                </li>
+                <script>
+                    function newColor() {
+                        document.getElementById("formColor").submit();
+                    }
+                </script>
 
                 <li class="nav-item dropdown pe-3">
 
@@ -47,7 +85,7 @@
                                 <span>Meu perfil</span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>

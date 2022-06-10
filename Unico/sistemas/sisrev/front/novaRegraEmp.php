@@ -79,8 +79,8 @@ require_once('menu.php'); //menu lateral da pagina
               <div class="form-floating mt-4 col-md-6" id="consorcio">
                 <select class="form-select" name="consorcio" required>
                   <option value="">-----------------</option>
-                  <option value="2">SIM</option>
-                  <option value="3">NÃO</option>
+                  <option value="S">SIM</option>
+                  <option value="N">NÃO</option>
                 </select>
                 <label for="consorcio">CONSÓRCIO:<span style="color: red;">*</span></label>
               </div>
@@ -88,8 +88,8 @@ require_once('menu.php'); //menu lateral da pagina
               <div class="form-floating mt-4 col-md-6" id="situacao">
                 <select class="form-select" name="situacao" required>
                   <option value="">-----------------</option>
-                  <option value="2">ATIVO</option>
-                  <option value="3">DESATIVADO</option>
+                  <option value="A">ATIVO</option>
+                  <option value="D">DESATIVADO</option>
                 </select>
                 <label for="situacao">SITUAÇÃO:<span style="color: red;">*</span></label>
               </div>
@@ -145,6 +145,7 @@ require_once('menu.php'); //menu lateral da pagina
                 <label for="aproCaixa">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
               <div class="text-center py-2">
+              <a href="http://10.100.1.214/unico/sistemas/sisrev/front/empresas.php?pg=2&tela=2"><button type="button" class="btn btn-primary">Voltar</button></a>
                 <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
                 <button type="submit" class="btn btn-success">Salvar</button>
               </div>
@@ -190,12 +191,7 @@ require_once('menu.php'); //menu lateral da pagina
     }
   }
 </script>
-<script>
-  function exibeDiv() {
-    var div = document.getElementById("back");
-    div.style.display = "block";
-  }
-</script>
+
 
 <?php
 require_once('footer.php'); //Javascript e configurações afins
