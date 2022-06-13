@@ -6,11 +6,13 @@ require_once('menu.php'); //menu lateral da pagina
 
 <main id="main" class="main">
 
-<div class="pagetitle">
-    <h1>Home</h1>
+  <div class="pagetitle">
+    <h1>Edição de Usuários</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a></li>
+        <li class="breadcrumb-item">Configurações</li>
+        <li class="breadcrumb-item">Usuários</li>
       </ol>
     </nav>
   </div><!-- End Navegação -->
@@ -19,19 +21,21 @@ require_once('menu.php'); //menu lateral da pagina
   require_once('../../../inc/mensagens.php'); //Alertas
   ?>
 
+  <!--################# COLE section AQUI #################-->
+
   <section class="section">
     <div class="row">
       <div class="col-lg-4"> 
-        <a href="informatica.php?pg=<?= $_GET['pg'] ?>" class="list-group-item list-group-item-action">
+        <a href="cadastro_funcao.php?pg=<?= $_GET['pg'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Informática</h5>
+              <h5 class="card-title">Cadastro de Função</h5>
             </div>
           </div>
         </a>
       </div>
-    </div>
-  </section>
+
+  <!--################# section TERMINA AQUI #################-->
 
 </main><!-- End #main -->
 

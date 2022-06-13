@@ -22,10 +22,11 @@ if($tela == "politicamente_exposto.php"){if($_GET['tela'] != '3' OR $_GET['pg'] 
 if($tela == "configuracao.php"){if($_GET['pg'] != '4'){echo '<script>window.location.href = "configuracao.php?pg=4";</script>';}}
 //ajuda.php
 if($tela == "ajuda.php"){if($_GET['pg'] != '5'){echo '<script>window.location.href = "ajuda.php?pg=5";</script>';}}
-//localizar_modulos.php
-if($tela == "localizar_modulos.php"){if($_GET['pg'] != '6' OR $_GET['tela'] != '4'){echo'<script>window.location.href = "localizar_modulos.php?pg=6&tela=4";</script>';}}
-//
-if($tela == "cadastro_funcao.php"){if($_GET['pg'] != '6' OR $_GET['tela'] != '5'){echo'<script>window.location.href = "cadastro_funcao.php?pg=6&tela=5";</script>';}}
-
+//telas_funcoes.php
+if($tela == "telas_funcoes.php"){if($_GET['pg'] != '4' OR $_GET['tela'] != '1'){echo'<script>window.location.href = "telas_funcoes.php?pg=4&tela=1";</script>';}}
+//Atribuir Funções
+if($tela == "cadastro_funcao.php"){if($_GET['pg'] != '4' OR $_GET['tela'] != '5'){echo'<script>window.location.href = "cadastro_funcao.php?pg=4&tela=2";</script>';}}
+//Config Usuários
+if($tela == "usuarios.php"){if($_GET['pg'] != '4' OR $_GET['tela'] != '3'){echo '<script>window.location.href = "usuarios.php?pg=4&tela=3";</script>';}}
 ?>
 

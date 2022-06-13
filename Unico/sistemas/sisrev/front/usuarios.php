@@ -7,13 +7,12 @@ require_once('menu.php'); //menu lateral da pagina
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Cadastro de Funções</h1>
+    <h1>Usuários</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a></li>
-        <li class="breadcrumb-item">Configurações</li>
+        <li class="breadcrumb-item"><a href="configuracao.php?pg=<?= $_GET['pg'] ?>">Configurações</a></li>
         <li class="breadcrumb-item">Usuários</li>
-        <li class="breadcrumb-item">Funções</li>
       </ol>
     </nav>
   </div><!-- End Navegação -->
@@ -57,6 +56,9 @@ require_once('menu.php'); //menu lateral da pagina
                         <a href="editar_usuario.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'" title="Editar Usuário" class="btn btn-primary btn-sm">
                           <i class="bi bi-pencil"></i>
                         </a>
+                        <a href="#" title="Permissões" class="btn btn-warning btn-sm">
+                          <i class="bx bxs-lock-open"></i>
+                      </a>
                       </td>
                     </tr>';
                   }
