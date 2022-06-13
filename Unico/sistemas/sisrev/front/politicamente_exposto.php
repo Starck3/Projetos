@@ -61,30 +61,16 @@ require_once('../inc/regras_pe.php');
           <div class="card-body">
             <h5 class="card-title">Leitura efetuada com sucesso</h5>
             <p>Foram encontrados <span class="badge bg-warning"><?= $_SESSION['count'] ?> </span> registros</p>
-            <p>Para continuar, selecione abaixo os sistemas que deseja efetuar a carga!</p>
-            <form action="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php" method="get">
-              <input class="form-check-input me-1" type="text" name="pg" value="<?= $_GET['pg'] ?>" style="display: none">
-              <input class="form-check-input me-1" type="text" name="tela" value="<?= $_GET['tela'] ?>" style="display: none">
-              <ul class="list-group">
-                <li class="list-group-item">
-                  <input class="form-check-input me-1" type="checkbox" name="apollo" value="1" aria-label="..." checked>
-                  Apollo
-                </li>
-                <li class="list-group-item disabled">
-                  <input class="form-check-input me-1" type="checkbox" name="nbs" value="1" aria-label="..." disabled>
-                  NBS
-                </li>
-                <li class="list-group-item disabled">
-                  <input class="form-check-input me-1" type="checkbox" name="nbsR" value="1" aria-label="..." disabled>
-                  NBS Ribeirão
-                </li>
+            <p>Para continuar, basta clicar em <code>Efetuar Carga</code> que irá iniciar a atualização nos seguintes sistemas:</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">APOLLO</li>
+                <li class="list-group-item">NBS</li>
+                <li class="list-group-item">NBS RIBEIRÃO</li>
               </ul>
-
-              <div class="modal-footer">
-                <button class="btn btn-secondary" id="refresh">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Efetuar Carga</button>
-              </div>
-            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:" class="btn btn-secondary" onclick="atualizar()">Voltar</a>
+            <a href="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php" class="btn btn-primary">Efetuar Carga</a>
           </div>
         </div>
       </div>
@@ -132,11 +118,9 @@ require_once('../inc/regras_pe.php');
 </main><!-- End #main -->
 
 <script>
-  var btn = document.querySelector("#refresh");
-  btn.addEventListener("click", function() {
-
-    location.reload();
-  });
+  function atualizar() {
+    document.location.reload(true);
+  }
 
   function teste() {
     var value = document.getElementById("arquivo").value;

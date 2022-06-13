@@ -2,6 +2,7 @@
 require_once('head.php'); //CSS e configurações HTML e session start
 require_once('header.php'); //logo e login e banco de dados
 require_once('menu.php'); //menu lateral da pagina
+require_once('../inc/apiRecebeSelbetti.php');
 ?>
 
 <main id="main" class="main">
@@ -28,10 +29,10 @@ require_once('menu.php'); //menu lateral da pagina
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <form class="row g-3" action="" method="post" enctype="multipart/form-data">
+            <form class="row g-3" action="http://10.100.1.215/smartshare/bd/novaRegraEmp2.php" method="POST" enctype="multipart/form-data">
               <!--DADOS PARA O LANÇAMENTO -->
               <div class="form-floating mt-4 col-md-12">
-                <input class="form-control" id="filial" name="filial" required>
+                <input class="form-control" id="empresa" name="empresa" required>
                 <label for="filial" class="capitalize">EMPRESA:<span style="color: red;">*</span></label>
               </div>
 
@@ -47,17 +48,17 @@ require_once('menu.php'); //menu lateral da pagina
               </div>
 
               <div class="form-floating mt-4 col-md-6" id="empresaApollo">
-                <input class="form-control" name="empresaApollo" maxlength="2" onkeypress="onlynumber()" required>
+                <input class="form-control" name="empApollo" maxlength="2" onkeypress="onlynumber()" >
                 <label for="floatingSelect">EMPRESA APOLLO:<span style="color: red;">*</span></label>
               </div>
 
               <div class="form-floating mt-4 col-md-6" id="revendaApollo">
-                <input class="form-control" name="revendaApollo" maxlength="2" onkeypress="onlynumber()" required>
+                <input class="form-control" name="revApollo" maxlength="2" onkeypress="onlynumber()" >
                 <label for="revendaApollo">REVENDA APOLLO:<span style="color: red;">*</span></label>
               </div>
 
               <div class="form-floating mt-4 col-md-6" id="empresaNbs">
-                <input class="form-control" name="empnbs" id="empnbs" maxlength="2" onkeypress="onlynumber()" required>
+                <input class="form-control" name="empnbs" id="empnbs" maxlength="2" onkeypress="onlynumber()" >
                 <label for="empresaNbs">EMPRESA NBS:<span style="color: red;">*</span></label>
               </div>
 
@@ -130,14 +131,13 @@ require_once('menu.php'); //menu lateral da pagina
               </div>
 
               <div class="form-floating mt-4 col-md-6" id="numero_caixa">
-                <input onkeypress="onlynumber()" class="form-control" onblur="aprovador()" name="numero_caixa" maxlength="2" required>
+                <input onkeypress="onlynumber()" class="form-control" onblur="aprovador()" name="numero_caixa" maxlength="2" id=ncaixa required>
                 <label for="numero_caixa">NUMERO CAIXA:<span style="color: red;">*</span></label>
               </div>
 
-              <div class="form-floating mt-4 col-md-6" id="aproCaixa">
+              <div class="form-floating mt-4 col-md-6" style="display: <?= empty($_GET['APROVADOR_CAIXA']) ? 'none' : 'block' ?>;" id="liberarApro">
                 <select class="form-select" name="aproCaixa" required>
                   <?php
-                  require_once('../inc/apiRecebeSelbetti.php');
                   echo '<option value=""> ------------ </option>';
                   echo $aprovador;
                   ?>
@@ -145,7 +145,7 @@ require_once('menu.php'); //menu lateral da pagina
                 <label for="aproCaixa">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
               <div class="text-center py-2">
-              <a href="http://10.100.1.214/unico/sistemas/sisrev/front/empresas.php?pg=2&tela=2"><button type="button" class="btn btn-primary">Voltar</button></a>
+                <a href="http://10.100.1.214/unico/sistemas/sisrev/front/empresas.php?pg=2&tela=2"><button type="button" class="btn btn-primary">Voltar</button></a>
                 <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
                 <button type="submit" class="btn btn-success">Salvar</button>
               </div>
@@ -164,14 +164,20 @@ require_once('menu.php'); //menu lateral da pagina
 
     if (value == "A") {
       document.getElementById("empresaNbs").style.display = "none";
+      document.getElementById("empresaNbs").required = false;
       document.getElementById("empnbs").value = "";
       document.getElementById("empresaApollo").style.display = "block";
+      document.getElementById("empresaApollo").required = true;
       document.getElementById("revendaApollo").style.display = "block";
+      document.getElementById("revendaApollo").required = true;
 
     } else {
       document.getElementById("empresaNbs").style.display = "block";
+      document.getElementById("empresaNbs").required = true;
       document.getElementById("empresaApollo").style.display = "none";
+      document.getElementById("empresaApollo").required = false;
       document.getElementById("revendaApollo").style.display = "none";
+      document.getElementById("revendaApollo").required = false;
       document.getElementById("empApollo").value = "";
       document.getElementById("revApollo").value = "";
     }

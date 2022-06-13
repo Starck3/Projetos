@@ -104,5 +104,19 @@ if (!empty($_GET['msn'])) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';
             break;
+            case '13':
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span style="font-size: 12px">Erro ao adicionar! Por favor entrar em contato via <a href="http://10.100.1.217/glpi/index.php">GLPI<a/></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            break;
+            case '14':
+                echo '
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span style="font-size: 12px">Deletado com sucesso!</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            break;
     }
 }

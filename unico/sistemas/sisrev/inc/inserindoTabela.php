@@ -35,7 +35,7 @@
                 }
 
                   echo '<tr>
-                  <td>'.$row["ID_EMPRESA"].'</td>
+                  <td>'.$row["id"].'</td>
                   <td>'.$row["NOME_EMPRESA"].'</td>
                   <td>'.$row["UF_GESTAO"].'</td>
                   <td>'.$sistemaMysql.'</td>
@@ -43,7 +43,7 @@
                   <td>'.$situacao.'</td>
                   <td><a href="editEmp.php?pg='.$_GET["pg"].'&tela=3&ID='.$row["ID_EMPRESA"].'" title="Editar" class="btn-primary btn-sm"><i class="bi bi-pencil"></i></a>
                             
-                            <a href="#" title="Desativar" class="btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                            <a href="../front/deletarEmp.php?ID='.$row["ID_EMPRESA"].'" title="Desativar" class="btn-danger btn-sm"><i class="bi bi-trash"></i></a>
 
                             <a href="#" data-bs-toggle="modal" data-bs-target="#idempresa'.$row["ID_EMPRESA"].'" title="Exibir mais informações" class="btn-info btn-sm"><i class="bi bi-eye-fill"></i></a>
                         </td>

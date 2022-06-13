@@ -5,7 +5,6 @@ if ($_SESSION['count'] != null) {
   $displayOne = 'none';
   $displayTwo = 'block';
   $displayThree = 'none';
-
 } else {
 
   if ($_GET['msn'] == 11) {
@@ -17,7 +16,6 @@ if ($_SESSION['count'] != null) {
     $displayTwo = 'none';
     $displayThree = 'none';
   }
-
 }
 
 //verificando se tem arquivo esperando ser finalizado!
@@ -25,8 +23,10 @@ $queryIsNullPE = "SELECT id FROM sisrev_politicamente_exposto WHERE atualizado =
 $resultIsNullPE = $conn->query($queryIsNullPE);
 $isnullpe = $resultIsNullPE->fetch_assoc();
 
-if ($isnullpe['id'] != NULL and $_GET['msn'] != 12 and $_SESSION['count'] == null) {
-  echo '<script>window.location.href = "politicamente_exposto.php?pg=' . $_GET['pg'] . '&tela=' . $_GET['tela'] . '&msn=12"</script>';
+if ($_GET['msn'] != 11) {
+  if ($isnullpe['id'] != NULL and $_GET['msn'] != 12 and $_SESSION['count'] == null) {
+    echo '<script>window.location.href = "politicamente_exposto.php?pg=' . $_GET['pg'] . '&tela=' . $_GET['tela'] . '&msn=12"</script>';
+  }
 }
 
 //querys
