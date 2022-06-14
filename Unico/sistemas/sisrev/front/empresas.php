@@ -6,7 +6,11 @@ require_once('../inc/apiRecebeTabela.php');
 ?>
 
 <main id="main" class="main">
-
+<style>
+.div-table{ display:table; width: auto; margin-left: 87px;}
+.div-table-row{display:table-row;width: auto;  /*se quiser pode colocar auto neste também*/}
+.div-table-col{border: 0px solid #484848;display:table-cell;padding: 8px; font-size: 13px;}
+</style>
   <div class="pagetitle">
     <h1>Empresas</h1>
     <nav>

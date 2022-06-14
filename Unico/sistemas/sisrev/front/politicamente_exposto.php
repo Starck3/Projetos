@@ -70,7 +70,7 @@ require_once('../inc/regras_pe.php');
           </div>
           <div class="modal-footer">
             <a href="javascript:" class="btn btn-secondary" onclick="atualizar()">Voltar</a>
-            <a href="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php" class="btn btn-primary">Efetuar Carga</a>
+            <a href="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>&part=1" class="btn btn-primary">Efetuar Carga</a>
           </div>
         </div>
       </div>

@@ -22,33 +22,36 @@
 
   <section class="section">
     <div class="row">
-      <div class="col-lg-4"> 
+      <div class="col-sm-3"> 
         <a href="desativar_usuario.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Desativar / Ativar Usuários</h5>
+              <h4 class="card-title">Desat. / Ativ. Usuários</h4>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-lg-4"> 
+      <div class="col-sm-3"> 
         <a href="empresas.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Empresas</h5>
+              <h4 class="card-title">Empresas</h4>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-lg-4"> 
+      <div class="col-sm-3"> 
         <a href="politicamente_exposto.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Politicamente exposto</h5>
+              <h4 class="card-title">Politicamente exposto</h4>
             </div>
           </div>
         </a>
       </div>
+      
+      <hr style="margin-top: 20px; opacity: 0;" > <!-- Repetir a cada 4 div  -->
+     
     </div>    
   </section>
 
