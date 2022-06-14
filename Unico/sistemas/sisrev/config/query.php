@@ -60,11 +60,11 @@ $queryUsers = "SELECT * FROM usuarios";
 $queryFuncoes = "SELECT * FROM sisrev_funcao";
 
 //query para chamar os usuários por função
-$queryUserFuncao = "SELECT 
-                        SF.id, SF.id_usuario, SF.id_funcao
+$queryFuncaoModulos = "SELECT 
+                        SF.id_funcao, SM.nome, SF.descricao, SF.id_modulos
                     FROM
-                        sisrev_usuario_funcao SF
+                        sisrev_funcao SF
                     LEFT JOIN
-                        usuarios U ON SF.id_usuario = U.id_usuario";
+                        sisrev_modulos SM ON SF.id_modulos = SM.id";
 
 ?>
