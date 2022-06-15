@@ -28,11 +28,11 @@ $resultLogPE = $conn->query($queryLogPE);
 $logPE = $resultLogPE->fetch_assoc();
 
 
-$queryTabela = "SELECT * FROM `sisrev_empresas_bpmgp` where ID_EMPRESA NOT IN(302,208,261) ORDER BY id ASC;";
+$queryTabela = "SELECT * FROM sisrev_empresas_bpmgp where ID_EMPRESA NOT IN(302,208,261) ORDER BY id ASC;";
 
-$editarTabela = "SELECT * FROM `sisrev_empresas_bpmgp` ";
+$editarTabela = "SELECT * FROM sisrev_empresas_bpmgp ";
 
-$relatorioExcel = "SELECT * FROM `sisrev_empresas_bpmgp` where ID_EMPRESA NOT IN(302,208,261) ";
+$relatorioExcel = "SELECT * FROM sisrev_empresas_bpmgp where ID_EMPRESA NOT IN(302,208,261) ";
 
 $deletar = "SELECT NOME_EMPRESA,SISTEMA,EMPRESA_NBS,CONSORCIO,EMPRESA_APOLLO,REVENDA_APOLLO,ORGANOGRAMA_SENIOR,EMPRESA_SENIOR,FILIAL_SENIOR FROM sisrev_empresas_bpmgp ";   
 

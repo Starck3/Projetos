@@ -8,6 +8,10 @@ $tela = basename($_SERVER['PHP_SELF']);
 if($tela == "index.php"){if($_GET['pg'] != '1'){echo '<script>window.location.href = "index.php?pg=1";</script>';}}
 //pesquisa.php
 if($tela == "pesquisa.php"){if($_GET['tela'] != '1' OR $_GET['pg'] != '1'){echo '<script>window.location.href = "pesquisa.php?pg=1&tela=1";</script>';}}
+//Administracao.php
+if($tela == "administracao.php"){if($_GET['pg'] != '3'){echo '<script>window.location.href = "administracao.php?pg=3";</script>';}}
+//processosFabrica.php
+if($tela == "processosFabrica.php"){if($_GET['tela'] != '1' OR $_GET['pg'] != '3'){echo '<script>window.location.href = "processosFabrica.php?pg=3&tela=1";</script>';}}
 //informatica.php
 if($tela == "informatica.php"){if($_GET['pg'] != '2'){echo '<script>window.location.href = "informatica.php?pg=2";</script>';}}
 //empresas.php

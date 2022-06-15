@@ -103,6 +103,7 @@ h1, h2, h3, h4, h5, h6 {
 .pagetitle {
   margin-bottom: 10px;
 }
+
 .pagetitle h1 {
   font-size: 24px;
   margin-bottom: 0;
@@ -260,7 +261,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Card */
 .card {
-  margin-bottom: 30px;
+  margin-bottom: -2px;
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
@@ -273,9 +274,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 15px;
 }
 
+
+
 .card-title {
-  padding: 20px 0 15px 0;
-  font-size: 18px;
+  padding: 10px 0 1px 0px !important;
+  font-size: 15px;
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
@@ -286,7 +289,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 .card-body {
-  padding: 0 20px 20px 20px;
+  padding: 0 20px 5px 31px;
 }
 
 .card-img-overlay {

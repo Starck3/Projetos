@@ -21,11 +21,20 @@ require_once('menu.php'); //menu lateral da pagina
 
   <section class="section">
     <div class="row">
-      <div class="col-lg-4"> 
+      <div class="col-sm-3"> 
         <a href="informatica.php?pg=<?= $_GET['pg'] ?>" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Informática</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-3"> 
+        <a href="administracao.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Administração</h4>
             </div>
           </div>
         </a>

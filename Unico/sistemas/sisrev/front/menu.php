@@ -37,6 +37,18 @@ if(!$coressistema = $resultado->fetch_assoc()){ $color = "#fff";}else{ $color = 
                 </li>
             </ul>
         </li>
+        <li class="nav-item" style="display: <?= $_SESSION['administrador'] == 1 ? 'block' : 'none' ?>">
+            <a class="nav-link <?= $_GET['pg'] == 3 ?: "collapsed" ?>" data-bs-target="#adm-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person-square"></i><span>Administração</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="adm-nav " class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="processosFrabrica.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" <?= $_GET['tela'] == 1 ? "class='active'" : "" ?>>
+                        <i class="bi bi-circle"></i><span>Processos Fabrica</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <hr>
         <li class="nav-heading">Paginas</li>
         <li class="nav-item" style="display: <?= $_SESSION['administrador'] == 1 ? 'block' : 'none' ?>">

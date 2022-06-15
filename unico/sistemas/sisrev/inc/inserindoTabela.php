@@ -1,12 +1,9 @@
 <?php
                 require_once('../config/query.php');
-                require_once('../../../config/databases.php');
+                
 
-                
                 $conSucesso = $conn->query($queryTabela);
-                $row = $conSucesso->fetch_assoc();
-                
-                
+               
 
                 while($row = $conSucesso->fetch_assoc()){
 
