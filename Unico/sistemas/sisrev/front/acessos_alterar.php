@@ -7,15 +7,19 @@ require_once('menu.php'); //menu lateral da pagina
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Informações acessos rápidos</h1>
+    <h1>Informações das telas</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a></li>
-        <li class="breadcrumb-item">Configurações</li>
+          <a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a>
+        </li>
         <li class="breadcrumb-item">
-          <a href="localizar_modulos.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>">Acessos rapidos</a></li>
-        <li class="breadcrumb-item">Adicionar acesso rápido</li>
+          <a href="configuracao.php?pg=<?= $_GET['pg'] ?>">Configurações</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="telas_funcoes.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>">Telas</a>
+        </li>
+        <li class="breadcrumb-item">Adicionar nova tela</li>
       </ol>
     </nav>
   </div><!-- End Navegação -->

@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once('../config/databases.php');
 require_once('../config/query.php');
 require_once('administrador.php');
@@ -10,12 +9,10 @@ require_once('menu.php');
 
 $queryUsuarios .= "WHERE U.id_usuario = " . $_GET['id_usuario'];
 $resultUsuario = $conn->query($queryUsuarios);
-
 $usuario = $resultUsuario->fetch_assoc();
 ?>
 
 <main id="main" class="main">
-
   <div class="pagetitle">
     <h1>Editando Usuários</h1>
     <nav>
@@ -26,14 +23,15 @@ $usuario = $resultUsuario->fetch_assoc();
         <li class="breadcrumb-item active">Editando usuário</li>
       </ol>
     </nav>
-  </div><!-- End Page Title -->
+  </div>
+  <!-- End Page Title -->
 
-  <?php require_once('../inc/mensagens.php') ?><!-- Alertas -->
+  <!-- Alertas -->
+  <?php require_once('../inc/mensagens.php') ?>
 
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
-
         <div class="card">
           <div class="card-body">
 
@@ -60,7 +58,6 @@ $usuario = $resultUsuario->fetch_assoc();
                 </div>
               </div>
 
-
               <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Empresa:</label>
                 <div class="col-sm-9">
@@ -69,7 +66,6 @@ $usuario = $resultUsuario->fetch_assoc();
                     <option>--------</option>
                     <?php
                     $resultEmpresa = $conn->query($queryEmpresa);
-
                     while ($empresa = $resultEmpresa->fetch_assoc()) {
                       echo '<option value="' . $empresa['id_empresa'] . '">' . $empresa['empresa'] . '</option>';
                     }
@@ -77,7 +73,6 @@ $usuario = $resultUsuario->fetch_assoc();
                   </select>
                 </div>
               </div>
-
 
               <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Departamento:</label>
@@ -87,7 +82,6 @@ $usuario = $resultUsuario->fetch_assoc();
                     <option>--------</option>
                     <?php
                     $resultDepartamento = $conn->query($queryDepartamento);
-
                     while ($departamento = $resultDepartamento->fetch_assoc()) {
                       echo '<option value="' . $departamento['id_depto'] . '">' . $departamento['nome'] . '</option>';
                     }
@@ -131,20 +125,15 @@ $usuario = $resultUsuario->fetch_assoc();
               </div>
 
               <h5 class="card-title">Outras informações</h5>
-
               <div class="row mb-3">
                 <label class="col-md-4 col-lg-3 col-form-label">Sistemas permitidos:</label>
                 <div class="col-md-8 col-lg-9">
                   <?php
                   $querySistema .= " WHERE deletar = 0";
-
                   $resultSistemas = $conn->query($querySistema);
-
                   while ($sistema = $resultSistemas->fetch_assoc()) {
-
                     echo '<div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="'.$sistema['id'].'" id="gridCheck' . $sistema['id'] . '" name="sistemas[]"';
-                    
+                            <input class="form-check-input" type="checkbox" value="'.$sistema['id'].'" id="gridCheck' . $sistema['id'] . '" name="sistemas[]"';                    
                       $queryMeusSistemas = "SELECT id FROM cad_sis_user 
                                             WHERE id_usuario = ".$usuario['id_usuario']." AND id_sistema = ".$sistema['id'];
                       $resultado = $conn->query($queryMeusSistemas);
@@ -166,12 +155,14 @@ $usuario = $resultUsuario->fetch_assoc();
                 <button type="submit" class="btn btn-primary">Salvar</button>
               </div>
             </form>
+
           </div>
         </div>
       </div>
     </div>
   </section>
 </main><!-- End #main -->
+
 <?php
 require_once('footer.php');
 ?>
