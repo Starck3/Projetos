@@ -29,6 +29,7 @@
                                             <select id="tela" name="tela" class="form-select" required>
                                                 <option value =''>Escolha...</option>
                                                     <?php
+                                                    $queryModulos .= " WHERE deletar = 0";
                                                     $resultModulos = $conn->query($queryModulos);
                                                     while ($rowModulos = $resultModulos->fetch_assoc()) {
                                                         echo'<option value='.$rowModulos['id'].'>'.$rowModulos['nome'].'</option>';

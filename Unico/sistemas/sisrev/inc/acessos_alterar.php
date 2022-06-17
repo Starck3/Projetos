@@ -10,7 +10,7 @@ require_once('../config/query.php');
                 printf("Erro ao inserir dados %s\n", $conn->error);
             }
 
-            header('Location: ../front/localizar_modulos.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=8');
+            header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=8');
 
             break;
         case 2:
@@ -19,7 +19,7 @@ require_once('../config/query.php');
                 printf("Erro ao editar as informações %s\n", $conn->error);
             }
             
-            header('Location: ../front/localizar_modulos.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=4');
+            header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=4');
         
             break;
 
@@ -29,7 +29,7 @@ require_once('../config/query.php');
                 printf("Erro ao deletar as informações %s\n", $conn->error);
             }
 
-            header('Location: ../front/localizar_modulos.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=5');
+            header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=5');
 
             break;
     }

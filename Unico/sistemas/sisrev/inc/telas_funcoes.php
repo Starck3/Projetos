@@ -10,7 +10,7 @@ switch ($_GET['acao']) {
             printf("Erro ao inserir nova Função %s\n", $conn->error);
         }
         
-        header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'f=1&msn=8');
+        header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=8');
         
         break;
     
@@ -35,6 +35,5 @@ switch ($_GET['acao']) {
 
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=14');
 }
-
 
 ?>
