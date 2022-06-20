@@ -169,7 +169,7 @@
                   <label for="aproCaixa">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
               <div class="text-center py-2">
-              <a href="http://10.100.1.214/unico/sistemas/sisrev/front/empresas.php?pg=2&tela=2"><button type="button" class="btn btn-primary">Voltar</button></a>
+              <a href="http://$_SERVER["SERVER_ADDR"]/unico/sistemas/sisrev/front/empresas.php?pg=<?= $_GET["pg"] ?>&tela=<?= $_GET["tela"] ?>"><button type="button" class="btn btn-primary">Voltar</button></a>
                 <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
                 <button type="submit" class="btn btn-success">Salvar</button>
               </div>

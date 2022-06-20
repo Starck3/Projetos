@@ -1,0 +1,1058 @@
+SD; SD-ARQUIVO-PDF      ED; A LE; 100
+SD; SD-CAMINHO-PDF     ED; A LE; 100
+SD; SD-REPORT-PDF      ED; A LE; 6
+
+ SD; SD-CHAVE           GROUP;
+     SD; SD-FILIAL          ED; N LE; 3
+     SD; SD-ARQUIVO         ED; A LE; 30 ( )
+     SD; SD-DN              ED; N LE; 7
+     SD; SD-NUMUSU          ED; N LE; 5
+ END.GROUP;
+ SD; SD-DATAHOJEED         ED; A LE; 10
+ SD; SD-NOMUSU             ED; A LE; 15
+
+ SD; SD-DTHOJE          ED; N LE; 8 (0)                     :<--
+ SD; SD-DATAMOV         ED; N LE; 8 (0)
+ SD; SD-CONTAREG        ED; N LE; 10 (0)
+ SD; SD-APROCESSAR      ED; A LE; 1 ( )
+ SD; SD-HORAATUAL       ED; N LE; 8 (0)
+ SD; SD-TIPOREG-CONTROLE GROUP;
+     SD; SD-TIPOREG-EXCLUIR ED; A LE; 3
+ END.GROUP;
+ SD; SD-TIPOREG-INDICE GROUP;
+     SD; SD-TIPOREG-EXC    ED; A LE; 3
+     SD; SD-DATAARQ-EXC    ED; N LE; 8
+     SD; SD-DATAMOV-EXC    ED; N LE; 8
+ END.GROUP;
+ SD; SD-TB-TIPOREG-EXC    ED; A LE; 19 STB; SD-INDTIPO (500)
+ SD; SD-TB-TIPO-CARGA    ED; A LE; 3 STB; SD-INDREG-CARGA (500)
+ SD; SD-TB-QTDE-CARGA    ED; N LE; 10 STL; SD-TB-TIPO-CARGA
+
+ SD; SD-TIPOREG GROUP;
+     SD; SD-TIPOREG1  ED; A LE; 2
+     SD; SD-TIPOREG2  ED; A LE; 1
+ END.GROUP;
+
+ SD; SD-CHAVE-ATU GROUP;
+     SD; SD-FILIAL-ATU ED; N LE; 3
+     SD; SD-ARQUIVO-ATU ED; A LE; 30
+ END.GROUP;
+
+SD; SD-TB-TIPO-REG         ED; A LE; 10  STB; SD-INDREG (500)
+SD; SD-TB-QTDE           ED; N LE; 10 STL; SD-TB-TIPO-REG
+SD; SD-TB-DTMOV          ED; N LE; 8 STL; SD-TB-TIPO-REG
+SD; SD-TB-DTARQ         ED; N LE; 8 STL; SD-TB-TIPO-REG
+
+SD; SD-SDTMOVANT        ED; N LE; 8
+
+ : DEFINE HEADER ARQUIVO -----------------------------
+ : serve para FAI
+ SD; SD-FHI GROUP;
+     SD; SD-FHITPREG   ED; A LE; 3
+     SD; SD-FHIFI1     ED; A LE; 10
+     SD; SD-FHIFI2     ED; N LE; 4
+     SD; SD-DATAGER    ED; N LE; 8 : DDMMAAAA OU DATA MOVIMENTO PARA DEMAIS SEM SER FHI
+     SD; SD-FHIFI5     ED; N LE; 14
+     SD; SD-FHIFI6     ED; N LE; 1
+     SD; SD-FHIDN      ED; N LE; 4
+     SD; SD-FHIFI7     ED; A LE; 9
+     SD; SD-FHIFI8     ED; A LE; 140
+ END.GROUP;
+: FAI = FA1, FA2, FA3, FA4, FCR320, FCR321, FCR330, FCR75 , FLH555, FNT FLH6000
+: FGI = FG0,FG1 A FG9, F05, F25,F26,F50 A F54
+: CGI = (CC1) (CC3) (CG1) (CG2) (CG3) (CG4) (CG5) (CG6) (CG7) (CG8) (CG9)
+: FTI = (FT1) (FT2) (FT4)
+
+ SD; SD-DNCARGA ED; N LE; 5
+ SD; SD-TRANS ED; N LE; 3 (0)
+ SD; SD-LIDOS ED; N LE; 10
+ SD; SD-GRAVADOS ED; N LE; 10
+ SD; SD-DATAARQ    ED; N LE; 8 : CCYYMMDD
+
+SD; SD-FLH60000 GROUP;
+    SD; SD-FLH60000-TIPO ED; A LE; 3 : (FLH)
+    SD; SD-FLH60000-FIXO ED; N LE; 5 : (60000)
+    SD; SD-FLH60000-CAB  ED; A LE; 179
+    SD; SD-FLH60000-VERSAO ED; N LE; 6
+END.GROUP;
+SD; SD-FLH60001 GROUP;
+    SD; SD-FLH60001-TIPO ED; A LE; 3 : (FLH)
+    SD; SD-FLH60001-FIXO ED; N LE; 5 : (60001)
+    SD; SD-FLH60001-TP-1 ED; A LE; 4
+    SD; SD-FLH60001-DESC-1 ED; A LE; 40
+    SD; SD-FLH60001-TP-2 ED; A LE; 4
+    SD; SD-FLH60001-DESC-2 ED; A LE; 40
+    SD; SD-FLH60001-TP-3 ED; A LE; 4
+    SD; SD-FLH60001-DESC-3 ED; A LE; 40
+    SD; SD-FLH60001-TP-4 ED; A LE; 4
+    SD; SD-FLH60001-DESC-4 ED; A LE; 40
+    SD; SD-FLH60001-BRANCOS ED; A LE; 9
+END.GROUP;
+SD; SD-FT6 GROUP;
+    SD; SD-FT6-TIPO  ED; A LE; 3 : (FT6)
+    SD; SD-FT6-SALTO ED; A LE; 1 : I=SALTO PAGINA , 0a9 - QTDE LINHAS DE IMPRESSAO
+    SD; SD-FT6-TEXTO ED; A LE; 189
+END.GROUP;
+SD; SD-FT1 GROUP;
+    SD; SD-FT1-TIPO  ED; A LE; 3 : (FT1)
+    SD; SD-FT1-TEXTO ED; A LE; 190 : NAO SERA USADO
+END.GROUP;
+SD; SD-FT2 GROUP;
+    SD; SD-FT2-TIPO    ED; A LE; 3 : (FT2)
+    SD; SD-FT2-LINHA1  ED; A LE; 73
+    SD; SD-FT2-LINHA2  ED; A LE; 73
+    SD; SD-FT3-BRANCOS ED; A LE; 44
+END.GROUP;
+SD; SD-FVW GROUP;
+    SD; SD-FVW-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW-SUBTIPO ED; N LE; 3
+END.GROUP;
+SD; SD-FVW000 GROUP;
+    SD; SD-FVW000-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW000-SUBTIPO ED; N LE; 3
+    SD; SD-FVW000-DATAFATURAMENTO ED; N LE; 8 : DDMMAAAA
+    SD; SD-FVW000-NOTAFISCAL      ED; N LE; 6
+    SD; SD-FVW000-SERIENOTA       ED; A LE; 4
+    SD; SD-FVW000-FILLER1         ED; A LE; 9
+    SD; SD-FVW000-IDENTVENDA      ED; A LE; 1
+    : BRANCOS-NORMAL
+    : A-VENDA DIRETA CONSUMIDOR  B-BONIFICACAO C-VENDA DIRETA CONSORCIO
+    : F-VENDA DIRETA FROTISTA
+    : G-VENDA DIRETA GOVERNO
+    : I-VENDA DIRETA IMPORTADOS  M-CONSORCIO O-DOCACAO
+    : P-PROFISSIONAIS DA REDE    R-PERMUTA
+    : S-DEFICIENTE FISICO        T-TROCA GARANTIA     U-FUNCIONARIO USADO    V-VIP
+    : W-VENDA DIRETA FUNCIONARIO VW
+    : Z-VIP VEICULO USADO
+    SD; SD-FVW000-FILLER2         ED; A LE; 59
+    SD; SD-FVW000-DNENTREGA       ED; N LE; 5
+    SD; SD-FVW000-DNVENDA         ED; N LE; 5
+    SD; SD-FVW000-FILLER3         ED; A LE; 84
+END.GROUP;
+
+SD; SD-FVW001 GROUP; : SO EXISTE QDO FOR VENDA DIRETA
+    SD; SD-FVW001-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW001-SUBTIPO ED; N LE; 3
+    SD; SD-FVW001-DATAFATURAMENTO ED; N LE; 8 : DDMMAAAA
+    SD; SD-FVW001-NOTAFISCAL      ED; N LE; 6
+    SD; SD-FVW001-SERIENOTA       ED; A LE; 4
+    SD; SD-FVW001-FILLER1         ED; A LE; 2
+    SD; SD-FVW001-IDENTVENDA      ED; A LE; 20
+    SD; SD-FVW001-NOMECLIENTE     ED; A LE; 40
+    SD; SD-FVW001-FILLER2         ED; A LE; 107
+END.GROUP;
+SD; SD-FVW002 GROUP;
+    SD; SD-FVW002-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW002-SUBTIPO ED; N LE; 3
+    SD; SD-FVW002-DATAFATURAMENTO ED; N LE; 8 : DDMMAAAA
+    SD; SD-FVW002-NOTAFISCAL      ED; N LE; 6
+    SD; SD-FVW002-SERIENOTA       ED; A LE; 4
+    SD; SD-FVW002-FILLER1         ED; A LE; 15
+    SD; SD-FVW002-CODMODELO       ED; A LE; 6
+    SD; SD-FVW002-EDICAO          ED; A LE; 1
+    SD; SD-FVW002-FILLER2         ED; A LE; 147
+END.GROUP;
+SD; SD-FVW003 GROUP;
+    SD; SD-FVW003-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW003-SUBTIPO ED; N LE; 3
+    SD; SD-FVW003-DATAFATURAMENTO ED; N LE; 8 : DDMMAAAA
+    SD; SD-FVW003-NOTAFISCAL      ED; N LE; 6
+    SD; SD-FVW003-SERIENOTA       ED; A LE; 4
+    SD; SD-FVW003-FILLER1         ED; A LE; 2
+    SD; SD-FVW003-CHASSIS         ED; A LE; 17
+    SD; SD-FVW003-FILLER2         ED; A LE; 72
+    SD; SD-FVW003-DESCMODELO      ED; A LE; 40
+    SD; SD-FVW003-FILLER3         ED; A LE; 38
+END.GROUP;
+SD; SD-FVW004 GROUP;
+    SD; SD-FVW004-TIPO    ED; A LE; 3 (FVW)
+    SD; SD-FVW004-SUBTIPO ED; N LE; 3
+    SD; SD-FVW004-DATAFATURAMENTO ED; N LE; 8 : DDMMAAAA
+    SD; SD-FVW004-NOTAFISCAL      ED; N LE; 6
+    SD; SD-FVW004-SERIENOTA       ED; A LE; 4
+    SD; SD-FVW004-FILLER1         ED; A LE; 2
+    SD; SD-FVW004-TOTALNOTA       ED; N LE; 15 DE; 2
+    SD; SD-FVW004-FILLER2         ED; A LE; 152
+END.GROUP;
+
+SD; SD-FA4 GROUP;
+    SD; SD-FA4-1  ED; A LE; 3
+    ::SD; SD-FA4-TIPO-DOCUMENTO-1 ED; A LE; 4 ; ACERTADO PARA TODOS
+    : 0000- SALDO INICIAL DO DIA
+    : NNNN - CONFORME TABELA CONTABIL
+    : 9999 - SALDO FINAL DO DIA
+    SD; SD-FA4-TIPO-DOCUMENTO-1 ED; A LE; 4
+
+    SD; SD-FA4-DESCR-DOCUM-1   ED; A LE; 40
+    SD; SD-FA4-NUMDOC-1       ED; A LE; 10
+    SD; SD-FA4-DTLANC-1       ED; A LE; 8 : DDMMAAAA
+    SD; SD-FA4-DEB-CRED-1     ED; A LE; 1 : D OU C
+    SD; SD-FA4-VALOR-1        ED; N LE; 15 DE; 2
+    SD; SD-FA4-TIPO-DOCUMENTO-2 ED; A LE; 4
+    SD; SD-FA4-DESCR-DOCUM-2   ED; A LE; 40
+    SD; SD-FA4-NUMDOC-2       ED; A LE; 10
+    SD; SD-FA4-DTLANC-2       ED; A LE; 8 : DDMMAAAA
+    SD; SD-FA4-DEB-CRED-2     ED; A LE; 1 : D OU C
+    SD; SD-FA4-VALOR-2        ED; N LE; 15 DE; 2
+    SD; SD-FA4-FIL            ED; A LE; 28
+    SD; SD-FA4-VERSAO         ED; N LE; 6 (040213)
+END.GROUP;
+SD; SD-NUMDOC GROUP;
+    SD; SD-NUMDOC-NF       ED; N LE; 8
+    SD; SD-NUMDOC-SERIE    ED; A LE; 2
+END.GROUP;
+SD; SD-SDTPGTO        ED; N LE; 8
+
+SD; SD-FAI-CONTAGEM ED; N LE; 1
+SD; SD-FGI-CONTAGEM ED; N LE; 1
+SD; SD-CGI-CONTAGEM ED; N LE; 1
+SD; SD-FTI-CONTAGEM ED; N LE; 1
+
+:: cemol para executar OFD10E automaticamente
+ SD; SD-CEMOL-OFD10E GROUP;
+     SD; SD-CEMOL-OFD10E-FILIAL    ED; N LE; 3
+     SD; SD-CEMOL-OFD10E-DATAMOV1  ED; N LE; 8 : aaaammdd
+     SD; SD-CEMOL-OFD10E-DATAMOV2  ED; N LE; 8 : aaaammdd
+     SD; SD-CEMOL-OFD10E-DATAARQ   ED; N LE; 8 : aaaammdd
+     SD; SD-CEMOL-OFD10E-TIPOS GROUP;
+         SD; SD-CEMOL-OFD10E-FG2       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FG4       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FLH       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FCR-320   ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FCR-321   ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FCR-330   ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FNT       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FA4       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FA3       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FA1       ED; A LE; 1
+         SD; SD-CEMOL-OFD10E-FT6       ED; A LE; 1
+     END.GROUP;
+ END.GROUP;
+ SD; SD-CEMOL-OFD10E-FT1 ED; A LE; 1
+ SD; SD-CEMOL-AP001A GROUP;
+     SD; SD-CEMOL-AP001A-OPCAO ED; A LE; 3
+ END.GROUP;
+:----------------+----------------------------------------------------:
+: MODULO         :  COMUNICAO FABRICA                     DATA: 09.03.06:
+: PROGRAMA       :  CF001A - CARREGA ARQUIVO FABRICA            :
+:                :                                                    :
+: AUTOR          :  CELINA                        :
+:---------------------------------------------------------------------:
+:                        M A N U T E N C O E S                        :
+:----------+---------------------------------------------+------------:
+:  DATA    : DESCRICAO (motivo, autor-solicitacao, etc.) :   AUTOR    :
+:----------+---------------------------------------------+------------:
+
+DC; GLB.DATE FORMAT; DDMMMYY
+MV; GLB.DC-CCYYMMDD     SD-DTHOJE
+MV; GLB.DC-DD-MM-CCYY   SD-DATAHOJEED
+MV; GLB.TIME            SD-HORAATUAL
+:
+DT; EVERY PEMOL (GLB.REPNAME)
+    BEGIN.LABEL; FIM
+
+    MV; CEMOL.CHAVE     SD-CHAVE
+    INS; L006-USUREP-CEMOL
+    PURGE; CEMOL
+
+    SLEEP; 0
+    MV; CEMOL.NUMUSUAUD        SD-NOMUSU
+    DT; EVERY PSG00NUM (CEMOL.NUMUSUAUD)
+        MV; CSG00.NOMSG01   SD-NOMUSU
+        BK;
+    END;
+
+    CLA; SD-TB-TIPOREG-EXC  : PARA VER QUAL EXCLUIR
+    CLA; SD-TB-TIPO-REG : CONTAGEM DE INCLUIDOS POR TIPO
+    CLA; SD-TB-QTDE
+    CLA; SD-TB-DTMOV
+
+    CLA; SD-TB-TIPO-CARGA
+    CLA; SD-TB-QTDE-CARGA
+
+    MV; GLB.ZEROS             SD-INDREG
+
+    MV; GLB.SPACES            SD-TIPOREG
+    MV; GLB.ZEROS             SD-CONTAREG
+    MV; GLB.SPACES            SD-TIPOREG-CONTROLE
+
+    MV; GLB.ZEROS SD-FAI-CONTAGEM
+    MV; GLB.ZEROS SD-FGI-CONTAGEM
+    MV; GLB.ZEROS SD-CGI-CONTAGEM
+    MV; GLB.ZEROS SD-FTI-CONTAGEM
+
+    MV; GLB.ZEROS    SD-LIDOS
+    MV; GLB.ZEROS    SD-GRAVADOS
+    MV; (  ARQUIVO PROCESSADO:)    F80LINHA
+    ATS; SD-ARQUIVO                F80LINHA
+    ATS; ( FILIAL:)                F80LINHA
+    ATS; SD-FILIAL                 F80LINHA
+    PF; 80
+
+    :
+    MV; GLB.SPACES        SD-CEMOL-OFD10E
+
+    SET.TITLE; A SD-ARQUIVO
+
+    DT; ACTUAL A EAS; 90
+        BEGIN.LABEL; SALTA
+        AD; (1)    SD-LIDOS
+        MV; A*F90LINHA    SD-TIPOREG
+        MV; GLB.ZEROS    SD-INDREG-CARGA
+        BG;
+            AD; (1)    SD-INDREG-CARGA
+            DW; SD-INDREG-CARGA > (500)
+                BK;
+            END;
+            DW; SD-TB-TIPO-CARGA = GLB.SPACES OR
+            DW; SD-TB-TIPO-CARGA = SD-TIPOREG
+                MV; SD-TIPOREG    SD-TB-TIPO-CARGA
+                AD; (1)           SD-TB-QTDE-CARGA
+                BK;
+            END;
+        END;
+
+        BC; SD-TIPOREG2
+        CS; (I)
+            BC; SD-TIPOREG
+            CS; (FHI)
+                MV; A*F90LINHA   SD-FHI
+                DW; SD-FHIDN NOT = SD-DN
+                    DW; SD-FHIDN = (00001)
+                        : OK PASSA POIS EH GERAL
+                        MV; SD-DN    SD-FHIDN
+                    ELSE;
+                        MV; (DN ARQUIVO NAO CONFERE COM DN INFORMADO)    F80LINHA
+                        PF; 80
+                        JTO; FIM
+                    END;
+                END;
+                DC; SD-DATAGER FORMAT; DDMMCCYY
+                DW; GLB.STATUS = (*****)
+                    MV; (DATA GERACAO INCORRETA)    F80LINHA
+                    ATS; SD-DATAGER                 F80LINHA
+                    PF; 80
+                    JTO; FIM
+                END;
+                MV; GLB.DC-CCYYMMDD    SD-DATAGER
+                MV; GLB.DC-CCYYMMDD    SD-DATAARQ
+                MV; SD-FHIDN           SD-DNCARGA
+            CS; (FAI)
+                AD; (1)    SD-FAI-CONTAGEM
+
+                MV; A*F90LINHA   SD-FHI
+                DW; SD-FHIDN NOT = SD-DN
+                    MV; (DN ARQUIVO NAO CONFERE COM DN INFORMADO)    F80LINHA
+                    PF; 80
+                    JTO; FIM
+                END;
+                DC; SD-DATAGER    FORMAT; DDMMCCYY
+                MV; GLB.DC-CCYYMMDD    SD-DATAMOV
+
+               MV; SD-TIPOREG        SD-TIPOREG-EXC
+               MV; SD-DATAMOV        SD-DATAMOV-EXC
+               MV; SD-DATAARQ        SD-DATAARQ-EXC
+
+               MV; GLB.ZEROS SD-INDTIPO
+               BG;
+                   AD; (1)    SD-INDTIPO
+                   DW; SD-INDTIPO > (500)
+                       MV; (**** PROBLEMA TABELA ESTOUROU )    F80LINHA
+                       PF; 80
+                       JTO; FIM
+                   END;
+                   DW; SD-TB-TIPOREG-EXC = GLB.SPACES
+                       MV; SD-TIPOREG-INDICE    SD-TB-TIPOREG-EXC
+                       MV; (FA1)    SD-TIPOREG-EXCLUIR
+                       DT; GROUP PCAFAB03 (SD-DN SD-DATAARQ SD-DATAMOV) FROM (SD-TIPOREG-EXCLUIR GLB.ZEROS)
+                           BC; CAFAB.TIPOREGVW
+                           CS; (FA1) (FA2) (FA3) (FA4) (FCR) (FLH) (FNT)
+                               PURGE; CAFAB
+                           EC;
+                       END;
+                       BK;
+                   END;
+                   DW; SD-TB-TIPOREG-EXC = SD-TIPOREG-INDICE
+                       BK;
+                   END;
+                END;
+
+            CS; (FGI)
+                AD; (1)    SD-FGI-CONTAGEM
+
+                MV; A*F90LINHA   SD-FHI
+                DW; SD-FHIDN NOT = SD-DN
+                    MV; (DN ARQUIVO NAO CONFERE COM DN INFORMADO)    F80LINHA
+                    PF; 80
+                    JTO; FIM
+                END;
+                DC; SD-DATAGER    FORMAT; DDMMCCYY
+                MV; GLB.DC-CCYYMMDD    SD-DATAMOV
+
+               MV; SD-TIPOREG        SD-TIPOREG-EXC
+               MV; SD-DATAMOV        SD-DATAMOV-EXC
+               MV; SD-DATAARQ        SD-DATAARQ-EXC
+
+               MV; GLB.ZEROS SD-INDTIPO
+               BG;
+                   AD; (1)    SD-INDTIPO
+                   DW; SD-INDTIPO > (500)
+                       MV; (**** PROBLEMA TABELA ESTOUROU )    F80LINHA
+                       PF; 80
+                       JTO; FIM
+                   END;
+                   DW; SD-TB-TIPOREG-EXC = GLB.SPACES
+                       MV; SD-TIPOREG-INDICE    SD-TB-TIPOREG-EXC
+                       MV; (FG0)    SD-TIPOREG-EXCLUIR
+                       DT; GROUP PCAFAB03 (SD-DN SD-DATAARQ SD-DATAMOV) FROM (SD-TIPOREG-EXCLUIR GLB.ZEROS)
+                           BC; CAFAB.TIPOREGVW
+                           CS; (FG0) (FG1) (FG2) (FG3) (FG4) (FG5) (FG6) (FG7) (FG8) (FG9) (F05) (F25) (F26) (F50) (F51) (F52) (F53) (F54)
+                               PURGE; CAFAB
+                           EC;
+                       END;
+                       BK;
+                   END;
+                   DW; SD-TB-TIPOREG-EXC = SD-TIPOREG-INDICE
+                       BK;
+                   END;
+                END;
+
+            CS; (CGI)
+                AD; (1)    SD-CGI-CONTAGEM
+
+                MV; A*F90LINHA   SD-FHI
+                DW; SD-FHIDN NOT = SD-DN
+                    MV; (DN ARQUIVO NAO CONFERE COM DN INFORMADO)    F80LINHA
+                    PF; 80
+                    JTO; FIM
+                END;
+                DC; SD-DATAGER    FORMAT; DDMMCCYY
+                MV; GLB.DC-CCYYMMDD    SD-DATAMOV
+
+                MV; SD-TIPOREG        SD-TIPOREG-EXC
+                MV; SD-DATAMOV        SD-DATAMOV-EXC
+                MV; SD-DATAARQ        SD-DATAARQ-EXC
+
+                MV; GLB.ZEROS SD-INDTIPO
+                BG;
+                    AD; (1)    SD-INDTIPO
+                    DW; SD-INDTIPO > (500)
+                        MV; (**** PROBLEMA TABELA ESTOUROU )    F80LINHA
+                        PF; 80
+                        JTO; FIM
+                    END;
+                    DW; SD-TB-TIPOREG-EXC = GLB.SPACES
+                        MV; SD-TIPOREG-INDICE    SD-TB-TIPOREG-EXC
+                        MV; (CC0)    SD-TIPOREG-EXCLUIR
+                        DT; GROUP PCAFAB03 (SD-DN SD-DATAARQ SD-DATAMOV) FROM (SD-TIPOREG-EXCLUIR GLB.ZEROS)
+                            BC; CAFAB.TIPOREGVW
+                            CS; (CC1) (CC3) (CG1) (CG2) (CG3) (CG4) (CG5) (CG6) (CG7) (CG8) (CG9)
+                                PURGE; CAFAB
+                            EC;
+                        END;
+                        BK;
+                    END;
+                    DW; SD-TB-TIPOREG-EXC = SD-TIPOREG-INDICE
+                        BK;
+                    END;
+                 END;
+            CS; (FTI)
+                AD; (1)    SD-FTI-CONTAGEM
+                TRACE; SD-FTI-CONTAGEM (CONTAGEM FTI***************)
+                MV; A*F90LINHA   SD-FHI
+                DW; SD-FHIDN NOT = SD-DN
+                    MV; (DN ARQUIVO NAO CONFERE COM DN INFORMADO)    F80LINHA
+                    PF; 80
+                    JTO; FIM
+                END;
+                DC; SD-DATAGER    FORMAT; DDMMCCYY
+                MV; GLB.DC-CCYYMMDD    SD-DATAMOV
+
+                MV; SD-TIPOREG        SD-TIPOREG-EXC
+                MV; SD-DATAMOV        SD-DATAMOV-EXC
+                MV; SD-DATAARQ        SD-DATAARQ-EXC
+                MV; GLB.ZEROS SD-INDTIPO
+                BG;
+                    AD; (1)    SD-INDTIPO
+                    DW; SD-INDTIPO > (500)
+                        MV; (**** PROBLEMA TABELA ESTOUROU )    F80LINHA
+                        PF; 80
+                        JTO; FIM
+                    END;
+                    DW; SD-TB-TIPOREG-EXC = GLB.SPACES
+                        MV; SD-TIPOREG-INDICE    SD-TB-TIPOREG-EXC
+                        MV; (FT1)                SD-TIPOREG-EXCLUIR
+                        DT; GROUP PCAFAB03 (SD-DN SD-DATAARQ SD-DATAMOV) FROM (SD-TIPOREG-EXCLUIR GLB.ZEROS)
+                            BC; CAFAB.TIPOREGVW
+                            CS; (FT5) (FT6) (FT1) (FT2)
+                                PURGE; CAFAB
+                            EC;
+                        END;
+                        BK;
+                    END;
+                    DW; SD-TB-TIPOREG-EXC = SD-TIPOREG-INDICE
+                        BK;
+                    END;
+                END;
+            OW; : DEMAIS MODULOS
+            EC;
+        OW; : TRATAMENTO DO DETALHE
+            BC; SD-TIPOREG
+            :---- PROCESSO FAI
+            CS; (FA1) (FA2) (FA3) (FA4)  (FCR) (FLH) (FNT)
+
+                AD; (1)                  SD-CONTAREG
+                AE; CAFAB
+                    AU; SD-DN            DN
+                    AU; SD-TIPOREG       TIPOREGVW
+                    AU; A*F90LINHA       INFOFAB
+                    AU; SD-DATAMOV       SDTMOV
+                    AU; SD-DATAARQ       SDTARQ
+                    AU; SD-CONTAREG      SEQREG
+                AU; WRITE
+                AD; (1)    SD-TRANS
+                AD; (1)    SD-GRAVADOS
+                PF; 99
+                :: inclui CFLH6 (COD CONTABIL)
+                MV; A*F90LINHA        SD-FLH60000
+                MV; A*F90LINHA        SD-FLH60001
+                DW; SD-FLH60001-FIXO = (60001)
+                    DW; SD-FLH60001-TP-1 NOT = GLB.SPACES
+                        DT; EVERY PCFLH601 (SD-FLH60001-TP-1)
+                            FL; SD-FLH60001-DESC-1  CFLH6.DESCCONT
+                            FL; SD-DTHOJE           CFLH6.SDTCAD
+                            BK;
+                        END;
+                        DW; GLB.STATUS = (*****)
+                            AE; CFLH6
+                                AU; SD-FLH60001-TP-1    CODIGO
+                                AU; SD-FLH60001-DESC-1  DESCCONT
+                                AU; SD-DTHOJE           SDTCAD
+                            AU; WRITE
+                        END;
+                    END;
+                    DW; SD-FLH60001-TP-2 NOT = GLB.SPACES
+                        DT; EVERY PCFLH601 (SD-FLH60001-TP-2)
+                            FL; SD-FLH60001-DESC-2  CFLH6.DESCCONT
+                            FL; SD-DTHOJE           CFLH6.SDTCAD
+                            BK;
+                        END;
+                        DW; GLB.STATUS = (*****)
+                            AE; CFLH6
+                                AU; SD-FLH60001-TP-2    CODIGO
+                                AU; SD-FLH60001-DESC-2  DESCCONT
+                                AU; SD-DTHOJE           SDTCAD
+                            AU; WRITE
+                        END;
+                    END;
+                    DW; SD-FLH60001-TP-3 NOT = GLB.SPACES
+                        DT; EVERY PCFLH601 (SD-FLH60001-TP-3)
+                            FL; SD-FLH60001-DESC-3  CFLH6.DESCCONT
+                            FL; SD-DTHOJE           CFLH6.SDTCAD
+                            BK;
+                        END;
+                        DW; GLB.STATUS = (*****)
+                            AE; CFLH6
+                                AU; SD-FLH60001-TP-3    CODIGO
+                                AU; SD-FLH60001-DESC-3  DESCCONT
+                                AU; SD-DTHOJE           SDTCAD
+                            AU; WRITE
+                        END;
+                    END;
+                    DW; SD-FLH60001-TP-4 NOT = GLB.SPACES
+                        DT; EVERY PCFLH601 (SD-FLH60001-TP-4)
+                            FL; SD-FLH60001-DESC-4  CFLH6.DESCCONT
+                            FL; SD-DTHOJE           CFLH6.SDTCAD
+                            BK;
+                        END;
+                        DW; GLB.STATUS = (*****)
+                            AE; CFLH6
+                                AU; SD-FLH60001-TP-4    CODIGO
+                                AU; SD-FLH60001-DESC-4  DESCCONT
+                                AU; SD-DTHOJE           SDTCAD
+                            AU; WRITE
+                        END;
+                    END;
+
+                END;
+
+            :--- PROCESSO FGI
+            CS; (FG0) (FG1) (FG2) (FG3) (FG4) (FG5) (FG6) (FG7) (FG8) (FG9) (F05) (F25) (F26) (F50) (F51) (F52) (F53) (F54)
+                AD; (1)                  SD-CONTAREG
+                AE; CAFAB
+                    AU; SD-DN            DN
+                    AU; SD-TIPOREG       TIPOREGVW
+                    AU; A*F90LINHA       INFOFAB
+                    AU; SD-DATAMOV       SDTMOV
+                    AU; SD-CONTAREG      SEQREG
+                    AU; SD-DATAARQ       SDTARQ
+                AU; WRITE
+                AD; (1)    SD-TRANS
+                AD; (1)    SD-GRAVADOS
+                PF; 99
+            :--- PROCESSO CGI
+            CS; (CC1) (CC3) (CG1) (CG2) (CG3) (CG4) (CG5) (CG6) (CG7) (CG8) (CG9)
+                AD; (1)                  SD-CONTAREG
+                AE; CAFAB
+                    AU; SD-DN            DN
+                    AU; SD-TIPOREG       TIPOREGVW
+                    AU; A*F90LINHA       INFOFAB
+                    AU; SD-DATAMOV       SDTMOV
+                    AU; SD-CONTAREG      SEQREG
+                    AU; SD-DATAARQ       SDTARQ
+                AU; WRITE
+                AD; (1)    SD-TRANS
+                AD; (1)    SD-GRAVADOS
+                PF; 99
+            : PROCESSO TEXTO
+            CS; (FT6) (FT5)
+
+                AD; (1)                  SD-CONTAREG
+                AE; CAFAB
+                    AU; SD-DN            DN
+                    AU; SD-TIPOREG       TIPOREGVW
+                    AU; A*F90LINHA       INFOFAB
+                    AU; SD-DATAMOV       SDTMOV
+                    AU; SD-CONTAREG      SEQREG
+                    AU; SD-DATAARQ       SDTARQ
+                AU; WRITE
+                AD; (1)    SD-TRANS
+                AD; (1)    SD-GRAVADOS
+                PF; 99
+            CS; (FT1) (FT2)
+
+                AD; (1)                  SD-CONTAREG
+                AE; CAFAB
+                    AU; SD-DN            DN
+                    AU; SD-TIPOREG       TIPOREGVW
+                    AU; A*F90LINHA       INFOFAB
+                    AU; SD-DATAMOV       SDTMOV
+                    AU; SD-CONTAREG      SEQREG
+                    AU; SD-DATAARQ       SDTARQ
+                AU; WRITE
+                AD; (1)    SD-TRANS
+                AD; (1)    SD-GRAVADOS
+                PF; 99
+                MV; (X)            SD-CEMOL-OFD10E-FT1
+            EC;
+        EC;
+        LABEL; SALTA
+        DW; SD-TRANS > (100)
+            SLEEP; 0
+            MV; GLB.ZEROS    SD-TRANS
+        END;
+    END;
+    LABEL; FIM
+    MV; (TOTAL GRAVADOS PARA LISTAGEM)    F80LINHA
+    ATS; SD-GRAVADOS        F80LINHA
+
+    PF; 80
+    MV; GLB.SPACES    F80LINHA
+    PF; 80
+
+    MV; GLB.ZEROS    SD-INDREG
+
+    BG;
+        AD; (1)    SD-INDREG
+        DW; SD-INDREG > (500)
+            BK;
+        END;
+
+        DW; SD-TB-TIPO-REG = GLB.SPACES
+            BK;
+        END;
+        MV; (TIPO)    F80LINHA
+        ATS; SD-TB-TIPO-REG    F80LINHA
+        ATS; (:)               F80LINHA
+        ATS; (DT.MOVIM:)       F80LINHA
+        DC; SD-TB-DTMOV FORMAT; CCYYMMDD
+        ATS; GLB.DC-DD-MM-CCYY F80LINHA
+        ATS; (DT.ARQ:)         F80LINHA
+        DC; SD-TB-DTARQ FORMAT; CCYYMMDD
+        ATS; GLB.DC-DD-MM-CCYY F80LINHA
+        ATS; (QTDE:)           F80LINHA
+        ATS; SD-TB-QTDE        F80LINHA
+        PF; 80
+        MV; SD-TB-TIPO-REG    F100-TIPOREG
+        MV; SD-TB-DTMOV       F100-SDTMOV
+        MV; SD-TB-DTARQ       F100-SDTARQ
+        MV; SD-TB-QTDE        F100-QTDE
+        EX; 100 AS; Q
+    END;
+
+    MV; GLB.SPACES    F80LINHA
+    PF; 80
+    MV; (*** TOTAL DE TODOS OS TIPOS DE REGISTROS EXISTENTES NO ARQUIVO ****)    F80LINHA
+    PF; 80
+
+    MV; GLB.ZEROS    SD-INDREG-CARGA
+    BG;
+        AD; (1)    SD-INDREG-CARGA
+        DW; SD-INDREG-CARGA > (500)
+            BK;
+        END;
+        DW; SD-TB-TIPO-CARGA = GLB.SPACES
+            BK;
+        END;
+        MV; (TIPO:)            F80LINHA
+        ATS; SD-TB-TIPO-CARGA  F80LINHA
+        ATS; ( QTDE EXISTE NO ARQUIVO:) F80LINHA
+        ATS; SD-TB-QTDE-CARGA  F80LINHA
+        PF; 80
+    END;
+
+    INS; LG-ADVANCEPAGE
+
+
+    : DISPARA ATUALIZACAO DAS NOTAS DE PECAS PARA ETIQUETA
+    MV; SD-ARQUIVO    SD-ARQUIVO-ATU
+    MV; SD-FILIAL     SD-FILIAL-ATU
+
+     AE; CEMOL
+        AU; (SI200A)            PROG
+        AU; SD-DTHOJE           DTTRANS
+        AU; GLB.TIME            HORATRANS
+        AU; GLB.FULLSTN         ESTACAO ::-estacao emitente
+        AU; SD-CHAVE-ATU        CHAVE
+        AU; (2)                 FORM    ::-flag p/emis.p/cod.pro
+        AU; SD-NUMUSU           NUMUSUAUD
+    AU; WRITE&CLEAR
+
+    MV; (RP)     GLB.DEVICE
+    SET.QUEUE; 2 :SI200A
+    RUN.REMOTE; (SI200A)  :QUEUE 2
+:::    ::: EXECUCAO DOS RELATORIOS PARA OTO
+
+    MV; GLB.SPACES       SD-CEMOL-OFD10E
+
+    SORT; Q ASCENDING; Q*F100-SDTARQ
+            ASCENDING; Q*F100-SDTMOV
+            ASCENDING; Q*F100-TIPOREG
+
+    MV; GLB.ZEROS    SD-SDTMOVANT
+    MV; GLB.SPACES   SD-CEMOL-OFD10E
+
+    DT; ACTUAL Q
+        DW; Q*F100-QTDE NOT = GLB.ZEROS
+            DW; SD-SDTMOVANT  NOT = GLB.ZEROS AND
+            DW; Q*F100-SDTMOV NOT = SD-SDTMOVANT
+                DW; SD-CEMOL-OFD10E-TIPOS NOT = GLB.SPACES
+                    AE; CEMOL
+                        AU; (OFD10E)            PROG
+                        AU; SD-NUMUSU           NUMUSUAUD
+                        AU; SD-CEMOL-OFD10E     CHAVE
+                        AU; SD-DTHOJE           DTTRANS
+                        AU; GLB.TIME            HORATRANS
+                        AU; GLB.FULLSTN         ESTACAO ::-estacao emitente
+                        TRACE; SD-CEMOL-OFD10E ( GRAVACAO OFD10E)
+                    AU; WRITE
+                END;
+                MV; GLB.SPACES    SD-CEMOL-OFD10E
+            END;
+            MV; SD-FILIAL        SD-CEMOL-OFD10E-FILIAL
+            MV; Q*F100-SDTMOV    SD-CEMOL-OFD10E-DATAMOV1
+            MV; Q*F100-SDTMOV    SD-CEMOL-OFD10E-DATAMOV2
+           :: MV; Q*F100-SDTARQ    SD-CEMOL-OFD10E-DATAARQ
+           MV; GLB.ZEROS         SD-CEMOL-OFD10E-DATAARQ
+            MV; Q*F100-SDTMOV    SD-SDTMOVANT
+
+            BC; Q*F100-TIPOREG
+            CS; (FG2) (FG4) (FLH) (FCR) (FNT) : ESTES VAO PARA OTTO
+                BC; Q*F100-TIPOREG
+                CS; (FG2)
+                    MV; (X)    SD-CEMOL-OFD10E-FG2
+                CS; (FG4)
+                    MV; (X)    SD-CEMOL-OFD10E-FG4
+                CS; (FLH)
+                    MV; (X)    SD-CEMOL-OFD10E-FCR-320
+                    MV; (X)    SD-CEMOL-OFD10E-FCR-321
+                    MV; (X)    SD-CEMOL-OFD10E-FCR-330
+                CS; (FNT)
+                    MV; (X)    SD-CEMOL-OFD10E-FNT
+                EC;
+            EC;
+        END;
+    END;
+    DW; SD-CEMOL-OFD10E-TIPOS NOT = GLB.SPACES
+        AE; CEMOL
+            AU; (OFD10E)            PROG
+            AU; SD-NUMUSU           NUMUSUAUD
+            AU; SD-CEMOL-OFD10E     CHAVE
+            AU; SD-DTHOJE           DTTRANS
+            AU; GLB.TIME            HORATRANS
+            AU; GLB.FULLSTN         ESTACAO ::-estacao emitente
+        AU; WRITE
+    END;
+
+    ::: EXECUCAO PARA MARI
+
+    MV; GLB.ZEROS    SD-SDTMOVANT
+    MV; GLB.SPACES   SD-CEMOL-OFD10E
+
+    DT; ACTUAL Q
+        DW; Q*F100-QTDE NOT = GLB.ZEROS
+            DW; SD-SDTMOVANT  NOT = GLB.ZEROS AND
+            DW; Q*F100-SDTMOV NOT = SD-SDTMOVANT
+                DW; SD-CEMOL-OFD10E-TIPOS NOT = GLB.SPACES
+                    AE; CEMOL
+                        AU; (OFD10E)            PROG
+                        AU; SD-NUMUSU           NUMUSUAUD
+                        AU; SD-CEMOL-OFD10E     CHAVE
+                        AU; SD-DTHOJE           DTTRANS
+                        AU; GLB.TIME            HORATRANS
+                        AU; GLB.FULLSTN         ESTACAO ::-estacao emitente
+                                                TRACE; SD-CEMOL-OFD10E ( GRAVACAO OFD10E -MARI)
+                    AU; WRITE
+                END;
+                MV; GLB.SPACES    SD-CEMOL-OFD10E
+            END;
+            MV; SD-FILIAL        SD-CEMOL-OFD10E-FILIAL
+            MV; Q*F100-SDTMOV    SD-CEMOL-OFD10E-DATAMOV1
+            MV; Q*F100-SDTMOV    SD-CEMOL-OFD10E-DATAMOV2
+           :: MV; Q*F100-SDTARQ    SD-CEMOL-OFD10E-DATAARQ
+            MV; GLB.ZEROS        SD-CEMOL-OFD10E-DATAARQ
+            MV; Q*F100-SDTMOV    SD-SDTMOVANT
+
+            BC; Q*F100-TIPOREG
+            CS; (FA1) (FA3) (FA4) : ESTES VAO PARA MARI
+                BC; Q*F100-TIPOREG
+                CS; (FA1)
+                    MV; (X)    SD-CEMOL-OFD10E-FA1
+                CS; (FA3)
+                    MV; (X)    SD-CEMOL-OFD10E-FA3
+                CS; (FA4)
+                    MV; (X)    SD-CEMOL-OFD10E-FA4
+                EC;
+            EC;
+        END;
+    END;
+    DW; SD-CEMOL-OFD10E-TIPOS NOT = GLB.SPACES OR
+    DW; SD-CEMOL-OFD10E-FT1   NOT = GLB.SPACES
+        AE; CEMOL
+            AU; (OFD10E)            PROG
+            AU; SD-NUMUSU           NUMUSUAUD
+            AU; SD-CEMOL-OFD10E     CHAVE
+            AU; SD-DTHOJE           DTTRANS
+            AU; GLB.TIME            HORATRANS
+            AU; GLB.FULLSTN         ESTACAO ::-estacao emitente
+                                    TRACE; SD-CEMOL-OFD10E ( GRAVACAO OFD10E-MARI1)
+        AU; WRITE
+    END;
+    RT; Q
+
+
+    :-------------- CARGA NOTAS DA FABRICA PARA CONTROLE DE PGTO COMISSAO
+    MV; GLB.ZEROS    SD-LIDOS
+    MV; GLB.ZEROS    SD-GRAVADOS
+
+    MV; GLB.SPACES   SD-FVW000
+    MV; GLB.SPACES   SD-FVW001
+    MV; GLB.SPACES   SD-FVW002
+    MV; GLB.SPACES   SD-FVW003
+    MV; GLB.SPACES   SD-FVW004
+    BP; CLEAR
+    BP; 01 AS; N
+    MV; (  ARQUIVO PROCESSADO:)    F80LINHA
+    ATS; SD-ARQUIVO                F80LINHA
+    ATS; ( FILIAL:)                F80LINHA
+    ATS; SD-FILIAL                 F80LINHA
+    PF; 80 AS; N
+    MV; (CARGA NOTAS VEICULOS)     F80LINHA
+    PF; 80 AS; N
+
+    DT; ACTUAL A EAS; 90
+        BEGIN.LABEL; SALTA-FVW
+
+        MV; A*F90LINHA    SD-FVW
+        DW; SD-FVW-TIPO = (FHI)
+            MV; A*F90LINHA   SD-FHI
+            MV; SD-FHIDN     SD-DNCARGA
+        END;
+
+        DW; SD-FVW-TIPO NOT = (FVW)
+            JTO; SALTA-FVW
+        END;
+
+        BC; SD-FVW-SUBTIPO
+        CS; (000) : CABECALHO
+            AD; (1)           SD-LIDOS
+            MV; A*F90LINHA   SD-FVW000
+            MV; GLB.SPACES   SD-FVW001
+            MV; GLB.SPACES   SD-FVW002
+            MV; GLB.SPACES   SD-FVW003
+            MV; GLB.SPACES   SD-FVW004
+        CS; (001) : SO VENDA DIRETA
+            MV; A*F90LINHA    SD-FVW001
+        CS; (002)
+            MV; A*F90LINHA    SD-FVW002
+        CS; (003) : SO VENDA DIRETA
+            MV; A*F90LINHA    SD-FVW003
+        CS; (004)
+            MV; A*F90LINHA    SD-FVW004
+            : INICIAR INCLUSAO , SOMENTE O QUE FOR VENDA DIRETA
+            BC; SD-FVW000-IDENTVENDA
+            CS; (A) (C) (F) (G) (I) (M) (O) (P) (R) (S) (T) (U) (V) (W) (Z)
+                DT; EVERY PCVVWC01 (SD-FVW003-CHASSIS SD-FVW003-NOTAFISCAL SD-FVW003-SERIENOTA)
+                    BK;
+                END;
+                DW; GLB.STATUS = GLB.SPACES : JA FOI INCLUIDO
+                    JTO; SALTA-FVW
+                END;
+                MV; (NF:)                    F80LINHA
+                ATS; SD-FVW000-NOTAFISCAL    F80LINHA
+                ATS; (CHASSI:)               F80LINHA
+                ATS; SD-FVW003-CHASSIS       F80LINHA
+
+                DC; SD-FVW000-DATAFATURAMENTO FORMAT; DDMMCCYY
+                DW; GLB.STATUS = (*****)
+                    ATS; (DATA FATURAMENTO INVALIDA)    F80LINHA
+                    PF; 80 AS; N
+                    JTO; SALTA-FVW
+                END;
+                AE; CVVWC
+                    AU; SD-FVW000-NOTAFISCAL    NOTAFISCAL
+                    AU; SD-NUMUSU               NUMUSU
+                    AU; SD-FVW000-SERIENOTA     SERIENOTA
+                    AU; SD-FVW000-IDENTVENDA    IDENTVENDA
+                    :::AU; SD-FVW000-DNVENDA       DNVENDA
+                    AU; SD-DNCARGA              DNVENDA
+                    AU; SD-FVW000-DNENTREGA     DNENTREGA
+                    AU; SD-FVW001-NOMECLIENTE   NOMECLIENTE
+                    AU; SD-FVW002-CODMODELO     CODMODELO
+                    AU; SD-FVW002-EDICAO        EDICAOMODELO
+                    AU; SD-FVW003-CHASSIS       CHASSIS
+                    AU; (A)                     SITUACAO
+                    AU; GLB.ZEROS               EMPAPOLLO
+                    AU; GLB.ZEROS               REVAPOLLO
+                    AU; GLB.ZEROS               PROPOSTA
+                    AU; SD-FVW004-TOTALNOTA     TOTALNOTA
+                    AU; GLB.ZEROS               VALORCOMISSAO
+                    AU; GLB.DC-CCYYMMDD         DATAFATURAMENTO
+                    AU; SD-NUMUSU               NUMUSU
+                    AU; SD-DTHOJE               SDTCAD
+                AU; WRITE
+                ATS; (** INCLUIDO **)           F80LINHA
+                PF; 80 AS; N
+                AD; (1)    SD-GRAVADOS
+            EC;
+        EC;
+        LABEL; SALTA-FVW
+    END;
+    DW; SD-LIDOS NOT = GLB.ZEROS
+        MV; (** TOTAL NOTAS LIDAS:)        F80LINHA
+        ATS; SD-LIDOS                      F80LINHA
+        PF; 80 AS; N
+        MV; (** TOTAL NOTAS GRAVADAS:)        F80LINHA
+        ATS; SD-GRAVADOS                      F80LINHA
+        PF; 80 AS; N
+    END;
+    MV; (***************************************************************************************) F80LINHA
+    PF; 80 AS; N
+
+    :: CARGA PAGAMENTOS
+
+    BP; CLEAR
+    BP; 01 AS; P
+    BP; 02 AS; P
+    MV; (  ARQUIVO PROCESSADO:)    F80LINHA
+    ATS; SD-ARQUIVO                F80LINHA
+    ATS; ( FILIAL:)                F80LINHA
+    ATS; SD-FILIAL                 F80LINHA
+    PF; 80 AS; P
+    MV; (CARGA PAGAMENTOS FABRICA)     F80LINHA
+    PF; 80 AS; P
+
+    DT; ACTUAL A EAS; 90
+        BEGIN.LABEL; SALTA-FA4
+        MV; A*F90LINHA    SD-FA4
+        DW; SD-FA4-1 NOT = (FA4)
+            JTO; SALTA-FA4
+        END;
+        BC; SD-FA4-TIPO-DOCUMENTO-1
+        CS; (D5) : COMISSAO
+            DW; SD-FA4-NUMDOC-1 NOT = GLB.SPACES
+                MV; SD-FA4-NUMDOC-1         F03-NUMDOC
+                MV; GLB.SPACES              F03-SERIEDOC
+                MV; SD-FA4-DESCR-DOCUM-1    F03-DESCRICAO
+                MV; SD-FA4-TIPO-DOCUMENTO-1 F03-TIPOPGTO
+                MV; SD-FA4-VALOR-1          GSD-VLAUX
+                DW; SD-FA4-DEB-CRED-1 = (D)
+                    CONTRA; GSD-VLAUX
+                END;
+                MV; GSD-VLAUX             F03-VALOR
+                DW; SD-FA4-DTLANC-1 NOT = GLB.ZEROS
+                    DC; SD-FA4-DTLANC-1 FORMAT; DDMMCCYY
+                    MV; GLB.DC-CCYYMMDD    F03-DTLANC
+                    MV; GLB.DC-CCYYMMDD    SD-SDTPGTO
+                    DT; EVERY PCVVWP02 (SD-FA4-NUMDOC-1 SD-SDTPGTO)
+                        MV; (JA LANCADO)    F03-OBS
+                        BK;
+                    END;
+                    DW; GLB.STATUS = (*****)
+                        AE; CVVWP
+                            AU; SD-FA4-NUMDOC-1         NOTIFICACAO
+                            AU; SD-FA4-NUMDOC-1         NUMDOCFAB
+                            AU; GSD-VLAUX               VALORPGTO
+                            AU; SD-SDTPGTO              DATAPGTO
+                            AU; SD-FA4-TIPO-DOCUMENTO-1 CODPGTOFAB
+                            AU; (CVD)                   TIPOPGTO
+                            AU; SD-DNCARGA              DNCARGA
+                            AU; SD-NUMUSU               NUMUSU
+                            AU; SD-DTHOJE               SDTCAD
+                        AU; WRITE
+                        MV; (INCLUIDO)                  F03-OBS
+                    END;
+                ELSE;
+                    MV; (NAO INCLUIDO, SEM DT LANC) F03-OBS
+                END;
+                PF; 03 AS; P
+            END;
+    :
+        EC;
+        BC; SD-FA4-TIPO-DOCUMENTO-2
+        CS; (D5) : COMISSAO
+            DW; SD-FA4-NUMDOC-2 NOT = GLB.SPACES
+                MV; SD-FA4-NUMDOC-2         F03-NUMDOC
+                MV; GLB.SPACES              F03-SERIEDOC
+                MV; SD-FA4-DESCR-DOCUM-2    F03-DESCRICAO
+                MV; SD-FA4-TIPO-DOCUMENTO-2 F03-TIPOPGTO
+                MV; SD-FA4-VALOR-2          GSD-VLAUX
+                DW; SD-FA4-DEB-CRED-2 = (D)
+                    CONTRA; GSD-VLAUX
+                END;
+                MV; GSD-VLAUX             F03-VALOR
+                DW; SD-FA4-DTLANC-2 NOT = GLB.ZEROS
+                    DC; SD-FA4-DTLANC-2 FORMAT; DDMMCCYY
+                    MV; GLB.DC-CCYYMMDD    F03-DTLANC
+                    MV; GLB.DC-CCYYMMDD    SD-SDTPGTO
+                    DT; EVERY PCVVWP02 (SD-FA4-NUMDOC-2 SD-SDTPGTO)
+                        MV; (JA LANCADO)    F03-OBS
+                        BK;
+                    END;
+                    DW; GLB.STATUS = (*****)
+                        AE; CVVWP
+                            AU; SD-FA4-NUMDOC-2         NOTIFICACAO
+                            AU; SD-FA4-NUMDOC-2         NUMDOCFAB
+                            AU; GSD-VLAUX               VALORPGTO
+                            AU; SD-SDTPGTO              DATAPGTO
+                            AU; SD-FA4-TIPO-DOCUMENTO-2 CODPGTOFAB
+                            AU; (CVD)                   TIPOPGTO
+                            AU; SD-DNCARGA              DNCARGA
+                            AU; SD-NUMUSU               NUMUSU
+                            AU; SD-DTHOJE               SDTCAD
+                        AU; WRITE
+                        MV; (INCLUIDO)                  F03-OBS
+                    END;
+                ELSE;
+                    MV; (NAO INCLUIDO, SEM DT LANC) F03-OBS
+                END;
+                PF; 03 AS; P
+            END;
+        EC;
+        LABEL; SALTA-FA4
+    END;
+    MV; (***************************************************************************************) F80LINHA
+    PF; 80 AS; P
+
+
+END;
