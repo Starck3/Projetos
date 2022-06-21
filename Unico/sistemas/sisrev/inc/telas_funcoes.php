@@ -36,10 +36,11 @@ switch ($_GET['acao']) {
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=14');
         break;
     case '4': // Editando na tabela sisrev_usuario_funcao
+        /* $selectFuncao = "";
         $editandoUsuarioFuncao = "INSERT INTO sisrev_usuario_funcao (id_usuario, id_funcao) 
-                                    VALUES ('".$_GET['id']."', '".$_POST['descricao']."')";
+                                    VALUES ('".$_GET['id']."', '".$_POST['descricao']."')"; */
         
-        echo $editandoUsuarioFuncao;
+        var_dump($_POST['funcao']);
         
         /* if (!$resultSisrevUserFuncao = $conn->query($editandoUsuarioFuncao)){
             printf("Erro ao amarrar a função ao usuário %s\n", $conn->error);*/

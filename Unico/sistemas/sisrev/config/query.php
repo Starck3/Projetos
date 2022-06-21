@@ -36,8 +36,6 @@ $relatorioExcel = "SELECT * FROM sisrev_empresas_bpmgp where ID_EMPRESA NOT IN(3
 
 $deletar = "SELECT NOME_EMPRESA,SISTEMA,EMPRESA_NBS,CONSORCIO,EMPRESA_APOLLO,REVENDA_APOLLO,ORGANOGRAMA_SENIOR,EMPRESA_SENIOR,FILIAL_SENIOR FROM sisrev_empresas_bpmgp ";   
 
-$queryModulos = "SELECT * FROM sisrev_modulos";
-
 $queryIsNullPE = "SELECT id FROM sisrev_politicamente_exposto WHERE ";
 
 //query chamar acessos rápidos Sisrev
@@ -66,5 +64,8 @@ $queryFuncaoModulos = "SELECT
                         sisrev_funcao SF
                     LEFT JOIN
                         sisrev_modulos SM ON SF.id_modulos = SM.id";
+
+//query para inserir log no bd unico
+$inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data) VALUES ('".$_FILES['arquivo']['name']."','".$uploadfile."','".$data."');";
 
 ?>
