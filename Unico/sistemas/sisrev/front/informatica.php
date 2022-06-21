@@ -49,15 +49,6 @@
           </div>
         </a>
       </div>
-      <div class="col-sm-3"> 
-        <a href="processosFabrica.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Administração</h4>
-            </div>
-          </div>
-        </a>
-      </div>
       
       <hr style="margin-top: 20px; opacity: 0;" > <!-- Repetir a cada 4 div  -->
      

@@ -47,5 +47,5 @@ foreach ($_POST['sistemas'] as $key => $value) {
 
 $conn->close();
 
-header('location: ../front/usuarios.php?pg=1&conf=1&msn=8')
+header('location: ../front/iframeUsuarios.php?pg=1&conf=1&msn=8')
 ?>

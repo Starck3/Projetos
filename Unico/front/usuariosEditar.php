@@ -1,12 +1,9 @@
 <?php
 session_start();
-
 require_once('../config/databases.php');
 require_once('../config/query.php');
 require_once('administrador.php');
 require_once('head.php');
-require_once('header.php');
-require_once('menu.php');
 
 $queryUsuarios .= "WHERE U.id_usuario = " . $_GET['id_usuario'];
 $resultUsuario = $conn->query($queryUsuarios);
@@ -14,19 +11,7 @@ $resultUsuario = $conn->query($queryUsuarios);
 $usuario = $resultUsuario->fetch_assoc();
 ?>
 
-<main id="main" class="main">
-
-  <div class="pagetitle">
-    <h1>Editando Usuários</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="../index.php?pg=1">Home</a></li>
-        <li class="breadcrumb-item">Configurações</li>
-        <li class="breadcrumb-item"><a href="usuarios.php?pg=<?= $_GET['pg'] ?>&conf=<?= $_GET['conf'] ?>&id_usuario=<?= $usuario['id_usuario'] ?>">Usuários</a></li>
-        <li class="breadcrumb-item active">Editando usuário</li>
-      </ol>
-    </nav>
-  </div><!-- End Page Title -->
+<main id="main" class="main" style="margin-top: -19px;">
 
   <?php require_once('../inc/mensagens.php') ?><!-- Alertas -->
 
@@ -62,8 +47,8 @@ $usuario = $resultUsuario->fetch_assoc();
 
 
               <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Empresa:</label>
-                <div class="col-sm-9">
+                <label class="col-sm-3 col-form-label" style="margin-right: 72px;">Empresa:</label>
+                <div class="col-sm-8">
                   <select class="form-select" name="empresa">
                     <option value="<?= $usuario['id_empresa'] ?>" selected=""><?= $usuario['empresa'] ?></option>
                     <option>--------</option>
@@ -80,8 +65,8 @@ $usuario = $resultUsuario->fetch_assoc();
 
 
               <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Departamento:</label>
-                <div class="col-sm-9">
+                <label class="col-sm-3 col-form-label" style="margin-right: 72px;">Departamento:</label>
+                <div class="col-sm-8">
                   <select class="form-select" name="departamento">
                     <option value="<?= $usuario['id_depto'] ?>" selected=""><?= $usuario['departamento'] ?></option>
                     <option>--------</option>
@@ -162,7 +147,7 @@ $usuario = $resultUsuario->fetch_assoc();
                 </div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                <a href="iframeUsuarios.php" class="btn btn-secondary">Voltar</a>
                 <button type="submit" class="btn btn-primary">Salvar</button>
               </div>
             </form>

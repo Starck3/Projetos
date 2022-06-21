@@ -26,7 +26,7 @@ switch ($_GET['acao']) {
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=4');
 
         break;
-    case '3':
+    case '3': //Apagando na tabela sisrev_funcao
         $deleteFuncao = "DELETE FROM sisrev_funcao WHERE id_funcao = '".$_GET['id']."'";
 
         if (!$resultDeleteFuncao = $conn->query($deleteFuncao)){
@@ -34,6 +34,18 @@ switch ($_GET['acao']) {
         }
 
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=14');
+        break;
+    case '4': // Editando na tabela sisrev_usuario_funcao
+        $editandoUsuarioFuncao = "INSERT INTO sisrev_usuario_funcao (id_usuario, id_funcao) 
+                                    VALUES ('".$_GET['id']."', '".$_POST['descricao']."')";
+        
+        echo $editandoUsuarioFuncao;
+        
+        /* if (!$resultSisrevUserFuncao = $conn->query($editandoUsuarioFuncao)){
+            printf("Erro ao amarrar a função ao usuário %s\n", $conn->error);*/
+
+        break;
+        
 }
 
 ?>

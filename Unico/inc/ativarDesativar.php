@@ -14,4 +14,4 @@ $conn->close();
 
 $msn = $deletar == 1 ? "5" : "6";
 
-header('location: ../front/usuarios.php?pg=1&conf=1&id_usuario=22&msn='.$msn.'');
+header('location: ../front/iframeUsuarios.php?pg=1&conf=1&id_usuario=22&msn='.$msn.'');
