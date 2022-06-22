@@ -292,7 +292,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-title {
   padding: 10px 0 1px 0px !important;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
@@ -682,7 +682,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sidebar-nav .nav-link.collapsed {
   color: #012970;
-  background: #fff;
+  background: #ffffff00;
 }
 .sidebar-nav .nav-link.collapsed i {
   color: #899bbd;

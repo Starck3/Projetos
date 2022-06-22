@@ -10,7 +10,7 @@ require_once('menu.php'); //menu lateral da pagina
     <h1>Configurações</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php?pg=1">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="index.php?pg=1">Home</a></li>
         <li class="breadcrumb-item">Configurações</li>
       </ol>
     </nav>
@@ -24,16 +24,16 @@ require_once('menu.php'); //menu lateral da pagina
     <div class="row">
       <section class="section">
         <div class="row">
-          <div class="col-lg-6 py-2">
+          <div class="col-lg-3 py-2">
             <a href="telas_funcoes.php?pg=<?=$_GET['pg']?>&tela=<?=$_GET['tela']?>" class="list-group-item list-group-item-action">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Cadastro de telas e funções</h5>
+                  <h5 class="card-title">Telas e funções</h5>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-lg-6 py-2">
+          <div class="col-lg-3 py-2">
             <a href="usuarios.php?pg=<?=$_GET['pg']?>&tela=<?=$_GET['tela']?>" class="list-group-item list-group-item-action">
               <div class="card">
                 <div class="card-body">

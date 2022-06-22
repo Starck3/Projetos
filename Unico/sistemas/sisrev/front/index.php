@@ -6,13 +6,8 @@ require_once('menu.php'); //menu lateral da pagina
 
 <main id="main" class="main">
 
-<div class="pagetitle">
+  <div class="pagetitle">
     <h1>Home</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php?pg=<?= $_GET['pg'] ?>">Home</a></li>
-      </ol>
-    </nav>
   </div><!-- End Navegação -->
 
   <?php
@@ -20,9 +15,10 @@ require_once('menu.php'); //menu lateral da pagina
   ?>
 
   <section class="section">
+    <h5 class="card-title"><span>| Departamentos</span></h5>
     <div class="row">
-      <div class="col-sm-3"> 
-        <a href="informatica.php?pg=<?= $_GET['pg'] ?>" class="list-group-item list-group-item-action">
+      <div class="col-sm-3">
+        <a href="informatica.php" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Informática</h5>
@@ -30,8 +26,8 @@ require_once('menu.php'); //menu lateral da pagina
           </div>
         </a>
       </div>
-      <div class="col-sm-3"> 
-        <a href="administracao.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" class="list-group-item list-group-item-action">
+      <div class="col-sm-3">
+        <a href="administracao.php" class="list-group-item list-group-item-action">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Administração</h4>
@@ -39,6 +35,40 @@ require_once('menu.php'); //menu lateral da pagina
           </div>
         </a>
       </div>
+      <div class="col-sm-3">
+        <a href="pecas.php" class="list-group-item list-group-item-action">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Peças</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <h5 class="card-title" style="margin-top: 10px;"><span>| Paginas</span></h5>
+
+    <div class="row">
+
+      <div class="col-sm-3">
+        <a href="configuracao.php" class="list-group-item list-group-item-action">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Configurações</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-sm-3">
+        <a href="ajuda.php" class="list-group-item list-group-item-action">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Ajuda</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+      
     </div>
   </section>
 

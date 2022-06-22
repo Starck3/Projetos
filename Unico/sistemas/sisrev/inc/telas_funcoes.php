@@ -9,11 +9,13 @@ switch ($_GET['acao']) {
         if (!$resultInsertFuncao = $conn->query($insertFuncao)){
             printf("Erro ao inserir nova Função %s\n", $conn->error);
         }
+
+        //Fechando o banco    
+        $conn->close();
         
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=8');
         
-        break;
-    
+        break;    
     case '2': //Edição na tabela sisrev_funcao
         $updateFuncao = "UPDATE sisrev_funcao set descricao = '".$_POST['descricao']."', 
                                         id_modulos = '".$_POST['tela']."'
@@ -22,6 +24,9 @@ switch ($_GET['acao']) {
         if (!$resultUpdateFuncao = $conn->query($updateFuncao)){
             printf("Erro ao editar a Função %s\n", $conn->error);
         }
+
+        //Fechando o banco    
+        $conn->close();
 
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=4');
 
@@ -32,21 +37,29 @@ switch ($_GET['acao']) {
         if (!$resultDeleteFuncao = $conn->query($deleteFuncao)){
             printf("Erro ao deletar a Função %s\n", $conn->error);
         }
+        
+        //Fechando o banco    
+        $conn->close();
 
         header('Location: ../front/telas_funcoes.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&f=1&msn=14');
+        
         break;
-    case '4': // Editando na tabela sisrev_usuario_funcao
-        /* $selectFuncao = "";
-        $editandoUsuarioFuncao = "INSERT INTO sisrev_usuario_funcao (id_usuario, id_funcao) 
-                                    VALUES ('".$_GET['id']."', '".$_POST['descricao']."')"; */
-        
-        var_dump($_POST['funcao']);
-        
-        /* if (!$resultSisrevUserFuncao = $conn->query($editandoUsuarioFuncao)){
-            printf("Erro ao amarrar a função ao usuário %s\n", $conn->error);*/
+    case '4':
+        //Limpando todas as funções do usuário
+        $queryLimpar = "DELETE FROM sisrev_usuario_funcao WHERE id_usuario = ".$_GET['id']."";
+        $resultLimpar = $conn->query($queryLimpar);
 
-        break;
-        
+        //Salvando todas as funções do usuário
+        foreach ($_POST['funcao'] as $key => $value) {
+        $queryInsert = "INSERT INTO sisrev_usuario_funcao (id_funcao, id_usuario) VALUES ('".$value."', '".$_GET['id']."')";
+        $resultado = $conn->query($queryInsert);
+        }
+
+        //Fechando o banco    
+        $conn->close();
+
+        header('Location: ../front/usuarios.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=4');//msn 4 = Editado com sucesso!
+
+        break;        
 }
-
 ?>

@@ -57,15 +57,4 @@ $queryUsers = "SELECT * FROM usuarios";
 //query para chamar as funções que vão ser usadas para cadastrar nos usuários
 $queryFuncoes = "SELECT * FROM sisrev_funcao";
 
-//query para chamar os usuários por função
-$queryFuncaoModulos = "SELECT 
-                        SF.id_funcao, SM.nome, SF.descricao, SF.id_modulos
-                    FROM
-                        sisrev_funcao SF
-                    LEFT JOIN
-                        sisrev_modulos SM ON SF.id_modulos = SM.id";
-
-//query para inserir log no bd unico
-$inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data) VALUES ('".$_FILES['arquivo']['name']."','".$uploadfile."','".$data."');";
-
 ?>

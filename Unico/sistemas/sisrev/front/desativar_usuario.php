@@ -14,12 +14,12 @@ require_once('../config/query.php'); //Dados do banco MYSQL
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Desativar / Ativar Usuários</h1>
+    <h1>Usuários Sistemas</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
         <li class="breadcrumb-item"><a href="informatica.php">Informática</a></li>
-        <li class="breadcrumb-item">Desativar Usuários</li>
+        <li class="breadcrumb-item">Usuários Sistemas</li>
       </ol>
     </nav>
   </div><!-- End Navegação -->
