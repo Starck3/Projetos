@@ -85,7 +85,7 @@ require_once('menu.php'); //menu lateral da pagina
                   </li>
                 </ul>
                 <div class="tab-content pt-2" id="myTabContent">
-                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <div class="tab-pane fade <?= empty($data)? 'active show' : '' ?>" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="header d-flex align-items-center header-scrolled">
                       <form method="POST" action="<?= $PHP_SELF ?>" class="search-form d-flex align-items-center">
                         <input type="date" style="width:40%;" class="form-control col-lg-12" id="dataPesquisa" name="dataPesquisa">&emsp;&emsp;&emsp;
@@ -93,7 +93,7 @@ require_once('menu.php'); //menu lateral da pagina
                       </form>
                     </div>
                   </div>
-                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <div class="tab-pane fade <?= empty($data)? '' : 'active show' ?>" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="header d-flex align-items-center header-scrolled">
                       <form class="search-form d-flex align-items-center" method="POST" action='../inc/processosUpload.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>' enctype="multipart/form-data">
                         <input type="file" name="arquivo" placeholder="Insira Documento" id="arquivo" style="width: 400px;" multiple="multiple">
