@@ -6,6 +6,12 @@ require_once('menu.php'); //menu lateral da pagina
 
 <main id="main" class="main">
 
+<style>
+.div-table{ display:table; width: auto; border: 1px solid #e0e1e1; border-radius: 5px;}
+.div-table-row{display:table-row;width: auto;/*se quiser pode colocar auto neste também*/}
+.div-table-col{display:table-cell;padding: 8px; font-size: 13px;}
+</style>
+
   <div class="pagetitle">
     <h1>Usuários</h1>
     <nav>
@@ -28,7 +34,14 @@ require_once('menu.php'); //menu lateral da pagina
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Edição de usuários para o Sisrev</h5>
+            <h5 class="card-title">Lista usuários</h5>
+            Nesta tela só é possivel tratar permissões dos usuários para o Sistema Sisrev.
+            <h6>
+            Caso seja necessario mudar outras informações como por exemplo; usuário, senha, etc... Basta clicar neste icone
+              <a href="../../../front/usuarios.php?=$_GET['pg']?>&tela=<?=$_GET['tela']?>" class="btn btn-success button-rigth-espelho" title="Editar usuários">
+                <i class="bx bxs-user-detail"></i>
+              </a>
+          </h6>  
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
@@ -52,10 +65,7 @@ require_once('menu.php'); //menu lateral da pagina
                       <th scope="row">' . $usuarios['id_usuario'] . '</th>
                       <td>' . $usuarios['nome'] . '</td>
                       <td>' . $usuarios['usuario'] . '</td>
-                      <td> 
-                        <a href="usuarioSisrev.php?pg='.$_GET['pg'].'tela='.$_GET['tela'].'" title="Editar Usuário" class="btn btn-primary btn-sm">
-                          <i class="bi bi-pencil"></i>
-                        </a>
+                      <td>
                         <button type="button" title="Permissões" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editarModal'.$usuarios['id_usuario'].'">
                           <i class="bx bxs-lock-open"></i>
                         </button>
@@ -113,6 +123,23 @@ require_once('menu.php'); //menu lateral da pagina
                                             $rowFuncaoUsuario = $resultUserFuncao->fetch_assoc();                                             
                                             $checked = $rowFuncaoUsuario['id_funcao'] != NULL ? 'checked' : '';
                                             echo'
+
+
+
+                                            <div class="div-table">
+                                              <div class="div-table-row">
+                                                  <input class="form-check-input me-1" type="checkbox" name="funcao[]" value="'.$rowFuncoes['id_funcao'].'" '.$checked.' style="margin-top: 39px;margin-left: 9px;">
+                                                  <div class="div-table-col font-1"><b>Nome</b><hr>'.$rowFuncoes['nome'].'</div>
+                                                  <div class="div-table-col font-1"><b>Descrição</b><hr>'.$rowFuncoes['descricao'].'</div>
+                                              </div>                                              
+                                            </div>
+
+
+
+
+
+
+
                                             <ul class="list-group">
                                               <li class="list-group-item">
                                                 <input class="form-check-input me-1" type="checkbox" name="funcao[]" value="'.$rowFuncoes['id_funcao'].'" '.$checked.'>

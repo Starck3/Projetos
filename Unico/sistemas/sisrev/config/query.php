@@ -57,4 +57,8 @@ $queryUsers = "SELECT * FROM usuarios";
 //query para chamar as funções que vão ser usadas para cadastrar nos usuários
 $queryFuncoes = "SELECT * FROM sisrev_funcao";
 
+$queryFuncaoModulos = "SELECT * FROM sisrev_funcao SF
+                        LEFT JOIN sisrev_modulos SM
+                        ON SF.id_modulos = SM.id";
+
 ?>

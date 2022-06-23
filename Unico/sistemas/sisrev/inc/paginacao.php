@@ -39,3 +39,5 @@ if($tela == "telas_funcoes.php"){if($_GET['pg'] != '4'){echo'<script>window.loca
 if($tela == "cadastro_funcao.php"){if($_GET['pg'] != '4'){echo'<script>window.location.href = "cadastro_funcao.php?pg=4";</script>';}}
 //Config Usuários
 if($tela == "usuarios.php"){if($_GET['pg'] != '4'){echo '<script>window.location.href = "usuarios.php?pg=4";</script>';}}
+//atualizarPreco
+if($tela == "atualizarPreco.php"){if($_GET['pg'] != '2'){echo '<script>window.location.href = "atualizarPreco.php?pg=2";</script>';}}

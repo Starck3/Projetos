@@ -3,8 +3,8 @@ require_once('../config/query.php');
 
 switch ($_GET['acao']) {
     case '1': //Inserção na tabela sisrev_funcao
-        $insertFuncao = "INSERT INTO sisrev_funcao (descricao, id_modulos)
-                        VALUES ('" .$_POST['descricao']. "', '" .$_POST['tela']. "')";
+        $insertFuncao = "INSERT INTO sisrev_funcao (nome, descricao, id_modulos)
+                        VALUES ('".$_POST['nome']."' ,'" .$_POST['descricao']. "', '" .$_POST['tela']. "')";
 
         if (!$resultInsertFuncao = $conn->query($insertFuncao)){
             printf("Erro ao inserir nova Função %s\n", $conn->error);

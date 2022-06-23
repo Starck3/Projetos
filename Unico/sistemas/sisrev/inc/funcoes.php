@@ -18,10 +18,16 @@
                                 </div>
                                 <form action="../inc/telas_funcoes.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>&acao=1" method="post">
                                     <div class="row mb-3" style="margin-top: 13px;">
+                                        <label for="nome" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Nome:</label>
+                                        <div class="col-md-7 col-lg-8">
+                                            <input name="nome" type="text" class="form-control" id="nome" value="" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3" style="margin-top: 13px;">
                                         <label for="descricao" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Descrição:</label>
-                                            <div class="col-md-7 col-lg-8">
-                                                <input name="descricao" type="text" class="form-control" id="descricao" value="" required>
-                                            </div>
+                                        <div class="col-md-7 col-lg-8">
+                                            <input name="descricao" type="text" class="form-control" id="descricao" value="" required>
+                                        </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="tela" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Tela:</label>
@@ -29,11 +35,10 @@
                                             <select id="tela" name="tela" class="form-select" required>
                                                 <option value =''>Escolha...</option>
                                                     <?php
-                                                    $queryModulos .= " WHERE deletar = 0";
-                                                    $resultModulos = $conn->query($queryModulos);
-                                                    while ($rowModulos = $resultModulos->fetch_assoc()) {
-                                                        echo'<option value='.$rowModulos['id'].'>'.$rowModulos['nome'].'</option>';
-                                                    }                                  
+                                                        $resultModulos = $conn->query($queryAcessos);
+                                                        while ($rowModulos = $resultModulos->fetch_assoc()) {
+                                                            echo'<option value='.$rowModulos['id'].'>'.$rowModulos['nome'].'</option>';
+                                                        }                                  
                                                     ?>                                  
                                             </select>                                
                                         </div>
@@ -47,6 +52,7 @@
                         </div>
                     </div>
                     <!-- Fim do Modal-->
+                    <!-- Tabela com as funções cadastradas -->
                     <table class="table datatable">
                         <thead>
                             <tr>
@@ -94,9 +100,18 @@
                                                     <div class="row mb-3">
                                                         <label for="tela" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Tela:</label>
                                                         <div class="col-md-7 col-lg-8">
-                                                            <select id="tela" name="tela" class="form-select" required>
-                                                                <option value="">Escolha a tela...</option>';
-                                                                    $resultModulos = $conn->query($queryModulos);
+                                                            <select id="tela" name="tela" class="form-select" required>';
+                                                                //trazendo as informações do editar do banco
+                                                                $queryTelaEditar = "SELECT * FROM sisrev_funcao SF
+                                                                                    LEFT JOIN sisrev_modulos SM
+                                                                                    ON SF.id_modulos = SM.ID WHERE id_funcao = '".$rowFuncoes['id_funcao']."'";
+                                                                $resultTelasEditar = $conn->query($queryTelaEditar);
+                                                                while ($rowTelasEditar = $resultTelasEditar->fetch_assoc()) {
+                                                                    echo'<option value='.$rowTelasEditar['id'].'>'.$rowTelasEditar['nome'].'</option>';
+                                                                }
+                                                                echo'
+                                                                <option value="">----------</option>';
+                                                                    $resultModulos = $conn->query($queryAcessos);
                                                                     while ($rowModulos = $resultModulos->fetch_assoc()) {
                                                                     echo'<option value='.$rowModulos['id'].'>'.$rowModulos['nome'].'</option>';
                                                                     }
@@ -126,13 +141,13 @@
                                                     <div class="row mb-3" style="margin-top: 13px;">                                                       
                                                         <label for="descricao" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Descrição:</label>
                                                         <div class="col-md-7 col-lg-8">
-                                                            <input name="descricao" type="text" class="form-control" id="descricao" value="'.$rowFuncoes['descricao'].'">                                                            
+                                                            <input name="descricao" type="text" class="form-control" id="descricao" value="'.$rowFuncoes['descricao'].'" disabled>                                                            
                                                         </div>                                      
                                                     </div>
                                                     <div class="row mb-3">
                                                         <label for="tela" class="col-md-4 col-lg-3 col-form-label" style="margin-left: 12px;">Tela:</label>
                                                         <div class="col-md-7 col-lg-8"> 
-                                                            <input name="descricao" type="text" class="form-control" id="descricao" value="'.$rowFuncoes['nome'].'">
+                                                            <input name="descricao" type="text" class="form-control" id="descricao" value="'.$rowFuncoes['nome'].'" disabled>
                                                         </div>
                                                     </div>                                   
                                                     <div class="modal-footer">
@@ -143,15 +158,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Fim do Modal-->
-
-
-
-                                    
-                                    
-                                    
-                                    
-                                    ';
+                                    <!-- Fim do Modal-->';
                                 }                          
                             ?>
                         </tbody>
