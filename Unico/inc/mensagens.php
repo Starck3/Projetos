@@ -69,7 +69,7 @@ if (!empty($_GET['msn'])) {
             echo '
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <h4 class="alert-heading">Não foi possivel efetuar a carga do arquivo</h4>
-                <p>Infelismente houve algum erro que não deixou prosseguir com a carga dos arquivos politicamente exposto. Abaixo segue uma lista de possíveis erros:</p>
+                <p>Infelizmente houve algum erro que não deixou prosseguir com a carga dos arquivos politicamente exposto. Abaixo segue uma lista de possíveis erros:</p>
                 <hr>';
             switch ($_GET['erro']) {
                 case '1':

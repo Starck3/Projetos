@@ -60,6 +60,8 @@ switch ($_GET['acao']) {
 
         header('Location: ../front/usuarios.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=4');//msn 4 = Editado com sucesso!
 
-        break;        
+        break;
+        
 }
+
 ?>

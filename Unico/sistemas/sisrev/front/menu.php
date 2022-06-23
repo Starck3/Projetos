@@ -19,7 +19,7 @@ if ($_GET['pg'] == 4 || $_GET['pg'] == 5 || $_GET['pg'] == 1){ $ativar = 'collap
             </a>
         </li><!-- End Dashboard Nav -->
         <hr>
-        <li class="nav-heading">Módulos <?= $ativar ?></li>
+        <li class="nav-heading">Módulos</li>
         <li class="nav-item">
             <a class="nav-link <?= $ativar ?>" data-bs-target="#dep-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-diagram-3"></i><span>Departamentos</span><i class="bi bi-chevron-down ms-auto"></i>
