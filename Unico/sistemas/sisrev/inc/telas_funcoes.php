@@ -58,7 +58,7 @@ switch ($_GET['acao']) {
         //Fechando o banco    
         $conn->close();
 
-        header('Location: ../front/usuarios.php?pg='.$_GET['pg'].'&tela='.$_GET['tela'].'&msn=4');//msn 4 = Editado com sucesso!
+        header('Location: ../front/usuarios.php?pg='.$_GET['pg'].'&msn=4');//msn 4 = Editado com sucesso!
 
         break;
         

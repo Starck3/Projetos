@@ -7,7 +7,7 @@ require_once('menu.php'); //menu lateral da pagina
 <main id="main" class="main">
 
 <style>
-.div-table{ display:table; width: auto; border: 1px solid #e0e1e1; border-radius: 5px;}
+.div-table{width: auto; border: 1px solid #e0e1e1; border-radius: 5px; text-align: center;}
 .div-table-row{display:table-row;width: auto;/*se quiser pode colocar auto neste também*/}
 .div-table-col{display:table-cell;padding: 8px; font-size: 13px;}
 </style>
@@ -81,89 +81,69 @@ require_once('menu.php'); //menu lateral da pagina
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
+                            <form action="../inc/telas_funcoes.php?pg=' . $_GET['pg'] . '&tela=' . $_GET['tela'] . '&acao=4&id=' . $usuarios['id_usuario'] . '" method="post"> 
+                              <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title">Selecione a tela e a função</h5>
 
-                          <form action="../inc/telas_funcoes.php?pg=' . $_GET['pg'] . '&tela=' . $_GET['tela'] . '&acao=4&id=' . $usuarios['id_usuario'] . '" method="post"> 
-                            <div class="card">
-                              <div class="card-body">
-                                <h5 class="card-title">Selecione a tela e a função</h5>';
+                                  <div class="card">
+                                    <div class="card-body">
+                                      <!-- Default Accordion -->
+                                      <div class="accordion" id="accordionExample'.$usuarios['id_usuario'].'" style="margin-top: 12px;margin-bottom: 10px;">';
+                                        //chamando todas as telas com funções
+                                        $queryAcessos = "SELECT DISTINCT sm.nome, sm.id FROM sisrev_funcao sf LEFT JOIN sisrev_modulos sm ON sf.id_modulos = sm.id WHERE sm.deletar = '0' ORDER BY nome ASC";    
+                                        $resultTelas = $conn->query($queryAcessos);
 
-                                //chamando todas as telas
-                                $queryAcessos = "SELECT * FROM sisrev_modulos WHERE deletar = 0";    
-                                $resultTelas = $conn->query($queryAcessos);
+                                        while ($rowTelas = $resultTelas->fetch_assoc()) {
+                                          echo'
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$rowTelas['id'].'" aria-expanded="false" aria-controls="collapse">
+                                                '.$rowTelas['nome'].'
+                                              </button>
+                                            </h2>
+                                            <div id="collapse'.$rowTelas['id'].'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                              <div class="accordion-body" style="margin-top: -10px;">'; 
 
-                                //while telas
-                                while ($rowTelas = $resultTelas->fetch_assoc()) {
+                                                //chamando as funções por tela
+                                                $queryFunTelas = "SELECT * FROM sisrev_funcao WHERE id_modulos = '".$rowTelas['id']."'";
+                                                $resultFunTelas = $conn->query($queryFunTelas);
 
-                                  //chamando as funções por telas
-                                  $queryFuncoes = "SELECT * FROM sisrev_funcao WHERE id_modulos = '".$rowTelas['id']."'";
-                                  $resultFuncao = $conn->query($queryFuncoes);
-
-                                  while ($rowFuncao = $resultFuncao->fetch_assoc()) {
-                                    echo'
-                                  <!-- Inicio Accordion Função -->
-                                  <div class="accordion" id="accordionExample'.$usuarios['id_usuario'].'">
-                                    <div class="accordion-item">
-                                      <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne'.$rowTelas['id'].'" aria-expanded="false" aria-controls="collapseOne">
-                                          '.$rowTelas['nome'].'
-                                        </button>
-                                      </h2>
-                                      <div id="collapseOne'.$rowTelas['id'].'" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-                                        <div class="accordion-body">';
-                                          //aplicando query de funções no banco
-                                          $queryFuncoesTelas = "SELECT * FROM sisrev_funcao WHERE id_modulos = ".$rowTelas['id']."";
-                                          $resultFuncaoTelas = $conn->query($queryFuncoesTelas);
-
-                                          //Inicio do While das funções
-                                          while ($rowFuncoes = $resultFuncaoTelas->fetch_assoc()) {
-
-                                            //Buscando as funções por usuário
-                                            $queryUserFuncao = "SELECT * FROM sisrev_usuario_funcao WHERE id_usuario = '".$usuarios['id_usuario']."' AND id_funcao = '".$rowFuncoes['id_funcao']."'";
-                                            $resultUserFuncao = $conn->query($queryUserFuncao);
-                                            $rowFuncaoUsuario = $resultUserFuncao->fetch_assoc();                                             
-                                            $checked = $rowFuncaoUsuario['id_funcao'] != NULL ? 'checked' : '';
-                                            echo'
-
-
-
-                                            <div class="div-table">
-                                              <div class="div-table-row">
-                                                  <input class="form-check-input me-1" type="checkbox" name="funcao[]" value="'.$rowFuncoes['id_funcao'].'" '.$checked.' style="margin-top: 39px;margin-left: 9px;">
-                                                  <div class="div-table-col font-1"><b>Nome</b><hr>'.$rowFuncoes['nome'].'</div>
-                                                  <div class="div-table-col font-1"><b>Descrição</b><hr>'.$rowFuncoes['descricao'].'</div>
-                                              </div>                                              
+                                                while ($rowFunTelas = $resultFunTelas->fetch_assoc()) {
+                                                  echo'
+                                                  <div class="div-table" style="margin-bottom: 6px;">
+                                                    <div class="div-table-row">
+                                                      <div class="div-table-col font-1"><b>#</b><hr></div>';
+                                                        //chamando as funções por usuário para checar o box
+                                                        $queryFunUser = "SELECT * FROM sisrev_usuario_funcao WHERE id_usuario = '".$usuarios['id_usuario']."' AND id_funcao = '".$rowFunTelas['id_funcao']."'"; 
+                                                        $resultFunUser = $conn->query($queryFunUser);
+                                                        $rowFunUser = $resultFunUser->fetch_assoc();
+                                                        $checked = $rowFunUser['id_usuario'] != NULL ? 'checked' : '';                                                        
+                                                        echo'
+                                                      <input class="form-check-input me-1" type="checkbox" name="funcao[]" value="'.$rowFunTelas['id_funcao'].'" '.$checked.' style="margin-top: 56px;margin-left: -18px;">
+                                                      <div class="div-table-col font-1"><b>Nome</b><hr>'.$rowFunTelas['nome'].'</div>
+                                                      <div class="div-table-col font-1" style="width: 100%;"><b>Descrição</b><hr>'.$rowFunTelas['descricao'].'</div>
+                                                    </div>                                              
+                                                  </div>';
+                                                }
+                                                echo'                                              
+                                              </div>
                                             </div>
-
-
-
-
-
-
-
-                                            <ul class="list-group">
-                                              <li class="list-group-item">
-                                                <input class="form-check-input me-1" type="checkbox" name="funcao[]" value="'.$rowFuncoes['id_funcao'].'" '.$checked.'>
-                                                  '.$rowFuncoes['nome'].' - '.$rowFuncoes['descricao'].'
-                                              </li>
-                                            </ul>';
-                                          } echo'
-                                        </div>
+                                          </div>';
+                                        }                                            
+                                        echo'
                                       </div>
+                                      <!-- End Default Accordion Example -->
                                     </div>
                                   </div>
-                                  <!-- Fim Accordion Função --> ';                                     
-                                  }                                  
-                                } echo'
+                                </div>
                               </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                              <button type="submit" class="btn btn-success">Salvar</button>
-                          </div>
-                          </form>
-                          
-                          </div>
-                          
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-success">Salvar</button>
+                              </div>
+                            </form>                          
+                          </div>                          
                         </div>
                       </div>
                     </div>
