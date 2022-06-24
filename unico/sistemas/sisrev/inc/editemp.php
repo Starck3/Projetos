@@ -4,8 +4,6 @@
   require_once('../../../config/databases.php');
   require_once('../inc/apiRecebeSelbetti.php');
 
-
-
   $info = $_GET['ID'];
 
   $editarTabela .= " WHERE ID_EMPRESA = $info";
@@ -22,14 +20,14 @@
     $valueRevApollo = ($edit["REVENDA_APOLLO"] == 0) ? '' : $edit["REVENDA_APOLLO"];
 
     $valueEmpNbs = ($edit["EMPRESA_NBS"] == 0) ? '' : $edit["EMPRESA_NBS"];
-    
+
     echo '
     <section class="section">
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-          <form class="row g-3" action="http://10.100.1.215/smartshare/bd/editemp2.php?id_empresa='.$info.'" method="POST" enctype="multipart/form-data">
+          <form class="row g-3" action="http://10.100.1.215/smartshare/bd/editemp.php?id_empresa=' . $info . '&pg='.$_GET['pg'].'" method="POST">
               <div class="form-floating mt-4 col-md-12">
                 <select class="form-select" id="floatingSelect" name="usuarioBPM" disabled>
                   <option value="1">' . $edit["NOME_EMPRESA"] . '</option>
@@ -39,26 +37,26 @@
 
               <div class="form-floating mt-4 col-md-6">
                 <select class="form-select" onchange="camposObrigatorios()" id="sistema" name="sistema"  required>';
-                if (!empty($edit["SISTEMA"])) {
-                  switch ($edit["SISTEMA"]) {
-                    case 'A':
-                      echo '<option value="A">APOLLO</option>';
-                      break;
-                    case 'N':
-                      echo '<option value="N">BANCO NBS</option>';
-                      break;
-                    case 'H':
-                      echo '<option value="H">BANCO HARLEY</option>';
-                      break;
-                    case '0':
-                      echo '<option value="0">EMPRESA QUE NÃO USA SISTEMA ERP</option>';
-                      break;
-                      }
-                      echo '<option value="">------------------</option>';
-                    } else {
-                      echo '<option value="">------------------</option>';
-                    }
-                  echo '
+    if (!empty($edit["SISTEMA"])) {
+      switch ($edit["SISTEMA"]) {
+        case 'A':
+          echo '<option value="A">APOLLO</option>';
+          break;
+        case 'N':
+          echo '<option value="N">BANCO NBS</option>';
+          break;
+        case 'H':
+          echo '<option value="H">BANCO HARLEY</option>';
+          break;
+        case '0':
+          echo '<option value="0">EMPRESA QUE NÃO USA SISTEMA ERP</option>';
+          break;
+      }
+      echo '<option value="">------------------</option>';
+    } else {
+      echo '<option value="">------------------</option>';
+    }
+    echo '
                   <option value="A">APOLLO</option>
                   <option value="N">BANCO NBS</option>
                   <option value="H">BANCO HARLEY</option>  
@@ -156,21 +154,22 @@
                 <input value="' . $edit['NUMERO_CAIXA'] . '" class="form-control"  name="numero_caixa" maxlength="2" onblur="aprovador()" onkeypress="onlynumber()" required>
                 <label for="numero_caixa">NUMERO CAIXA:<span style="color: red;">*</span></label>
               </div>
-              <div class="form-floating mt-4 col-md-6" style="display: '; echo empty($edit['NUMERO_CAIXA']) ? 'none' : 'block'; echo ';" id="liberarApro">
+              <div class="form-floating mt-4 col-md-6" style="display: ';
+    echo empty($edit['NUMERO_CAIXA']) ? 'none' : 'block';
+    echo ';" id="liberarApro">
                 <select  class="form-select" id="aproCaixa" name="aproCaixa" id="aproCaixa" required>';
-                  if (empty($edit['APROVADOR_CAIXA'])) {
-                    echo '<option value="">------------------</option>';
-                  } else {
-                    echo '<option value="' . $edit['APROVADOR_CAIXA'] . '" selected>' . $edit['APROVADOR_CAIXA'] . '</option>
+    if (empty($edit['APROVADOR_CAIXA'])) {
+      echo '<option value="">------------------</option>';
+    } else {
+      echo '<option value="' . $edit['APROVADOR_CAIXA'] . '" selected>' . $edit['APROVADOR_CAIXA'] . '</option>
                               <option value="">-----------------</option>';
-                  }
-                  echo $aprovador;
-                  echo '</select>
+    }
+    echo $aprovador;
+    echo '</select>
                   <label for="aproCaixa">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
-              <div class="text-center py-2">
-              <a href="http://$_SERVER["SERVER_ADDR"]/unico/sistemas/sisrev/front/empresas.php?pg=<?= $_GET["pg"] ?>&tela=<?= $_GET["tela"] ?>"><button type="button" class="btn btn-primary">Voltar</button></a>
-                <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
+              <div class="text-left py-2">
+                <a href="../front/empresas.php?pg=' . $_GET["pg"] . '" class="btn btn-primary">Voltar</a>
                 <button type="submit" class="btn btn-success">Salvar</button>
               </div>
               </form>
@@ -215,7 +214,7 @@
 </script>
             ';
   }
-  
+
   ?>
 
 

@@ -29,7 +29,7 @@ require_once('../inc/apiRecebeSelbetti.php');
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <form class="row g-3" action="http://10.100.1.215/smartshare/bd/novaRegraEmp2.php" method="POST" enctype="multipart/form-data">
+            <form class="row g-3" action="http://10.100.1.215/smartshare/bd/novaRegraEmp.php?pg=<?= $_GET['pg'] ?>" method="POST">
               <!--DADOS PARA O LANÇAMENTO -->
               <div class="form-floating mt-4 col-md-12">
                 <input class="form-control" id="empresa" name="empresa" required>
@@ -144,7 +144,7 @@ require_once('../inc/apiRecebeSelbetti.php');
                 </select>
                 <label for="aproCaixa">APROVADOR CAIXA:<span style="color: red;">*</span></label>
               </div>
-              <div class="text-center py-2">
+              <div class="text-left py-2">
                 <a href="http://<?=$_SERVER['SERVER_ADDR']?>/unico/sistemas/sisrev/front/empresas.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>"><button type="button" class="btn btn-primary">Voltar</button></a>
                 <button type="reset" class="btn btn-secondary">Limpar Formulario</button>
                 <button type="submit" class="btn btn-success">Salvar</button>

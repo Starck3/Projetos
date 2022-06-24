@@ -30,7 +30,7 @@ require_once('../inc/regras_pe.php');
             <!-- General Form Elements -->
             <div class="header d-flex align-items-center header-scrolled">
               <div class="search-bar">
-                <form class="search-form d-flex align-items-center" method="post" action="../inc/politicamente_exposto.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>" enctype="multipart/form-data">
+                <form class="search-form d-flex align-items-center" method="post" action="../inc/politicamente_exposto.php?pg=<?= $_GET['pg'] ?>" enctype="multipart/form-data">
                   <input type="file" name="arquivo" placeholder="Insira Documento" id="arquivo" required>
                   <button type="submit" title="Enviar" class="btn btn-success" onclick="teste()"><i class="bi bi-send"></i></button>
                 </form>
@@ -70,7 +70,7 @@ require_once('../inc/regras_pe.php');
           </div>
           <div class="modal-footer">
             <a href="javascript:" class="btn btn-secondary" onclick="atualizar()">Voltar</a>
-            <a href="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>&part=1" class="btn btn-primary">Efetuar Carga</a>
+            <a href="http://<?= $_SESSION['servidorOracle'] ?>/unico_api/sisrev/inc/politicamente_exposto.php?pg=<?= $_GET['pg'] ?>&part=1" class="btn btn-primary">Efetuar Carga</a>
           </div>
         </div>
       </div>

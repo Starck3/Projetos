@@ -10,24 +10,18 @@ require_once('menu.php'); //menu lateral da pagina
     <h1>Editar Regra Empresa</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.php?pg=1">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="informatica.php?pg=<?= $_GET['pg'] ?>">Informática</a></li>
-        <li class="breadcrumb-item"><a href="empresas.php?pg=<?= $_GET['pg'] ?>&tela=<?= $_GET['tela'] ?>">Empresa</a></li>
+        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="informatica.php">Informática</a></li>
+        <li class="breadcrumb-item"><a href="empresas.php">Empresa</a></li>
         <li class="breadcrumb-item">Editar Regra Empresa</li>
       </ol>
     </nav>
   </div>
-  
+
   <?php
   require_once('../../../inc/mensagens.php');
-  ?>
-            <?php
-              require '../inc/editemp.php';
-            ?>
-            
 
-            <?php
-            require_once('footer.php'); //Javascript e configurações afins
-            ?>
-<!-- FIM section -->
-<!--################# section TERMINA AQUI #################-->
+  require '../inc/editemp.php';
+
+  require_once('footer.php'); //Javascript e configurações afins
+  ?>

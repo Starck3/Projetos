@@ -2,11 +2,11 @@
 require_once('head.php'); //CSS e configurações HTML e session start
 require_once('header.php'); //logo e login e banco de dados
 require_once('menu.php'); //menu lateral da pagina
+
 echo $_POST['pesquisa'] == NULL ? '<script>window.location.href = "index.php";</script>' : '';
-$queryModulos .= " WHERE nome like '%" . $_POST['pesquisa'] . "%' AND deletar = 0";
+$queryModulos = "SELECT * FROM sisrev_modulos WHERE nome like '%" . $_POST['pesquisa'] . "%' AND deletar = 0";
 $resultModulos = $conn->query($queryModulos);
 
-echo $queryModulos;
 ?>
 
 <main id="main" class="main">

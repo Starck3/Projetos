@@ -8,11 +8,13 @@ if ($_POST['cpf'] == NULL) {
 }
 
 //Query de busca de usuários para montagem da tabela.
+
+/* 
+Essa tabela esta sendo administrada no seguinte caminho
+/var/www/html/acoesAutomaticas/front/importarUsuariosApi.php 
+*/
 $queryDemitidos .= " WHERE cpf = ".str_replace(".", "", $ajuste)."";
 $resultado = $conn->query($queryDemitidos);
-
-echo $queryDemitidos;
-exit;
 
 while ($rowResultado = $resultado->fetch_assoc()) {
 
