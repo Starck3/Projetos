@@ -45,7 +45,14 @@ require_once('../inc/regras_pe.php');
       <div class="col-lg-6" style="display: <?= $displayOne ?>">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Log de execução - Ultima vez</h5>
+            <button type="button" title="Logs Anteriores" class="btn btn-success btn-sm" style="margin-top: 5px;margin-left: 401px;">
+              <a href="logPoliticamente.php">
+                <i class="bx bxs-report"></i>
+              </a>              
+            </button>
+            <h5 class="card-title" style="margin-top: -30px;">Log de execução - Ultima vez</h5>
+            
+            
             <!-- List group with active and disabled items -->
             <ul class="list-group list-group-flush">
               <li class="list-group-item"><code>Autor:</code> <?= $logPE['nome'] ?> <code style="margin-left: 64px;">Data:</code> <?= empty($logPE['data']) ? ' ' : date('d/m/Y H:i:s', strtotime($logPE['data'])) ?></li>

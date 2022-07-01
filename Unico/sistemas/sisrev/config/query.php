@@ -61,4 +61,6 @@ $queryFuncaoModulos = "SELECT * FROM sisrev_funcao SF
                         LEFT JOIN sisrev_modulos SM
                         ON SF.id_modulos = SM.id";
 
+$buscaCarga = "SELECT * FROM carga_vw_info";
+
 ?>

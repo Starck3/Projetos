@@ -41,3 +41,5 @@ if($tela == "cadastro_funcao.php"){if($_GET['pg'] != '4'){echo'<script>window.lo
 if($tela == "usuarios.php"){if($_GET['pg'] != '4'){echo '<script>window.location.href = "usuarios.php?pg=4";</script>';}}
 //atualizarPreco
 if($tela == "atualizarPreco.php"){if($_GET['pg'] != '2'){echo '<script>window.location.href = "atualizarPreco.php?pg=2";</script>';}}
+//atualizarPreco
+if($tela == "etiquetaLaser.php"){if($_GET['pg'] != '2'){echo '<script>window.location.href = "etiquetaLaser.php?pg=2";</script>';}}

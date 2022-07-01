@@ -31,7 +31,19 @@ require_once('menu.php'); //menu lateral da pagina
           </div>
         </a>
       </div>
+      <div class="col-sm-3">
+        <a href="etiquetaLaser.php" class="list-group-item list-group-item-action">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Etiquetas Fábrica Laser</h5>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
+    
+    
+    
   </section>
 </main><!-- End #main -->
 

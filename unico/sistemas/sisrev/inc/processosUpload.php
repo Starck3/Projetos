@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('../config/query.php');
 
 $total = count($_FILES['arquivo']['tmp_name']);
@@ -77,25 +77,48 @@ for($i = 0;$i < $total;){
                 $array1 = rename('../documentos/CAR/'.$dataBr.'/'.$_FILES['arquivo']['name'][$i].'' , '../documentos/CAR/'.$dataBr.'/luc'.$folderName.'.txt');
                 break;
             }
+            $array5 = $array[3];
+            $array5 = ltrim($array5,2);
+            $numeroNota = substr($array5,16,16);
+
+            $array6 = $array[3];
+            // $array6 = ltrim($array6,8);
+            $dataNota = substr($array5,20,39);
+
+            echo $dataNota;
+            exit;
+
+            $inserirDb = "INSERT INTO carga_vw_info (data_nota,numero_nota,produto,caixa,qtde,tot_item,val_ipi,seq,fornecedor) VALUES ('".$numeroNota."','".$uploadfile."','".$data."','" . $_SESSION['id_usuario'] . "');";
+            $resultado = $conn->query($inserirDb);
           }
-          $inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data) VALUES ('".$nome."','".$uploadfile."','".$data."');";
+          $inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data,id_usuario) VALUES ('".$nome."','".$uploadfile."','".$data."','" . $_SESSION['id_usuario'] . "');";
           $resultado = $conn->query($inserirDb);
             
-        if($resultado){
-          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&dataArquivo=".$data."&msn=11");
-        }else{
-          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=10&erro=1");
-        }
+            if($resultado){
+              header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&dataArquivo=".$data."&msn=11");
+              $conn->close();
+            }else{
+              header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=10&erro=1");
+            }
       }else{
-        header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=10&erro=2");
+        header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=10&erro=2");
       }
      }else{ 
+
+      //cria a pasta se nao existir
       $criaPasta = mkdir($uploaddir,0777);
+
+      //se mudar a permissao do arquivo
      if(chmod($uploaddir,0777)){
-      $uploadfile = $uploaddir . basename($nome);
+
+      //mostra onde será salvo o arquivo
+      $uploadfile = $uploaddir . basename($_FILES['arquivo']['name'][$i]);
+
+      //se o arquivo foi movido pra pasta criada
       if (move_uploaded_file($tempFile, $uploadfile)) {
         $diretorioArquivo = array(file('../documentos/CAR/'.$dataBr.'/'.$_FILES['arquivo']['name'][$i].''));
-
+        	
+        //para cada arquivo upado ele vai , abrir o arquivo, ler e renomear o arquivo
         foreach($diretorioArquivo as $row => $array){
             
           $array1 = $array[0];
@@ -104,6 +127,8 @@ for($i = 0;$i < $total;){
 
           $array1 = substr($array1,-4);
 
+          
+          //Ele verifica dentro do arquivo se for o dn da empresa e renomeia
           switch($array1){
             case '0054':
               $array1 = rename('../documentos/CAR/'.$dataBr.'/'.$_FILES['arquivo']['name'][$i].'' , '../documentos/CAR/'.$dataBr.'/lb3'.$folderName.'.txt');
@@ -143,21 +168,28 @@ for($i = 0;$i < $total;){
               break;
           }
         }
-        $inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data) VALUES ('".$nome."','".$uploadfile."','".$data."');";
+        //insere no bd o log do arquivo
+        $inserirDb = "INSERT INTO sisrev_arquivo_car (nome_arquivo,caminho,data,id_usuario) VALUES ('".$nome."','".$uploadfile."','".$data."','" . $_SESSION['id_usuario'] . "');";
         $resultado = $conn->query($inserirDb);
+       //confere se foi inserido no banco de dados   
         if($resultado){
-          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=11");
+          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&dataArquivo=".$data."&msn=11");
+          $conn->close();
+          
         }else{
-          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=10&erro=1");
+          header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=10&erro=1");
         }
       }else{
-        header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=10&erro=2");
+        header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=10&erro=2");
       }
-    }else{header("Refresh: 0 ; url=processosUpload.php");}
+    }else{
+      header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=13");
     }
+   }
 
   }else{
-    header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . '&tela=' . $_GET['tela'] . "&msn=10&erro=3");
+    header("location: ../front/processosFabrica.php?pg=" . $_GET['pg'] . "&msn=10&erro=3");
   }
+  $conn->close();
    $i++;
-  }
+}
